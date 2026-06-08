@@ -6,6 +6,7 @@
 ## Project Identity
 
 **Site**: The Celebration Life
+**Site tagline (CONFIRMED FINAL)**: "It's Always Sunny in Celebration."
 **URL**: https://www.livethecelebrationlife.com
 **Platform**: Brilliant Directories (PHP + Bootstrap, proprietary CMS)
 **GitHub**: gecko369 — repo: github.com/gecko369/tcl-theme
