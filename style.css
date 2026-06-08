@@ -376,8 +376,17 @@ a:focus-visible {
 }
 
 @media only screen and (max-width: 767px) {
-  /* Hide the oversized logo block and login from mobile content area */
-  .header-left-container,
+  /* Shrink and left-align logo instead of hiding it */
+  #website_logo {
+    text-align: left !important;
+    padding: 5px 0 !important;
+  }
+  #website_logo .logo-image img {
+    max-height: 42px !important;
+    max-width: 160px !important;
+    width: auto !important;
+  }
+  /* Hide right side login/mini-nav only */
   .header-right-container,
   .logged-in-member-header {
     display: none !important;
