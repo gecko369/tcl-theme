@@ -376,70 +376,32 @@ a:focus-visible {
 }
 
 @media only screen and (max-width: 767px) {
-  /* Make the whole header a single horizontal bar */
-  .header {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    min-height: 56px !important;
-    background: #FFFFFF !important;
-    padding: 0 !important;
-  }
-
-  /* Logo section — left side, shrinks to fit */
+  /* Hide the top logo container — navbar-brand inside navbar handles mobile logo */
   .header > .container {
-    flex: 1 1 auto !important;
-    width: auto !important;
-    padding: 6px 12px !important;
-  }
-
-  #website_logo {
-    text-align: left !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  #website_logo .logo-image {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  #website_logo .logo-image img {
-    max-height: 38px !important;
-    width: auto !important;
-    display: block !important;
-  }
-
-  /* Hide login/right side */
-  .header-right-container,
-  .logged-in-member-header {
     display: none !important;
   }
-
-  /* Navbar — right side, just the hamburger */
-  .header > nav.navbar {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: auto !important;
-    background: transparent !important;
-    border: none !important;
+  /* Stick the header to top */
+  .header {
+    position: sticky !important;
+    top: 0 !important;
+    background: #FFFFFF !important;
+    z-index: 99998 !important;
+    width: 100% !important;
   }
-
-  .header .navbar .container-fluid {
-    width: auto !important;
-    padding: 0 8px 0 0 !important;
+  /* Align mobile menu panel below navbar */
+  .mobile-main-menu {
+    top: 50px !important;
+    height: calc(100% - 50px) !important;
   }
-
-  .header .navbar-header {
-    float: none !important;
-    margin: 0 !important;
-  }
-
-  /* Offset page content below fixed header */
   body {
-    padding-top: 56px !important;
+    padding-top: 50px !important;
+  }
+}
+
+/* Hide the navbar-brand mini logo on desktop — big logo in header handles that */
+@media (min-width: 768px) {
+  .header .navbar-brand {
+    display: none !important;
   }
 }
 
