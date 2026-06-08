@@ -5,7 +5,7 @@
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@700;800;900&family=Figtree:wght@400;500;600&family=Caveat:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&family=Figtree:wght@400;500;600&family=Caveat:wght@500;600&display=swap');
 
 /* ── Custom Properties ────────────────────────────────────── */
 :root {
@@ -69,7 +69,7 @@ body {
 
 /* ── Headings ─────────────────────────────────────────────── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Sansita Swashed', cursive !important;
+  font-family: 'Outfit', sans-serif !important;
   line-height: 1.15;
   color: var(--color-text-dark);
   margin-top: 0;
@@ -125,7 +125,7 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  font-family: 'Sansita Swashed', cursive !important;
+  font-family: 'Outfit', sans-serif !important;
   font-weight: 800;
   font-size: 1rem;
   line-height: 1;
@@ -173,7 +173,7 @@ a:focus-visible {
 .btn-tcl-featured {
   display: inline-flex;
   align-items: center;
-  font-family: 'Sansita Swashed', cursive !important;
+  font-family: 'Outfit', sans-serif !important;
   font-weight: 800;
   font-size: 0.9rem;
   line-height: 1;
@@ -198,7 +198,7 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Sansita Swashed', cursive !important;
+  font-family: 'Outfit', sans-serif !important;
   font-weight: 800;
   font-size: 1rem;
   line-height: 1;

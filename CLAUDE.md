@@ -131,11 +131,11 @@ Use sky blue for accents, borders, icons, small elements.
 
 ## Typography
 
-DO NOT USE: Inter, Roboto, DM Sans, Space Grotesk, Playfair Display, Cormorant Garamond, Bricolage Grotesque, Nunito, Baloo 2, Kaushan Script, Calistoga, or any other overused AI-default font.
+DO NOT USE: Inter, Roboto, DM Sans, Space Grotesk, Playfair Display, Cormorant Garamond, Bricolage Grotesque, Nunito, Baloo 2, Kaushan Script, Calistoga, Sansita Swashed, or any other overused AI-default font.
 
 | Role | Font | Weight | Notes |
 |---|---|---|---|
-| All headings H1–H6 | Sansita Swashed | 700/800/900 | Bold swash serif — warm, festive, distinctive |
+| All headings H1–H6 | Outfit | 700/800/900 | Clean geometric sans — modern, bold, versatile |
 | Body text | Figtree | 400/500 | Warm geometric sans, excellent readability |
 | Captions / labels | Figtree | 400 | |
 | Decorative accent | Caveat | 600 | SHORT text only — taglines, pull quotes, Ask Sunni annotation |
