@@ -510,109 +510,205 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 }
 
 /* ── Homepage ─────────────────────────────────────────── */
+
+/* Hero — dark navy, sun watermark */
+#first_container {
+  background-image: none !important;
+  background-color: #0D3347 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  min-height: 75vh !important;
+}
+#first_container::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: min(80vw, 680px) !important;
+  height: min(80vw, 680px) !important;
+  background-image: url('/images/CLife-Logos/Favicon_72x72.svg') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  opacity: 0.09 !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+.homepage_settings {
+  position: relative !important;
+  z-index: 1 !important;
+  padding-top: 140px !important;
+  padding-bottom: 130px !important;
+}
 .homepage_settings h1 {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900 !important;
   color: #FFFFFF !important;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.4) !important;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.3) !important;
+  letter-spacing: -0.01em !important;
 }
 .homepage_settings h2 {
   font-family: 'Figtree', sans-serif !important;
-  font-weight: 500 !important;
-  color: rgba(255,255,255,0.92) !important;
+  font-weight: 400 !important;
+  color: rgba(255,255,255,0.85) !important;
 }
+
+/* Ticker — white text, yellow separators, bigger */
 .tcl-marquee-band {
-  background: #15C4AF;
-  overflow: hidden;
-  white-space: nowrap;
-  padding: 14px 0;
+  background: #15C4AF !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  padding: 13px 0 !important;
+  position: relative !important;
 }
 .tcl-marquee-track {
-  display: inline-block;
-  animation: tclMarquee 35s linear infinite;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-  color: #0D3347;
-  text-transform: uppercase;
+  display: inline-block !important;
+  animation: tclMarquee 35s linear infinite !important;
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.12em !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+}
+.tcl-marquee-sep {
+  color: #FFCA08 !important;
+  margin: 0 18px !important;
 }
 @keyframes tclMarquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-.tcl-marquee-sep { color: #F58220; margin: 0 20px; }
-.homepage-sections > div:has(.slickEvents),
-.homepage-sections > div:has(.slickCoupons) {
-  background: #FFFFFF !important;
+
+/* Ticker → Events wave (white wave at ticker bottom) */
+.tcl-marquee-band::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -1px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 40px !important;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF' d='M0,20 C360,40 720,0 1080,20 C1260,30 1380,10 1440,20 L1440,40 L0,40 Z'/%3E%3C/svg%3E") no-repeat bottom !important;
+  background-size: 100% 100% !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
 }
+
+/* Section backgrounds */
+.homepage-sections > div:has(.slickEvents),
 .homepage-sections > div:has(.slickBlogArticles) {
+  background: #FFFFFF !important;
+  padding-top: 20px !important;
+}
+.homepage-sections > div:has(.slickCoupons) {
   background: #F9E0BB !important;
 }
 .homepage-sections > div:has(.display-recent-members) {
   background: #0D3347 !important;
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
 }
 .homepage-sections > div:has(.display-recent-members) h2.streaming-title {
   color: #FFCA08 !important;
 }
+
+/* Wave — white into sand (before deals section) */
+.homepage-sections > div:has(.slickCoupons)::before {
+  content: '' !important;
+  display: block !important;
+  width: 100% !important;
+  height: 50px !important;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 50' preserveAspectRatio='none'%3E%3Cpath fill='%23F9E0BB' d='M0,25 C360,50 720,0 1080,25 C1260,38 1380,12 1440,25 L1440,0 L0,0 Z'/%3E%3C/svg%3E") no-repeat !important;
+  background-size: 100% 100% !important;
+  margin-bottom: -1px !important;
+}
+
+/* Wave — sand back to white (before businesses) */
+.homepage-sections > div:has(.display-recent-members)::before {
+  content: '' !important;
+  display: block !important;
+  width: 100% !important;
+  height: 50px !important;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 50' preserveAspectRatio='none'%3E%3Cpath fill='%230D3347' d='M0,25 C360,0 720,50 1080,25 C1260,12 1380,38 1440,25 L1440,0 L0,0 Z'/%3E%3C/svg%3E") no-repeat !important;
+  background-size: 100% 100% !important;
+  margin-bottom: -1px !important;
+}
+
+/* Streaming titles */
 .streaming-title {
   font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
   font-weight: 800 !important;
   text-align: center !important;
 }
+
+/* Quick Find — white bg, FA icons */
 .tcl-quickfind {
-  padding: 60px 20px;
-  text-align: center;
-  background: #8CD1ED;
+  background: #FFFFFF !important;
+  padding: 70px 20px !important;
+  text-align: center !important;
 }
 .tcl-quickfind-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900 !important;
   color: #0D3347 !important;
-  margin-bottom: 40px !important;
+  margin-bottom: 48px !important;
   font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
 }
 .tcl-quickfind-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 860px;
-  margin: 0 auto;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
 }
 .tcl-quickfind-card {
-  background: #FFFFFF;
-  border: 2px solid transparent;
-  border-radius: 16px;
-  padding: 28px 16px;
+  background: #FFFFFF !important;
+  border: 2px solid rgba(21,196,175,0.25) !important;
+  border-radius: 20px !important;
+  padding: 36px 20px !important;
   text-decoration: none !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 14px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
 }
 .tcl-quickfind-card:hover {
-  border-color: #15C4AF;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(21,196,175,0.25);
+  border-color: #15C4AF !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 28px rgba(21,196,175,0.2) !important;
   text-decoration: none !important;
 }
-.tcl-quickfind-icon { font-size: 2rem; line-height: 1; }
+.tcl-qf-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 50% !important;
+  font-size: 1.7rem !important;
+  color: #FFFFFF !important;
+  flex-shrink: 0 !important;
+}
+.tcl-qf-icon i { color: #FFFFFF !important; }
 .tcl-quickfind-label {
   font-family: 'Bricolage Grotesque', sans-serif !important;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: #231F20;
-  text-align: center;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  color: #231F20 !important;
+  text-decoration: none !important;
 }
 .tcl-quickfind-card:hover .tcl-quickfind-label { color: #15C4AF !important; }
+
+/* Real Estate */
 .tcl-realestate {
-  background: linear-gradient(135deg, #F58220 0%, #d96e14 100%);
-  padding: 70px 20px;
-  text-align: center;
+  background: linear-gradient(135deg, #F58220 0%, #d96e14 100%) !important;
+  padding: 80px 20px !important;
+  text-align: center !important;
 }
-.tcl-realestate-inner { max-width: 680px; margin: 0 auto; }
+.tcl-realestate-inner { max-width: 680px !important; margin: 0 auto !important; }
 .tcl-realestate-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900 !important;
@@ -626,29 +722,31 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   margin-bottom: 36px !important;
 }
 .tcl-realestate-btns {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: flex !important;
+  gap: 16px !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
 }
 .btn-re {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  font-weight: 800;
-  font-size: 1rem;
-  padding: 0.8rem 1.8rem;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  border: 2px solid #FFFFFF;
+  display: inline-flex !important;
+  align-items: center !important;
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  padding: 0.8rem 1.8rem !important;
+  border-radius: 100px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  border: 2px solid #FFFFFF !important;
+  gap: 8px !important;
 }
-.btn-re.solid { background: #FFFFFF; color: #F58220; }
-.btn-re.solid:hover { background: #0D3347; border-color: #0D3347; color: #FFFFFF; text-decoration: none; }
-.btn-re.outline { background: transparent; color: #FFFFFF; }
-.btn-re.outline:hover { background: #FFFFFF; color: #F58220; text-decoration: none; }
+.btn-re.solid { background: #FFFFFF !important; color: #F58220 !important; }
+.btn-re.solid:hover { background: #0D3347 !important; border-color: #0D3347 !important; color: #FFFFFF !important; text-decoration: none !important; }
+.btn-re.outline { background: transparent !important; color: #FFFFFF !important; }
+.btn-re.outline:hover { background: #FFFFFF !important; color: #F58220 !important; text-decoration: none !important; }
+
 @media (max-width: 767px) {
-  .tcl-quickfind-grid { grid-template-columns: repeat(2, 1fr); }
-  .tcl-realestate-btns { flex-direction: column; align-items: center; }
+  .tcl-quickfind-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .tcl-realestate-btns { flex-direction: column !important; align-items: center !important; }
+  .homepage_settings { padding-top: 80px !important; padding-bottom: 80px !important; }
 }
