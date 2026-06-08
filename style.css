@@ -281,11 +281,13 @@ a:focus-visible {
   width: 100px;
   height: 100px;
   filter: drop-shadow(0 0 12px rgba(245,130,32,0.5));
+  transform-origin: center center;
+  animation: tclSpin var(--ray-speed, 5s) linear infinite;
 }
 
+/* .tcl-loader-rays targets an inline SVG group when rays-only spin is needed */
 .tcl-loader-rays {
-  transform-origin: 50px 50px;
-  transform-box: view-box;
+  transform-origin: center center;
   animation: tclSpin var(--ray-speed, 5s) linear infinite;
 }
 
