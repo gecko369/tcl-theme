@@ -125,7 +125,7 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif !important;
   font-weight: 800;
   font-size: 1rem;
   line-height: 1;
@@ -173,7 +173,7 @@ a:focus-visible {
 .btn-tcl-featured {
   display: inline-flex;
   align-items: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif !important;
   font-weight: 800;
   font-size: 0.9rem;
   line-height: 1;
@@ -198,7 +198,7 @@ a:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif !important;
   font-weight: 800;
   font-size: 1rem;
   line-height: 1;
@@ -243,7 +243,7 @@ a:focus-visible {
 
 /* ── Caveat Accent ────────────────────────────────────────── */
 .tcl-caveat {
-  font-family: 'Caveat', cursive;
+  font-family: 'Caveat', cursive !important;
   font-weight: 600;
 }
 
