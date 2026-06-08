@@ -403,7 +403,7 @@ Paste inspected HTML here once Brad right-clicks elements on the live site:
 ## Phase Checklist
 
 - [ ] Phase 0  — Repo created, GitHub Pages live, BD HEAD code injected, assets in /assets/, widget HTML inspected
-- [ ] Phase 1  — style.css foundation: CSS vars, typography, buttons, wave keyframes, ocean hamburger keyframes, sun crop mask, loader keyframes
+- [x] Phase 1  — style.css foundation: CSS vars, typography, buttons, wave keyframes, ocean hamburger keyframes, sun crop mask, loader keyframes
 - [ ] Phase 2  — Header widget: cloned, restyled, ocean wave hamburger, mobile nav working
 - [ ] Phase 3  — Footer widget: cloned, restyled, botanical wave decoration
 - [ ] Phase 4  — Homepage built
