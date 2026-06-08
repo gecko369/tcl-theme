@@ -376,10 +376,6 @@ a:focus-visible {
 }
 
 @media only screen and (max-width: 767px) {
-  /* Hide the top logo container — navbar-brand inside navbar handles mobile logo */
-  .header > .container {
-    display: none !important;
-  }
   /* Stick the header to top */
   .header {
     position: sticky !important;
