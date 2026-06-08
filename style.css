@@ -1,0 +1,338 @@
+/* ============================================================
+   The Celebration Life — Master Stylesheet
+   Served via: https://gecko369.github.io/tcl-theme/style.css
+   Phase 1: Foundation — vars, typography, buttons, keyframes
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=Figtree:wght@400;500;600&family=Caveat:wght@500;600&display=swap');
+
+/* ── Custom Properties ────────────────────────────────────── */
+:root {
+  /* Brand palette */
+  --brand-teal:        #15C4AF;
+  --brand-yellow:      #FFCA08;
+  --brand-orange:      #F58220;
+  --brand-sky:         #8CD1ED;
+  --brand-blue:        #27AAE1;
+  --brand-dark:        #231F20;
+
+  /* Backgrounds */
+  --color-bg:          #FFFFFF;
+  --color-bg-warm:     #F9E0BB;
+  --color-bg-teal:     #15C4AF;
+  --color-bg-sky:      #8CD1ED;
+  --color-bg-dark:     #0D3347;
+
+  /* Text */
+  --color-text:        #2C3E50;
+  --color-text-dark:   #1A2E3B;
+  --color-text-light:  #5A7A8A;
+  --color-text-white:  #FFFFFF;
+
+  /* Actions */
+  --color-action:      #F58220;
+  --color-action-alt:  #15C4AF;
+  --color-link:        #27AAE1;
+
+  /* Sunni */
+  --color-sunni:       #F58220;
+
+  /* Spacing scale */
+  --space-xs:   0.5rem;
+  --space-sm:   1rem;
+  --space-md:   1.5rem;
+  --space-lg:   2.5rem;
+  --space-xl:   4rem;
+  --space-2xl:  6rem;
+  --space-3xl:  10rem;
+}
+
+/* ── Base Reset ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ── Body ─────────────────────────────────────────────────── */
+body {
+  font-family: 'Figtree', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Headings ─────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.15;
+  color: var(--color-text-dark);
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+}
+
+h5, h6 {
+  font-weight: 700;
+}
+
+/* ── Links ────────────────────────────────────────────────── */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--brand-teal);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--brand-teal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+.btn-tcl,
+.btn-tcl-outline,
+.btn-tcl-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+/* Primary — orange fill */
+.btn-tcl {
+  background-color: var(--color-action);
+  color: #FFFFFF;
+  border-color: var(--color-action);
+}
+
+.btn-tcl:hover {
+  background-color: #d96e14;
+  border-color: #d96e14;
+  color: #FFFFFF;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(245,130,32,0.35);
+}
+
+/* Secondary — teal outline */
+.btn-tcl-outline {
+  background-color: transparent;
+  color: var(--brand-teal);
+  border-color: var(--brand-teal);
+}
+
+.btn-tcl-outline:hover {
+  background-color: var(--brand-teal);
+  color: var(--color-text-dark);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* Get Featured pill (nav, far-right) */
+.btn-tcl-featured {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 0.45rem 1.1rem;
+  border-radius: 100px;
+  border: 2px solid var(--color-action);
+  background-color: transparent;
+  color: var(--color-action);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-tcl-featured:hover {
+  background-color: var(--color-action);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+/* White button — for dark section backgrounds */
+.btn-tcl-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.75rem 1.75rem;
+  border-radius: 100px;
+  border: 2px solid #FFFFFF;
+  background-color: #FFFFFF;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-tcl-white:hover {
+  background-color: var(--color-text-dark);
+  border-color: var(--color-text-dark);
+  color: #FFFFFF;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* ── Sun Crop Image Mask ───────────────────────────────────── */
+/* Use mask-image, NOT clip-path — polygon is a rough approximation */
+.tcl-sun-crop {
+  -webkit-mask-image: url('assets/sunni-icon.svg');
+  mask-image: url('assets/sunni-icon.svg');
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  object-fit: cover;
+  display: block;
+}
+
+.tcl-sun-crop-wrap {
+  -webkit-mask-image: url('assets/sunni-icon.svg');
+  mask-image: url('assets/sunni-icon.svg');
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  overflow: hidden;
+}
+
+/* ── Caveat Accent ────────────────────────────────────────── */
+.tcl-caveat {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+}
+
+/* ── Keyframes ────────────────────────────────────────────── */
+
+@keyframes tclSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes oceanFlow {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33px); }
+}
+
+/* ── Page Loader ──────────────────────────────────────────── */
+#tcl-loader {
+  position: fixed;
+  inset: 0;
+  background: #0D3347;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+#tcl-loader.done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.tcl-loader-icon {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 0 12px rgba(245,130,32,0.5));
+}
+
+.tcl-loader-rays {
+  transform-origin: 50px 50px;
+  transform-box: view-box;
+  animation: tclSpin var(--ray-speed, 5s) linear infinite;
+}
+
+/* ── Ocean Swell Hamburger ────────────────────────────────── */
+.tcl-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.tcl-hamburger:hover {
+  background: rgba(21,196,175,0.12);
+}
+
+.tcl-hamburger svg {
+  width: 34px;
+  height: 24px;
+  overflow: hidden;
+}
+
+.tcl-hamburger svg path {
+  fill: none;
+  stroke: var(--brand-teal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.tcl-nav-wave {
+  /* wave paths sit still by default */
+}
+
+.tcl-nav-wave.flowing {
+  animation: oceanFlow 1.4s linear infinite;
+}
+
+.tcl-nav-wave:nth-child(2).flowing {
+  animation-delay: 0.15s;
+}
+
+.tcl-nav-wave:nth-child(3).flowing {
+  animation-delay: 0.30s;
+}
