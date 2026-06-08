@@ -376,25 +376,36 @@ a:focus-visible {
 }
 
 @media only screen and (max-width: 767px) {
-  /* Stick the header to top */
-  .header {
-    position: sticky !important;
+  /* Navbar fixed at top — always visible */
+  .header nav.navbar.navbar-default {
+    position: fixed !important;
     top: 0 !important;
-    background: #FFFFFF !important;
-    z-index: 99998 !important;
+    left: 0 !important;
     width: 100% !important;
+    z-index: 99999 !important;
+    background: #FFFFFF !important;
+    border-bottom: 2px solid rgba(21,196,175,0.2) !important;
+    margin: 0 !important;
   }
-  /* Align mobile menu panel below navbar */
+  /* Header not sticky — logo scrolls naturally */
+  .header {
+    position: relative !important;
+    padding-top: 52px !important;
+    background: #FFFFFF !important;
+  }
+  /* Hide login/right side */
+  .header-right-container,
+  .logged-in-member-header {
+    display: none !important;
+  }
+  /* Slide menu starts below fixed navbar */
   .mobile-main-menu {
-    top: 50px !important;
-    height: calc(100% - 50px) !important;
-  }
-  body {
-    padding-top: 50px !important;
+    top: 52px !important;
+    height: calc(100% - 52px) !important;
   }
 }
 
-/* Hide the navbar-brand mini logo on desktop — big logo in header handles that */
+/* Hide mini favicon logo on desktop — not needed there */
 @media (min-width: 768px) {
   .header .navbar-brand {
     display: none !important;
