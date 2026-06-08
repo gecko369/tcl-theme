@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v3
+   v4
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -391,4 +391,22 @@ a:focus-visible {
   .logged-in-member-header {
     display: none !important;
   }
+}
+
+/* Nav links — force Bricolage over BD's Lato */
+.header .navbar-default .navbar-nav > li > a,
+.header .navbar-default .navbar-nav > li > span,
+body .navbar-default .navbar-nav > li > a,
+body .navbar-default .navbar-nav > li > span {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* Blog/listing title links — BD renders these as <a class="h3"> not real headings */
+a.h1, a.h2, a.h3, a.h4, a.h5, a.h6,
+a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
+.feature-post h2 a, .feature-post h3 a,
+.search_result h2 a, .search_result h3 a,
+.the-post-title a, .post-title a {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
 }
