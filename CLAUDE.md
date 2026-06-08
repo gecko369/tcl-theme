@@ -131,13 +131,13 @@ Use sky blue for accents, borders, icons, small elements.
 
 ## Typography
 
-DO NOT USE: Inter, Roboto, DM Sans, Space Grotesk, Playfair Display, Cormorant Garamond, Bricolage Grotesque, or any other overused AI-default font.
+DO NOT USE: Inter, Roboto, DM Sans, Space Grotesk, Playfair Display, Cormorant Garamond, Bricolage Grotesque, Nunito, Baloo 2, or any other overused AI-default font.
 
 | Role | Font | Weight | Notes |
 |---|---|---|---|
-| Hero / Display H1 | Nunito | 900 | Big, bold, rounded — matches logo energy |
-| Section H2 | Nunito | 800 | |
-| Subheadings H3–H4 | Nunito | 700 | |
+| Hero / Display H1 | Kaushan Script | 400 | Flowing script — warm, celebratory energy |
+| Section H2 | Calistoga | 400 | Bold slab-adjacent, friendly and distinctive |
+| Subheadings H3–H6 | Calistoga | 400 | |
 | Body text | Figtree | 400/500 | Warm geometric sans, excellent readability |
 | Captions / labels | Figtree | 400 | |
 | Decorative accent | Caveat | 600 | SHORT text only — taglines, pull quotes, Ask Sunni annotation |
