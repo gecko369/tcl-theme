@@ -376,20 +376,41 @@ a:focus-visible {
 }
 
 @media only screen and (max-width: 767px) {
-  /* Shrink and left-align logo instead of hiding it */
-  #website_logo {
-    text-align: left !important;
-    padding: 5px 0 !important;
-  }
-  #website_logo .logo-image img {
-    max-height: 42px !important;
-    max-width: 160px !important;
-    width: auto !important;
-  }
-  /* Hide right side login/mini-nav only */
-  .header-right-container,
-  .logged-in-member-header {
+  /* Hide the top logo/login container — navbar becomes the full header */
+  .header > .container {
     display: none !important;
+  }
+
+  /* Navbar fills the header role */
+  .header nav.navbar.navbar-default {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 56px !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    border-bottom: 2px solid rgba(21,196,175,0.2) !important;
+  }
+
+  .header .navbar .container-fluid {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 12px !important;
+    width: 100% !important;
+  }
+
+  /* Logo left, hamburger right — single row */
+  .header .navbar-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    float: none !important;
+    margin: 0 !important;
+  }
+
+  /* Push page content below fixed header */
+  body {
+    padding-top: 56px !important;
   }
 }
 
