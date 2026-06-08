@@ -263,7 +263,7 @@ a:focus-visible {
 #tcl-loader {
   position: fixed;
   inset: 0;
-  background: #0D3347;
+  background: transparent; /* JS sets to #0D3347 on first app launch only */
   display: flex;
   flex-direction: column;
   align-items: center;
