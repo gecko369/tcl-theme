@@ -2,6 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
+   v3
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -75,10 +76,24 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
-.pic-title, .streaming-title,
-.module h1, .module h2, .module h3, .module h4 {
+/* BD widget headings — exact selectors from widget PHP */
+h2.streaming-title,
+h3.pic-title,
+.streaming-title,
+.pic-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
+}
+
+/* Pic-caption titles must stay white — they sit on dark image overlays */
+.pic-caption h3,
+.pic-caption .pic-title,
+h3.pic-title {
+  color: #FFFFFF !important;
+}
+
+/* Streaming section titles — override BD inline color style */
+h2.streaming-title {
+  color: var(--color-text-dark) !important;
 }
 
 h1 {
