@@ -1226,19 +1226,32 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 .tcl-section-white, .tcl-section-navy { overflow-x: hidden !important; }
 
-/* ── Mobile pic card height — constrain to reasonable size ── */
+/* ── Mobile pic cards — events/blog constrained, deals full image ── */
 @media (max-width: 767px) {
-  .web-page-content .slick-slide .pic {
+  /* Events + blog: crop-to-fill is fine for photos */
+  .web-page-content .slickEvents .slick-slide .pic,
+  .web-page-content .slickBlogArticles .slick-slide .pic {
     height: 230px !important;
     min-height: 230px !important;
     max-height: 230px !important;
   }
-  /* Clamp title to 2 lines so caption always fits */
-  .web-page-content .slick-slide .pic .pic-title {
+  .web-page-content .slickEvents .slick-slide .pic .pic-title,
+  .web-page-content .slickBlogArticles .slick-slide .pic .pic-title {
     display: -webkit-box !important;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;
     overflow: hidden !important;
     font-size: 1.05rem !important;
+  }
+  /* Deals/coupons: show full designed graphic, never crop */
+  .web-page-content .slickCoupons .pic,
+  .tcl-section-white .col-md-3 .pic,
+  .tcl-section-white [style*="#F7F7F7"] .col-md-3 .pic {
+    background-size: contain !important;
+    background-color: #1a1a2e !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 750 / 400 !important;
   }
 }
