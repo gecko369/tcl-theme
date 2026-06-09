@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v15
+   v16
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -670,7 +670,7 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 }
 .tcl-wave-orange-teal {
   background-color: #F58220;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%2315C4AF' d='M0,45 C360,0 720,70 1080,35 C1260,18 1380,52 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%2315C4AF' d='M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
 }
 .tcl-section-white { background: #FFFFFF; }
 .tcl-section-navy  { background: #0D3347; }
@@ -1149,30 +1149,32 @@ body .full-screen-page, body .page-content, body #main-content, body .single-pag
 .tcl-newsletter-wrap form { max-width: 480px !important; margin: 0 auto !important; text-align: center !important; }
 .tcl-newsletter-wrap input[type="submit"] { display: block !important; margin: 18px auto 0 !important; float: none !important; }
 
-/* ── v15 font scale-up (~20-25%) ── */
-.tcl-hero-h1 { font-size: clamp(3.6rem, 7.5vw, 7rem) !important; }
+/* ── v16 type scale (final target sizes) ── */
+.tcl-hero-h1 { font-size: clamp(3.4rem, 7vw, 6.6rem) !important; }
 .tcl-hero-tagline { font-size: clamp(2.8rem, 5.5vw, 4.4rem) !important; }
-.tcl-hero-sub { font-size: clamp(1.6rem, 2.4vw, 2.1rem) !important; }
-.tcl-hero-eyebrow { font-size: 1.15rem !important; }
-.streaming-title { font-size: clamp(2.9rem, 4.8vw, 4.7rem) !important; }
-.tcl-find-title { font-size: clamp(2.9rem, 4.8vw, 4.4rem) !important; }
-.tcl-find-sub { font-size: 1.7rem !important; }
-.tcl-find-label { font-size: 1.55rem !important; }
-.tcl-realestate-title { font-size: clamp(2.9rem, 5vw, 4.6rem) !important; }
-.tcl-realestate-sub { font-size: 1.7rem !important; }
-.tcl-newsletter-title { font-size: clamp(2.8rem, 4.5vw, 4.1rem) !important; }
-.tcl-newsletter-sub { font-size: 1.65rem !important; }
-.tcl-btn-primary, .tcl-btn-outline-white { font-size: 1.5rem !important; padding: 1.15rem 2.7rem !important; }
-.tcl-viewall { font-size: 1.4rem !important; padding: 1rem 2.4rem !important; }
-.btn-re { font-size: 1.5rem !important; padding: 1.15rem 2.7rem !important; }
-.tcl-section-white .pic-title,
-.tcl-section-white a.h4,
-.tcl-section-white .h4 { font-size: 1.5rem !important; }
-.tcl-section-navy .well a.h4 { font-size: 1.6rem !important; }
-.tcl-section-navy .well p,
-.tcl-section-navy .well .bold,
-.tcl-section-navy .well span { font-size: 1.2rem !important; }
+.tcl-hero-sub { font-size: clamp(1.5rem, 2.2vw, 2rem) !important; }
+.tcl-hero-eyebrow { font-size: 1.15rem !important; letter-spacing: 2px !important; }
+.web-page-content .streaming-title { font-size: clamp(2.6rem, 4.5vw, 4.2rem) !important; }
+.tcl-find-title { font-size: clamp(2.6rem, 4.5vw, 4.2rem) !important; }
+.tcl-find-sub { font-size: clamp(1.4rem, 2vw, 1.7rem) !important; }
+.tcl-find-label { font-size: 1.45rem !important; }
+.tcl-realestate-title { font-size: clamp(2.6rem, 4.6vw, 4.2rem) !important; }
+.tcl-realestate-sub { font-size: clamp(1.4rem, 2vw, 1.7rem) !important; }
+.tcl-newsletter-title { font-size: clamp(2.4rem, 4vw, 3.8rem) !important; }
+.tcl-newsletter-sub { font-size: clamp(1.35rem, 2vw, 1.65rem) !important; }
+.tcl-btn-primary, .tcl-btn-outline-white { font-size: 1.4rem !important; padding: 1.1rem 2.6rem !important; }
+.tcl-viewall { font-size: 1.3rem !important; padding: 0.95rem 2.3rem !important; }
+.btn-re { font-size: 1.4rem !important; padding: 1.1rem 2.6rem !important; }
+.web-page-content .pic-title { font-size: 1.4rem !important; line-height: 1.25 !important; }
+.web-page-content .pic-caption p { font-size: 1.1rem !important; }
+.tcl-section-navy .well a.h4 { font-size: 1.55rem !important; }
+.tcl-section-navy .well p, .tcl-section-navy .well .bold, .tcl-section-navy .well span { font-size: 1.18rem !important; }
 
-.tcl-newsletter-wrap { margin-bottom: 0 !important; padding-bottom: 80px !important; }
+/* Close white gap before footer */
+.footer-clear-element { display: none !important; }
+.tcl-newsletter-wrap { margin-bottom: 0 !important; padding-bottom: 90px !important; }
+.web-page-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
+
 .tcl-newsletter-wrap ~ p, .tcl-newsletter-wrap ~ br,
 .tcl-newsletter-wrap ~ div:empty { display: none !important; }
