@@ -18,6 +18,20 @@ if (loader) {
   }
 }
 
+(function(){
+  var s = document.createElement('style');
+  s.textContent = [
+    // Related posts blurred backdrop fix
+    '.related-post-image::before, .related-post-image::after { content: none !important; display: none !important; filter: none !important; opacity: 0 !important; }',
+    '.related-post-image { overflow: hidden !important; background-size: cover !important; background-position: center center !important; }',
+    '.related-post-image img { width: 100% !important; height: auto !important; display: block !important; }',
+    // .pic homepage cards (belt and suspenders)
+    '.pic { background-size: cover !important; background-position: center center !important; overflow: hidden !important; }',
+    '.pic::before, .pic::after { content: none !important; display: none !important; filter: none !important; opacity: 0 !important; }'
+  ].join(' ');
+  document.head.appendChild(s);
+})();
+
 window.addEventListener('load', () => {
   document.getElementById('tcl-loader')?.classList.add('done');
 });
