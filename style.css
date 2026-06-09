@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v9
+   v10
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -946,4 +946,121 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   .tcl-find-section { padding: 55px 15px !important; }
   .tcl-find-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .tcl-hero { min-height: 70vh !important; }
+}
+
+/* ── Home V2 v10 ── */
+
+/* Hero — shorter, everything bigger */
+.tcl-hero { min-height: 50vh !important; padding: 55px 20px !important; }
+.tcl-hero-eyebrow { font-size: 1.15rem !important; letter-spacing: 0.22em !important; margin-bottom: 18px !important; }
+.tcl-hero-h1 { font-size: clamp(3.6rem, 7vw, 7rem) !important; margin-bottom: 22px !important; }
+.tcl-hero-sub { font-size: clamp(1.3rem, 2vw, 1.6rem) !important; margin-bottom: 36px !important; }
+.tcl-btn-primary, .tcl-btn-outline-white {
+  font-size: 1.3rem !important;
+  padding: 1.2rem 2.8rem !important;
+}
+
+/* Section headlines — much bigger */
+.streaming-title, .tcl-find-title {
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem) !important;
+}
+
+/* Widget sections — more side padding so slider isn't full-width */
+.tcl-section-white,
+.tcl-section-navy {
+  padding: 80px 90px 70px !important;
+}
+
+/* Slider arrows — visible teal circles, positioned inside */
+.tcl-section-white .slick-arrow,
+.tcl-section-navy .slick-arrow {
+  width: 52px !important;
+  height: 52px !important;
+  background: #15C4AF !important;
+  border-radius: 50% !important;
+  z-index: 30 !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+}
+.tcl-section-white .slick-prev,
+.tcl-section-navy .slick-prev { left: 25px !important; }
+.tcl-section-white .slick-next,
+.tcl-section-navy .slick-next { right: 25px !important; }
+.tcl-section-white .slick-arrow:before,
+.tcl-section-navy .slick-arrow:before {
+  color: #FFFFFF !important;
+  font-size: 26px !important;
+  opacity: 1 !important;
+}
+
+/* Featured businesses — strip nested boxes, single clean card */
+.tcl-section-navy .panel,
+.tcl-section-navy .panel-default,
+.tcl-section-navy [class*="result"],
+.tcl-section-navy [class*="member"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.tcl-section-navy .well {
+  background: rgba(255,255,255,0.1) !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+
+/* Real estate — bigger, kill nested orange box */
+.tcl-realestate { padding: 80px 20px !important; }
+.tcl-realestate-title { font-size: clamp(2.8rem, 5vw, 4.5rem) !important; }
+.tcl-realestate-sub { font-size: 1.4rem !important; margin-bottom: 44px !important; }
+.tcl-realestate > div,
+.tcl-realestate .fr-view,
+.tcl-realestate .content-container,
+.tcl-realestate .panel,
+.tcl-realestate .well {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.btn-re { font-size: 1.25rem !important; padding: 1.2rem 3rem !important; }
+
+@media (max-width: 767px) {
+  .tcl-section-white, .tcl-section-navy { padding: 50px 15px !important; }
+  .tcl-find-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* View All button */
+.tcl-viewall-wrap {
+  text-align: center;
+  padding: 10px 20px 0;
+}
+.tcl-viewall {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.85rem 2.2rem;
+  border-radius: 100px;
+  background: transparent;
+  color: #15C4AF;
+  border: 2px solid #15C4AF;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+.tcl-viewall:hover {
+  background: #15C4AF;
+  color: #FFFFFF;
+  text-decoration: none !important;
+  transform: translateY(-2px);
+}
+/* On the navy businesses section — light version */
+.tcl-section-navy .tcl-viewall {
+  color: #FFCA08;
+  border-color: #FFCA08;
+}
+.tcl-section-navy .tcl-viewall:hover {
+  background: #FFCA08;
+  color: #0D3347;
 }
