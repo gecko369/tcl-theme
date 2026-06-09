@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v18
+   v19
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -1194,3 +1194,23 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   main#main-content > div:last-of-type { margin: 0 !important; padding: 0 !important; }
   .footer-clear-element { display: none !important; height: 0 !important; margin: 0 !important; }
 }
+
+/* Hide broken slider arrows */
+.slick-prev-fa, .slick-next-fa, .slick-prev, .slick-next { display: none !important; }
+
+/* Clean auto-slide look on desktop: no dots; keep dots on mobile */
+@media (min-width: 768px) {
+  .tcl-section-white .slick-dots, .tcl-section-navy .slick-dots { display: none !important; }
+}
+
+/* Constrain & center widget sections at all desktop widths */
+.tcl-section-white .container,
+.tcl-section-navy .container {
+  max-width: 1180px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 28px !important;
+  padding-right: 28px !important;
+  float: none !important;
+}
+.tcl-section-white, .tcl-section-navy { overflow-x: hidden !important; }
