@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v13
+   v14
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -682,10 +682,7 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 .tcl-section-navy .streaming-title { color: #FFCA08 !important; }
 .tcl-section-navy p,
 .tcl-section-navy small { color: rgba(255,255,255,0.75) !important; }
-.tcl-section-navy .well {
-  background: rgba(255,255,255,0.06) !important;
-  border-color: rgba(255,255,255,0.1) !important;
-}
+
 .tcl-section-navy,
 .tcl-realestate,
 .tcl-newsletter-wrap {
@@ -876,16 +873,7 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 .tcl-find-icon i { font-size: 2.4rem !important; }
 .tcl-find-label { font-size: 1.2rem !important; }
 
-/* Featured businesses — card contrast on navy */
-.tcl-section-navy .well,
-.tcl-section-navy .panel,
-.tcl-section-navy .panel-default,
-.tcl-section-navy [class*="result"],
-.tcl-section-navy [class*="member"] {
-  background: rgba(255,255,255,0.08) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
-  border-radius: 14px !important;
-}
+
 
 /* Real estate — bigger, tighter, kill the nested box */
 .tcl-realestate { padding: 75px 20px !important; }
@@ -974,21 +962,7 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   opacity: 1 !important;
 }
 
-/* Featured businesses — strip nested boxes, single clean card */
-.tcl-section-navy .panel,
-.tcl-section-navy .panel-default,
-.tcl-section-navy [class*="result"],
-.tcl-section-navy [class*="member"] {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-.tcl-section-navy .well {
-  background: rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255,255,255,0.22) !important;
-  border-radius: 16px !important;
-  box-shadow: none !important;
-}
+
 
 /* Real estate — bigger, kill nested orange box */
 .tcl-realestate { padding: 80px 20px !important; }
@@ -1092,26 +1066,36 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 .slick-dots li button:before { color: #15C4AF !important; opacity: 0.4 !important; font-size: 11px !important; }
 .slick-dots li.slick-active button:before { color: #15C4AF !important; opacity: 1 !important; }
 
-/* Member cards — reset nested wrappers, one solid lighter surface */
-.tcl-section-navy .slick-slide > div,
-.tcl-section-navy .item,
-.tcl-section-navy [class*="member"],
-.tcl-section-navy [class*="result"] {
+/* ── Featured member cards (card = .well) ── */
+.tcl-section-navy .member.featured-member {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
-.tcl-section-navy .panel {
+.tcl-section-navy .well {
   background: #1B4A63 !important;
-  border: 1px solid rgba(255,255,255,0.16) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
   border-radius: 16px !important;
   box-shadow: none !important;
+  padding: 26px 24px !important;
 }
-.tcl-section-navy .panel .panel,
-.tcl-section-navy .panel .well,
-.tcl-section-navy .panel-body {
-  background: transparent !important;
-  border: none !important;
+.tcl-section-navy .well a.h4 { color: #FFCA08 !important; }
+.tcl-section-navy .well p,
+.tcl-section-navy .well .bold,
+.tcl-section-navy .well .small,
+.tcl-section-navy .well span { color: rgba(255,255,255,0.88) !important; }
+.tcl-section-navy .well .btn-primary {
+  background: #F58220 !important;
+  border-color: #F58220 !important;
+  color: #FFFFFF !important;
+}
+.tcl-section-navy .well .member-search-verified,
+.tcl-section-navy .well .member-search-verified .member-search-verified-text,
+.tcl-section-navy .well .member-search-verified-icon {
+  color: #FFCA08 !important;
+}
+.tcl-section-navy .well .member-search-verified {
+  background: rgba(255,202,8,0.15) !important;
 }
 
 /* Hide oversized default "View All", keep the styled pill */
