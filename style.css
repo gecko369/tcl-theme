@@ -1076,3 +1076,61 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* ── Home V2 refinements v10 ── */
+
+/* Hero — new tagline line, bigger eyebrow + sub */
+.tcl-hero-eyebrow { font-size: 0.95rem !important; letter-spacing: 0.28em !important; }
+.tcl-hero-tagline {
+  font-family: 'Caveat', cursive !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.9rem, 4vw, 3.1rem) !important;
+  color: #FFCA08 !important;
+  line-height: 1.1 !important;
+  margin: 2px 0 18px !important;
+}
+.tcl-hero-sub { font-size: clamp(1.15rem, 1.6vw, 1.45rem) !important; }
+
+/* Desktop heading sizes up (mobile was already good) */
+.streaming-title { font-size: clamp(2rem, 3.4vw, 3.3rem) !important; }
+.tcl-find-title { font-size: clamp(2.2rem, 4vw, 3.6rem) !important; }
+.tcl-realestate-title { font-size: clamp(2.4rem, 4.2vw, 3.9rem) !important; }
+.tcl-newsletter-title { font-size: clamp(2.1rem, 3.6vw, 3.2rem) !important; }
+
+/* Real estate solid orange — matches the wave, kills the dark gradient edge */
+.tcl-realestate { background: #F58220 !important; }
+
+/* Sliders — hide arrows, keep dots (JS auto-advances) */
+.tcl-section-white .slick-prev,
+.tcl-section-white .slick-next,
+.tcl-section-navy .slick-prev,
+.tcl-section-navy .slick-next {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+.slick-dots li button:before { color: #15C4AF !important; opacity: 0.4 !important; font-size: 11px !important; }
+.slick-dots li.slick-active button:before { color: #15C4AF !important; opacity: 1 !important; }
+
+/* Featured member cards — lighter surface, kill the nested boxes-in-boxes */
+.tcl-section-navy .panel,
+.tcl-section-navy .well,
+.tcl-section-navy [class*="result"],
+.tcl-section-navy [class*="member"],
+.tcl-section-navy .item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.tcl-section-navy .slick-slide > div {
+  background: rgba(255,255,255,0.12) !important;
+  border: 1px solid rgba(255,255,255,0.22) !important;
+  border-radius: 16px !important;
+}
+
+/* Hide oversized default "View All", keep the styled pill */
+.tcl-section-white a.btn-block,
+.tcl-section-navy a.btn-block,
+.tcl-section-white .btn-block { display: none !important; }
+
+/* GHL form holder */
+#tcl-ghl-form { max-width: 600px; margin: 0 auto; }
