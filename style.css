@@ -696,6 +696,22 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 700 !important;
 }
+.tcl-newsletter-title {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 900 !important;
+  color: #0D3347 !important;
+  font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+  margin-bottom: 12px !important;
+  text-align: center !important;
+}
+.tcl-newsletter-sub {
+  font-family: 'Figtree', sans-serif !important;
+  color: #0D3347 !important;
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  margin-bottom: 32px !important;
+  opacity: 0.85;
+}
 @media (max-width: 767px) {
   .tcl-find-grid { grid-template-columns: repeat(2, 1fr); }
   .tcl-hero { min-height: 70vh; }
