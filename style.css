@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v11
+   v12
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -656,6 +656,10 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   background-color: #F7F7F7;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF' d='M0,35 C360,0 720,70 1080,35 C1260,18 1380,52 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
 }
+.tcl-wave-grey-navy {
+  background-color: #F7F7F7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%230D3347' d='M0,20 C360,70 720,10 1080,45 C1260,62 1380,30 1440,45 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+}
 .tcl-wave-white-navy {
   background-color: #FFFFFF;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%230D3347' d='M0,20 C360,70 720,10 1080,45 C1260,62 1380,30 1440,45 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
@@ -686,29 +690,6 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 .tcl-realestate,
 .tcl-newsletter-wrap {
   position: relative;
-}
-.tcl-section-navy::before,
-.tcl-realestate::before,
-.tcl-newsletter-wrap::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 70px;
-  transform: translateY(-99%);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  pointer-events: none;
-}
-.tcl-section-navy::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%230D3347' d='M0,20 C360,70 720,10 1080,45 C1260,62 1380,30 1440,45 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
-}
-.tcl-realestate::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%23F58220' d='M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
-}
-.tcl-newsletter-wrap::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%2315C4AF' d='M0,45 C360,0 720,70 1080,35 C1260,18 1380,52 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
 }
 .tcl-find-section {
   padding: 90px 20px;
@@ -1111,21 +1092,33 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 .slick-dots li button:before { color: #15C4AF !important; opacity: 0.4 !important; font-size: 11px !important; }
 .slick-dots li.slick-active button:before { color: #15C4AF !important; opacity: 1 !important; }
 
-/* Member cards — visible surface on grid AND slider */
-.tcl-section-navy .panel,
-.tcl-section-navy .slick-slide > div > div,
-.tcl-section-navy [class*="result-item"],
-.tcl-section-navy .streaming-members-item {
-  background: rgba(255,255,255,0.1) !important;
-  border: 1px solid rgba(255,255,255,0.2) !important;
+/* Member cards — reset nested wrappers, one solid lighter surface */
+.tcl-section-navy .slick-slide > div,
+.tcl-section-navy .item,
+.tcl-section-navy [class*="member"],
+.tcl-section-navy [class*="result"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.tcl-section-navy .panel {
+  background: #1B4A63 !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
   border-radius: 16px !important;
   box-shadow: none !important;
+}
+.tcl-section-navy .panel .panel,
+.tcl-section-navy .panel .well,
+.tcl-section-navy .panel-body {
+  background: transparent !important;
+  border: none !important;
 }
 
 /* Hide oversized default "View All", keep the styled pill */
 .tcl-section-white a.btn-block,
 .tcl-section-navy a.btn-block,
 .tcl-section-white .btn-block { display: none !important; }
+.view-all-btn-desktop { display: none !important; }
 
 /* GHL form holder */
 #tcl-ghl-form { max-width: 600px; margin: 0 auto; }
