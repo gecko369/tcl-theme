@@ -1064,3 +1064,15 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   background: #FFCA08;
   color: #0D3347;
 }
+
+.tcl-find-sub {
+  font-family: 'Figtree', sans-serif !important;
+  font-size: 1.25rem !important;
+  color: #5a6b75 !important;
+  text-align: center !important;
+  margin-top: -36px !important;
+  margin-bottom: 50px !important;
+  max-width: 600px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
