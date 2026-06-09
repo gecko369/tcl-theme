@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v19
+   v20
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -507,6 +507,17 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
 .list-social-links .network-icon:hover {
   background-color: #15C4AF !important;
   color: #FFFFFF !important;
+}
+
+/* ── Fix .pic card image rendering site-wide ── */
+.pic {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+.pic::before,
+.pic::after {
+  display: none !important;
 }
 
 /* ── Home V2 ────────────────────────────────────────── */
