@@ -1225,3 +1225,10 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   float: none !important;
 }
 .tcl-section-white, .tcl-section-navy { overflow-x: hidden !important; }
+
+/* ── Mobile pic card height — prevent caption clip ── */
+@media (max-width: 480px) {
+  .web-page-content .slick-slide .pic {
+    min-height: 280px !important;
+  }
+}
