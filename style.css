@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v8
+   v9
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -851,4 +851,99 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   .tcl-hero { min-height: 80vh; padding: 100px 20px; }
   .tcl-find-section { padding: 70px 20px; }
   .tcl-wave { height: 40px; }
+}
+
+/* ── Home V2 refinements v9 ── */
+
+/* Hero — shorter so content fills it */
+.tcl-hero { min-height: 62vh !important; padding: 70px 20px !important; }
+
+/* Ticker — bigger, readable */
+.tcl-marquee-band { padding: 20px 0 !important; }
+.tcl-marquee-track { font-size: 1.2rem !important; letter-spacing: 0.1em !important; }
+.tcl-marquee-sep { margin: 0 22px !important; }
+
+/* Widget sections — top space + side padding so slider arrows are visible */
+.tcl-section-white,
+.tcl-section-navy {
+  padding: 75px 60px 65px !important;
+}
+.tcl-section-white .streaming-title,
+.tcl-section-navy .streaming-title {
+  margin-bottom: 40px !important;
+  padding-top: 10px !important;
+}
+/* Pull slick arrows inward so they show */
+.tcl-section-white .slick-prev,
+.tcl-section-navy .slick-prev { left: 5px !important; z-index: 5 !important; }
+.tcl-section-white .slick-next,
+.tcl-section-navy .slick-next { right: 5px !important; z-index: 5 !important; }
+.tcl-section-white .slick-prev:before,
+.tcl-section-white .slick-next:before,
+.tcl-section-navy .slick-prev:before,
+.tcl-section-navy .slick-next:before {
+  color: #15C4AF !important;
+  font-size: 28px !important;
+}
+
+/* Quick Find — bigger icons/text, wider grid, less dead space */
+.tcl-find-section { padding: 80px 40px !important; }
+.tcl-find-title { margin-bottom: 50px !important; }
+.tcl-find-grid { max-width: 1150px !important; gap: 28px !important; }
+.tcl-find-card { padding: 52px 24px 42px !important; }
+.tcl-find-icon { width: 104px !important; height: 104px !important; }
+.tcl-find-icon i { font-size: 2.4rem !important; }
+.tcl-find-label { font-size: 1.2rem !important; }
+
+/* Featured businesses — card contrast on navy */
+.tcl-section-navy .well,
+.tcl-section-navy .panel,
+.tcl-section-navy .panel-default,
+.tcl-section-navy [class*="result"],
+.tcl-section-navy [class*="member"] {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+  border-radius: 14px !important;
+}
+
+/* Real estate — bigger, tighter, kill the nested box */
+.tcl-realestate { padding: 75px 20px !important; }
+.tcl-realestate-title { font-size: clamp(2.4rem, 4vw, 3.8rem) !important; }
+.tcl-realestate-sub { font-size: 1.3rem !important; margin-bottom: 40px !important; }
+.tcl-realestate .content-container,
+.tcl-realestate .container,
+.tcl-realestate-inner {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.btn-re { font-size: 1.15rem !important; padding: 1.1rem 2.4rem !important; }
+
+/* Newsletter — inline form, simpler colors, normal button */
+.tcl-newsletter-wrap { padding: 70px 20px !important; }
+.tcl-newsletter-wrap input[type="text"],
+.tcl-newsletter-wrap input[type="email"] {
+  max-width: 320px !important;
+  width: 100% !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding: 14px 18px !important;
+  margin: 6px auto !important;
+  display: inline-block !important;
+}
+.tcl-newsletter-wrap input[type="submit"],
+.tcl-newsletter-wrap .newsletter_footer_button {
+  width: auto !important;
+  max-width: 260px !important;
+  padding: 14px 40px !important;
+  background: #F58220 !important;
+  border-color: #F58220 !important;
+  color: #FFFFFF !important;
+}
+
+@media (max-width: 767px) {
+  .tcl-section-white, .tcl-section-navy { padding: 50px 15px !important; }
+  .tcl-find-section { padding: 55px 15px !important; }
+  .tcl-find-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .tcl-hero { min-height: 70vh !important; }
 }
