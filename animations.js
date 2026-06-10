@@ -14,7 +14,6 @@
     '.related-post-image { overflow: hidden !important; background-size: cover !important; background-position: center center !important; }',
     '.related-post-image img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center center !important; display: block !important; position: relative !important; z-index: 1 !important; }',
     // .pic homepage cards (belt and suspenders)
-    '.pic { background-size: cover !important; background-position: center center !important; overflow: hidden !important; }',
     '.pic::before, .pic::after { content: none !important; display: none !important; filter: none !important; opacity: 0 !important; }'
   ].join(' ');
   document.head.appendChild(s);
