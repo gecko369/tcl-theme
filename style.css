@@ -522,6 +522,17 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   display: none !important;
 }
 
+/* ── Coupon/deals pic — preserve full landscape graphic ── */
+.slickCoupons .pic {
+  aspect-ratio: 750 / 400 !important;
+  background-size: contain !important;
+  background-position: center center !important;
+  background-color: #080d1c !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
 /* Coupon cards — force full width like slick slider cards */
 .web-page-content .slickCoupons [class*="col-"] {
   width: 100% !important;
