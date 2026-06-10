@@ -20,3 +20,18 @@
   document.head.appendChild(s);
 })();
 
+// ── Inject wave divs that Froala keeps stripping ──
+(function(){
+  function injectWave(afterSelector, waveClass){
+    var target = document.querySelector(afterSelector);
+    if(!target) return;
+    // Don't double-inject
+    if(target.nextElementSibling && target.nextElementSibling.classList.contains(waveClass)) return;
+    var wave = document.createElement('div');
+    wave.className = 'tcl-wave ' + waveClass;
+    target.parentNode.insertBefore(wave, target.nextSibling);
+  }
+  injectWave('.tcl-section-navy', 'tcl-wave-navy-orange');
+  injectWave('.tcl-realestate', 'tcl-wave-orange-teal');
+})();
+
