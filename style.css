@@ -1226,20 +1226,16 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 .tcl-section-white, .tcl-section-navy { overflow-x: hidden !important; }
 
-/* ── Mobile pic cards — events/blog/deals constrained ── */
+/* ── Mobile pic cards — events/blog constrained ── */
 @media (max-width: 767px) {
   .web-page-content .slickEvents .slick-slide .pic,
-  .web-page-content .slickBlogArticles .slick-slide .pic,
-  .web-page-content .slickCoupons .slick-slide .pic,
-  .web-page-content .slickCoupons .col-sm-6 .pic {
+  .web-page-content .slickBlogArticles .slick-slide .pic {
     height: 230px !important;
     min-height: 230px !important;
     max-height: 230px !important;
   }
   .web-page-content .slickEvents .slick-slide .pic .pic-title,
-  .web-page-content .slickBlogArticles .slick-slide .pic .pic-title,
-  .web-page-content .slickCoupons .slick-slide .pic .pic-title,
-  .web-page-content .slickCoupons .col-sm-6 .pic .pic-title {
+  .web-page-content .slickBlogArticles .slick-slide .pic .pic-title {
     display: -webkit-box !important;
     -webkit-line-clamp: 2 !important;
     -webkit-box-orient: vertical !important;
