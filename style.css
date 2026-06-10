@@ -520,6 +520,13 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   display: none !important;
 }
 
+/* Coupon cards — force full width like slick slider cards */
+.web-page-content .slickCoupons [class*="col-"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+}
+
 /* ── Home V2 ────────────────────────────────────────── */
 .tcl-marquee-band {
   background: #15C4AF;
