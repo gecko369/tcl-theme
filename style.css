@@ -509,8 +509,10 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   color: #FFFFFF !important;
 }
 
-/* ── Fix .pic card image rendering site-wide ── */
-.pic {
+/* ── .pic cover only for photo sliders, not info graphics ── */
+.slickEvents .pic,
+.slickBlogArticles .pic,
+.slickFeatured .pic {
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
