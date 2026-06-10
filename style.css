@@ -509,8 +509,10 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   color: #FFFFFF !important;
 }
 
-/* ── Fix .pic card image rendering site-wide ── */
-.pic {
+/* ── Fix .pic card image rendering — photo sliders only, not info-graphics ── */
+.slickEvents .pic,
+.slickBlogArticles .pic,
+.slickFeatured .pic {
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -1226,7 +1228,32 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 .tcl-section-white, .tcl-section-navy { overflow-x: hidden !important; }
 
-/* ── Mobile pic cards — events/blog constrained, deals full image ── */
+/* ── Coupon/deals pic — full graphic at every width ── */
+.slickCoupons .pic,
+.web-page-content .slickCoupons .pic {
+  background-size: contain !important;
+  background-position: center center !important;
+  background-color: #0b1020 !important;
+  background-repeat: no-repeat !important;
+  aspect-ratio: 750 / 400 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  width: 100% !important;
+}
+@media (min-width: 768px) {
+  .web-page-content .slickCoupons {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .web-page-content .slickCoupons [class*="col-"] {
+    max-width: 760px !important;
+    width: 100% !important;
+    float: none !important;
+  }
+}
+
+/* ── Mobile pic cards — events/blog constrained ── */
 @media (max-width: 767px) {
   /* Events + blog: crop-to-fill is fine for photos */
   .web-page-content .slickEvents .slick-slide .pic,
