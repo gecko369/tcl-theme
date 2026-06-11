@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v28
+   v29
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -1283,7 +1283,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   }
 }
 /* ============================================================
-   /JOIN PRICING PAGE — v28
+   /JOIN PRICING PAGE — v29
    Namespace: .tclj  (TCL Join). Self-contained; reuses brand
    tokens + existing button classes (.tcl-btn-primary,
    .tcl-btn-outline-white, .btn-tcl-outline, .btn-tcl-white).
@@ -1292,10 +1292,10 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
    font-size to 10px, so rem values were rendering at 62.5% of intent.
    Pixel values are immune to that and match the design previews exactly.
    v28: ~12% trim on body tier, ~8-10% on headings per Brad's calibration.
+   v29: final body trim, pale-teal grid section for card contrast,
+   global scroll-behavior removed (now set by JS only on /join).
    Also includes the /book-a-call page (.tclb).
    ============================================================ */
-
-html { scroll-behavior: smooth; }
 
 .tclj { overflow-x: hidden; }
 .tclj-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
@@ -1328,7 +1328,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-lead {
   font-family: 'Figtree', sans-serif;
-  font-size: clamp(18px, 1.8vw, 21px);
+  font-size: clamp(17px, 1.7vw, 20px);
   color: var(--color-text-light);
   text-align: center;
   max-width: 680px;
@@ -1405,7 +1405,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-founding-copy {
   font-family: 'Figtree', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   color: var(--color-text-dark);
   line-height: 1.6;
   margin: 0 0 14px;
@@ -1429,7 +1429,10 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── PLACEMENTS GRID (white) ─────────────────────────────── */
-.tclj-grid { padding: 90px 0 80px; }
+.tclj-grid { padding: 90px 0 80px; background: #EAF6F4 !important; }
+/* wave below the grid must start from the same pale teal */
+.tclj .tcl-wave-white-sand { background-color: #EAF6F4; }
+.tclj-tile { border-color: rgba(13,51,71,0.10); box-shadow: 0 6px 22px rgba(13,51,71,0.08); }
 .tclj-tiles {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1674,10 +1677,10 @@ html { scroll-behavior: smooth; }
 }
 .tclj-feat li {
   font-family: 'Figtree', sans-serif;
-  font-size: 17px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--color-text-dark);
-  padding: 8px 0 8px 34px;
+  padding: 7px 0 7px 32px;
   position: relative;
 }
 .tclj-feat li::before {
@@ -1741,12 +1744,12 @@ html { scroll-behavior: smooth; }
   line-height: 1.6;
 }
 .tclj-partner .tclj-feat { text-align: left; max-width: 720px; margin: 0 auto 32px; }
-.tclj-partner .tclj-feat li { color: rgba(255,255,255,0.88) !important; font-size: 17px; padding: 10px 0 10px 36px; }
+.tclj-partner .tclj-feat li { color: rgba(255,255,255,0.88) !important; font-size: 16px; padding: 9px 0 9px 34px; }
 .tclj-partner .tclj-feat li::before { content: '\2605'; color: #C9971C; }
 .tclj-partner .tclj-feat li strong { color: #FFFFFF; }
 .tclj-partner-scarcity {
   font-family: 'Figtree', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   color: rgba(255,255,255,0.78) !important;
   max-width: 680px;
   margin: 0 auto 34px;
@@ -1801,7 +1804,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-promise-copy {
   font-family: 'Figtree', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.65;
   color: var(--color-text-dark);
   margin: 0;
@@ -1832,7 +1835,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-founder-body p {
   font-family: 'Figtree', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.65;
   color: var(--color-text-dark);
   margin: 0 0 14px;
@@ -1877,7 +1880,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-step-copy {
   font-family: 'Figtree', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   color: var(--color-text-light);
   line-height: 1.55;
   margin: 0;
@@ -1923,7 +1926,7 @@ html { scroll-behavior: smooth; }
 .tclj-faq-item.is-collapsed .tclj-faq-a { display: none; }
 .tclj-faq-a p {
   font-family: 'Figtree', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.65;
   color: var(--color-text-light);
   margin: 0;

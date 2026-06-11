@@ -1,4 +1,4 @@
-// v4
+// v6
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -33,7 +33,7 @@
   injectWave('.tcl-realestate', 'tcl-wave-orange-teal');
 })();
 
-/* ── /join + /book-a-call enhancements (v5) ─────────────────
+/* ── /join + /book-a-call enhancements (v6) ─────────────────
    On /join (.tclj): wave dividers, billing toggle, FAQ accordion.
    On /book-a-call (.tclb): wave divider + booking iframe injection
    (Froala strips iframes, so the embed must be added by JS).
@@ -41,6 +41,10 @@
 (function () {
   var join = document.querySelector('.tclj');
   if (!join) return;
+
+  /* Smooth scrolling for the in-page anchors — set here so it only
+     ever applies on /join (no global CSS rule) */
+  document.documentElement.style.scrollBehavior = 'smooth';
 
   /* 1 — Waves */
   function injectJoinWave(sel, waveClass) {
@@ -82,7 +86,7 @@
   });
 })();
 
-/* ── /book-a-call page (v5) ── */
+/* ── /book-a-call page (v6) ── */
 (function () {
   var book = document.querySelector('.tclb');
   if (!book) return;
