@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v22
+   v23
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -1283,7 +1283,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   }
 }
 /* ============================================================
-   /JOIN PRICING PAGE — v25
+   /JOIN PRICING PAGE — v26
    Namespace: .tclj  (TCL Join). Self-contained; reuses brand
    tokens + existing button classes (.tcl-btn-primary,
    .tcl-btn-outline-white, .btn-tcl-outline, .btn-tcl-white).
@@ -1301,7 +1301,7 @@ html { scroll-behavior: smooth; }
 .tclj-h2 {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800 !important;
-  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  font-size: clamp(2.3rem, 4.5vw, 3.8rem) !important;
   line-height: 1.1 !important;
   color: var(--color-text-dark) !important;
   text-align: center;
@@ -1310,7 +1310,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-lead {
   font-family: 'Figtree', sans-serif;
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   color: var(--color-text-light);
   text-align: center;
   max-width: 680px;
@@ -1346,7 +1346,7 @@ html { scroll-behavior: smooth; }
 .tclj-eyebrow {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: #15C4AF;
@@ -1355,7 +1355,7 @@ html { scroll-behavior: smooth; }
 .tclj-h1 {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900 !important;
-  font-size: clamp(2.6rem, 5.5vw, 4.8rem) !important;
+  font-size: clamp(3rem, 6.2vw, 5.6rem) !important;
   line-height: 1.04 !important;
   color: #FFFFFF !important;
   margin: 0 0 26px !important;
@@ -1363,7 +1363,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-sub {
   font-family: 'Figtree', sans-serif;
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
   color: rgba(255,255,255,0.78);
   margin: 0 auto 44px;
   line-height: 1.65;
@@ -1381,13 +1381,13 @@ html { scroll-behavior: smooth; }
 .tclj-founding-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800 !important;
-  font-size: clamp(1.3rem, 2.4vw, 1.7rem) !important;
+  font-size: clamp(1.6rem, 2.8vw, 2.1rem) !important;
   color: var(--color-text-dark) !important;
   margin: 0 0 12px !important;
 }
 .tclj-founding-copy {
   font-family: 'Figtree', sans-serif;
-  font-size: 1.02rem;
+  font-size: 1.18rem;
   color: var(--color-text-dark);
   line-height: 1.6;
   margin: 0 0 14px;
@@ -1395,7 +1395,7 @@ html { scroll-behavior: smooth; }
 .tclj-founding-count {
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.98rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-dark);
@@ -1427,17 +1427,17 @@ html { scroll-behavior: smooth; }
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .tclj-tile:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(13,51,71,0.10); }
-.tclj-tile-icon { font-size: 2rem; line-height: 1; margin: 0 0 14px; }
+.tclj-tile-icon { font-size: 2.5rem; line-height: 1; margin: 0 0 14px; }
 .tclj-tile-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 1.1rem !important;
+  font-size: 1.3rem !important;
   color: var(--color-text-dark) !important;
-  margin: 0 0 8px !important;
+  margin: 0 0 10px !important;
 }
 .tclj-tile-copy {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.94rem;
+  font-size: 1.08rem;
   color: var(--color-text-light);
   line-height: 1.55;
   margin: 0;
@@ -1464,9 +1464,9 @@ html { scroll-behavior: smooth; }
 .tclj-tb {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800;
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   line-height: 1;
-  padding: 0.7rem 1.5rem;
+  padding: 0.8rem 1.7rem;
   border-radius: 100px;
   color: var(--color-text-dark);
   text-decoration: none !important;
@@ -1572,13 +1572,13 @@ html { scroll-behavior: smooth; }
 .tclj-card-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800 !important;
-  font-size: 1.55rem !important;
+  font-size: 1.9rem !important;
   color: var(--color-text-dark) !important;
   margin: 0 0 6px !important;
 }
 .tclj-card-for {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.94rem;
+  font-size: 1.05rem;
   color: var(--color-text-light);
   font-style: italic;
   line-height: 1.5;
@@ -1586,7 +1586,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-ribbon-note {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   color: var(--color-text-dark);
   margin: 0 0 14px;
 }
@@ -1600,24 +1600,24 @@ html { scroll-behavior: smooth; }
 .tclj-price {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900 !important;
-  font-size: clamp(2.4rem, 3.5vw, 3rem) !important;
+  font-size: clamp(2.9rem, 4.2vw, 3.7rem) !important;
   line-height: 1 !important;
   color: var(--color-text-dark) !important;
   margin: 0 0 6px !important;
 }
 .tclj-per {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-text-light);
 }
 .tclj-price-sub {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   color: var(--color-text-light);
   margin: 0;
 }
 .tclj-price-was {
-  font-size: 1.35rem;
+  font-size: 1.7rem;
   font-weight: 700 !important;
   color: var(--color-text-light);
   text-decoration: line-through;
@@ -1636,8 +1636,8 @@ html { scroll-behavior: smooth; }
   border-radius: 14px;
   padding: 10px 14px;
   font-family: 'Figtree', sans-serif;
-  font-size: 0.88rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.55;
   color: var(--color-text-dark);
   margin: 14px 0 0;
 }
@@ -1645,7 +1645,7 @@ html { scroll-behavior: smooth; }
 .tclj-feat-lead {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.12rem;
   color: var(--color-text-dark);
   margin: 0 0 10px;
 }
@@ -1656,17 +1656,17 @@ html { scroll-behavior: smooth; }
 }
 .tclj-feat li {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  line-height: 1.55;
   color: var(--color-text-dark);
-  padding: 6px 0 6px 28px;
+  padding: 7px 0 7px 32px;
   position: relative;
 }
 .tclj-feat li::before {
   content: '\2713';
   position: absolute;
   left: 0;
-  top: 6px;
+  top: 7px;
   color: var(--brand-teal);
   font-weight: 800;
   font-family: 'Bricolage Grotesque', sans-serif;
@@ -1682,12 +1682,12 @@ html { scroll-behavior: smooth; }
 /* Buttons inside cards were inheriting hero-button scale — size them down */
 .tclj-card-ctas .tcl-btn-primary,
 .tclj-card-ctas .btn-tcl-outline {
-  font-size: 0.95rem !important;
-  padding: 0.78rem 1.4rem !important;
+  font-size: 1.05rem !important;
+  padding: 0.85rem 1.5rem !important;
 }
 .tclj-fine {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.83rem;
+  font-size: 0.98rem;
   color: var(--color-text-light);
   line-height: 1.5;
   margin: 0 0 8px;
@@ -1709,26 +1709,26 @@ html { scroll-behavior: smooth; }
 .tclj-partner-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900 !important;
-  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem) !important;
   color: #C9971C !important;
   line-height: 1.1 !important;
   margin: 0 0 18px !important;
 }
 .tclj-partner-sub {
   font-family: 'Figtree', sans-serif;
-  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
   color: rgba(255,255,255,0.82) !important;
   margin: 0 auto 36px;
   max-width: 640px;
   line-height: 1.6;
 }
 .tclj-partner .tclj-feat { text-align: left; max-width: 720px; margin: 0 auto 32px; }
-.tclj-partner .tclj-feat li { color: rgba(255,255,255,0.88) !important; padding: 8px 0 8px 30px; }
+.tclj-partner .tclj-feat li { color: rgba(255,255,255,0.88) !important; font-size: 1.12rem; padding: 9px 0 9px 34px; }
 .tclj-partner .tclj-feat li::before { content: '\2605'; color: #C9971C; }
 .tclj-partner .tclj-feat li strong { color: #FFFFFF; }
 .tclj-partner-scarcity {
   font-family: 'Figtree', sans-serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: rgba(255,255,255,0.78) !important;
   max-width: 680px;
   margin: 0 auto 34px;
@@ -1741,8 +1741,8 @@ html { scroll-behavior: smooth; }
   justify-content: center;
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800;
-  font-size: 1.05rem;
-  padding: 1rem 2.4rem;
+  font-size: 1.12rem;
+  padding: 1.05rem 2.5rem;
   border-radius: 100px;
   background: #C9971C;
   color: #FFFFFF !important;
@@ -1760,7 +1760,7 @@ html { scroll-behavior: smooth; }
 }
 .tclj-partner-fine {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.88rem;
+  font-size: 1rem;
   color: rgba(255,255,255,0.55) !important;
   margin: 28px 0 0;
 }
@@ -1777,13 +1777,13 @@ html { scroll-behavior: smooth; }
 .tclj-promise-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800 !important;
-  font-size: 1.35rem !important;
+  font-size: 1.65rem !important;
   color: var(--color-text-dark) !important;
   margin: 0 0 10px !important;
 }
 .tclj-promise-copy {
   font-family: 'Figtree', sans-serif;
-  font-size: 1rem;
+  font-size: 1.15rem;
   line-height: 1.65;
   color: var(--color-text-dark);
   margin: 0;
@@ -1808,13 +1808,13 @@ html { scroll-behavior: smooth; }
 .tclj-founder-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800 !important;
-  font-size: 1.4rem !important;
+  font-size: 1.7rem !important;
   color: var(--color-text-dark) !important;
   margin: 0 0 12px !important;
 }
 .tclj-founder-body p {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.98rem;
+  font-size: 1.12rem;
   line-height: 1.65;
   color: var(--color-text-dark);
   margin: 0 0 14px;
@@ -1822,7 +1822,7 @@ html { scroll-behavior: smooth; }
 .tclj-founder-sig {
   font-family: 'Caveat', cursive !important;
   font-weight: 600 !important;
-  font-size: 1.5rem !important;
+  font-size: 1.9rem !important;
   color: var(--color-text-dark) !important;
   margin: 0 0 18px !important;
 }
@@ -1837,14 +1837,14 @@ html { scroll-behavior: smooth; }
 }
 .tclj-step { text-align: center; padding: 0 14px; }
 .tclj-step-num {
-  width: 58px;
-  height: 58px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
   background: var(--brand-teal);
   color: #FFFFFF;
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1853,13 +1853,13 @@ html { scroll-behavior: smooth; }
 .tclj-step-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 1.15rem !important;
+  font-size: 1.4rem !important;
   color: var(--color-text-dark) !important;
   margin: 0 0 8px !important;
 }
 .tclj-step-copy {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: var(--color-text-light);
   line-height: 1.55;
   margin: 0;
@@ -1875,10 +1875,10 @@ html { scroll-behavior: smooth; }
 .tclj-faq-q {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 1.1rem !important;
+  font-size: 1.35rem !important;
   color: var(--color-text-dark) !important;
   margin: 0 !important;
-  padding: 18px 44px 18px 0;
+  padding: 20px 48px 20px 0;
   position: relative;
   cursor: pointer;
   user-select: none;
@@ -1905,7 +1905,7 @@ html { scroll-behavior: smooth; }
 .tclj-faq-item.is-collapsed .tclj-faq-a { display: none; }
 .tclj-faq-a p {
   font-family: 'Figtree', sans-serif;
-  font-size: 0.98rem;
+  font-size: 1.12rem;
   line-height: 1.65;
   color: var(--color-text-light);
   margin: 0;
@@ -1936,14 +1936,14 @@ html { scroll-behavior: smooth; }
 .tclj-final-title {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 900 !important;
-  font-size: clamp(1.9rem, 3.8vw, 3rem) !important;
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem) !important;
   color: #FFFFFF !important;
   line-height: 1.12 !important;
   margin: 0 0 20px !important;
 }
 .tclj-final-sub {
   font-family: 'Figtree', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: rgba(255,255,255,0.78) !important;
   margin: 0 auto 40px;
   max-width: 640px;
@@ -1959,7 +1959,7 @@ html { scroll-behavior: smooth; }
 .tclj-tagline {
   font-family: 'Caveat', cursive !important;
   font-weight: 600 !important;
-  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  font-size: clamp(2rem, 3.5vw, 2.7rem) !important;
   color: #FFCA08 !important;
   margin: 0 !important;
 }
@@ -2043,7 +2043,7 @@ html { scroll-behavior: smooth; }
   .tclj-grid, .tclj-tiers, .tclj-trust, .tclj-faq { padding-top: 64px; padding-bottom: 64px; }
   .tclj-partner, .tclj-final { padding-top: 70px; padding-bottom: 70px; }
   .tclj-toggle { margin-bottom: 36px; }
-  .tclj-tb { font-size: 0.82rem; padding: 0.65rem 1.1rem; }
+  .tclj-tb { font-size: 0.92rem; padding: 0.72rem 1.2rem; }
   .tclj-final-btns a { width: 100%; justify-content: center; }
 }
 
@@ -2095,7 +2095,7 @@ html { scroll-behavior: smooth; }
 }
 .tclb-sub {
   font-family: 'Figtree', sans-serif;
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-size: clamp(1.3rem, 2.3vw, 1.6rem);
   color: rgba(255,255,255,0.80);
   margin: 0 auto;
   line-height: 1.65;
@@ -2133,7 +2133,7 @@ html { scroll-behavior: smooth; }
 }
 .tclb-fallback {
   font-family: 'Figtree', sans-serif;
-  font-size: 1.02rem;
+  font-size: 1.1rem;
   color: var(--color-text-light);
   text-align: center;
   margin: 22px auto 0;
