@@ -247,3 +247,44 @@
   go(0);
   start();
 })();
+
+/* ── HOMEPAGE BUSINESS CTA BAND (b2) ─────────────────────────
+   Sits directly UNDER the "Wear the Sunshine" merch section and
+   ABOVE the teal newsletter section. Adds a white->navy wave on top
+   and a navy->teal wave on the bottom, and neutralizes the merch
+   section's own white->teal bottom wave (which would otherwise land
+   between the white merch section and this navy band).
+
+   Runs ONLY when .tclb-cta exists; only touches this band and the
+   waves around it. No jQuery/slick, no global state. Removing this
+   IIFE fully reverts — the merch section recreates its own
+   white->teal wave on the next load. */
+(function () {
+  var band = document.querySelector('.tclb-cta');
+  if (!band) return;
+
+  /* Remove the wave the merch section injected directly above us
+     (its white->teal wave) so it doesn't strand against the navy band. */
+  var before = band.previousElementSibling;
+  if (before && before.classList && before.classList.contains('tcl-wave') &&
+      !before.classList.contains('tcl-wave-white-navy-b')) {
+    before.parentNode.removeChild(before);
+  }
+
+  /* Top wave: white merch -> navy band */
+  if (!(band.previousElementSibling &&
+        band.previousElementSibling.classList.contains('tcl-wave-white-navy-b'))) {
+    var top = document.createElement('div');
+    top.className = 'tcl-wave tcl-wave-white-navy-b';
+    band.parentNode.insertBefore(top, band);
+  }
+
+  /* Bottom wave: navy band -> teal newsletter */
+  if (!(band.nextElementSibling &&
+        band.nextElementSibling.classList.contains('tcl-wave-navy-teal-b'))) {
+    var bot = document.createElement('div');
+    bot.className = 'tcl-wave tcl-wave-navy-teal-b';
+    if (band.nextSibling) band.parentNode.insertBefore(bot, band.nextSibling);
+    else band.parentNode.appendChild(bot);
+  }
+})();

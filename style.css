@@ -2306,3 +2306,130 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   .tclm-frame { height: 500px; }   /* enough room for the Buy button */
   .tclm-dots { margin-top: 16px; } /* breathing room above the dots */
 }
+
+/* ============================================================
+   HOMEPAGE BUSINESS CTA BAND — b2
+   Self-contained. Namespace: .tclb-cta  (TCL Business CTA).
+   Every selector is prefixed .tclb-cta — NO bare element selectors,
+   NO global rules — cannot affect anything else on the site.
+   Wave injection lives in animations.js (.tclb-cta IIFE).
+   Safe to delete as a unit.
+   ============================================================ */
+
+/* Waves bracketing the band, placed UNDER the white merch section and
+   ABOVE the teal newsletter section: white -> navy on top,
+   navy -> teal on the bottom. */
+.tcl-wave-white-navy-b {
+  background-color: #FFFFFF;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%230D3347' d='M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+}
+.tcl-wave-navy-teal-b {
+  background-color: #0D3347;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%2315C4AF' d='M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+}
+
+.tclb-cta { overflow-x: hidden; }
+.tclb-cta-section {
+  background-color: #0D3347;
+  background-image: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(21,196,175,0.18) 0%, transparent 60%);
+  padding: 96px 24px 100px;
+}
+.tclb-cta-wrap { max-width: 760px; margin: 0 auto; text-align: center; }
+
+.tclb-cta-eyebrow {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #15C4AF;
+  margin: 0 0 20px;
+}
+.tclb-cta-title {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 900 !important;
+  font-size: clamp(34px, 4.6vw, 56px) !important;
+  line-height: 1.08 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 22px !important;
+  letter-spacing: -0.01em;
+}
+.tclb-cta-sub {
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(17px, 1.9vw, 20px);
+  color: rgba(255,255,255,0.80);
+  line-height: 1.65;
+  margin: 0 auto 38px;
+  max-width: 620px;
+}
+.tclb-cta-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.tclb-cta-btn-gold,
+.tclb-cta-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  padding: 16px 34px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  border: 2px solid transparent;
+}
+.tclb-cta-btn-gold {
+  background: #FFCA08;
+  color: #0D3347;
+  border-color: #FFCA08;
+}
+.tclb-cta-btn-gold:hover {
+  background: #ffd633;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(255,202,8,0.35);
+  color: #0D3347;
+}
+.tclb-cta-btn-ghost {
+  background: transparent;
+  color: #FFFFFF;
+  border-color: rgba(255,255,255,0.55);
+}
+.tclb-cta-btn-ghost:hover {
+  background: #FFFFFF;
+  color: #0D3347;
+  transform: translateY(-2px);
+}
+.tclb-cta-fine {
+  font-family: 'Figtree', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  margin: 22px 0 0;
+}
+
+@media (max-width: 600px) {
+  .tclb-cta-section { padding: 70px 18px 74px; }
+  .tclb-cta-btns a { width: 100%; }
+}
+
+/* ── "List Your Business Free" button for the Featured Businesses section ──
+   Solid-gold primary variant of the existing .tcl-viewall pill, so it sits
+   beside the outline "Browse All Businesses" button as the primary action.
+   Scoped to .tcl-viewall-solid — affects nothing else. */
+.tcl-viewall-solid {
+  background: #FFCA08 !important;
+  color: #0D3347 !important;
+  border-color: #FFCA08 !important;
+  margin-left: 12px;
+}
+.tcl-viewall-solid:hover {
+  background: #ffd633 !important;
+  color: #0D3347 !important;
+  transform: translateY(-2px);
+}
+@media (max-width: 600px) {
+  .tcl-viewall-solid { margin-left: 0; margin-top: 12px; }
+}
