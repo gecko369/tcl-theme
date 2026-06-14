@@ -2438,3 +2438,177 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 @media (max-width: 600px) {
   .tcl-viewall-solid { margin-left: 0; margin-top: 12px; }
 }
+
+/* ============================================================
+   EVENTS CALENDAR RESTYLE — cal1
+   Targets the Bootstrap Calendar v2.1 widget (#calendar.cal-context)
+   on the events-calendar page AND the sidebar member_sidebar version.
+   Pure CSS — the widget itself is never edited (per BD's warning).
+   Survives the calendar's JS re-renders because it targets the
+   stable generated classes. Scoped under .cal-context / .calendarDate
+   / the calendar module so nothing else on the site is affected.
+   ============================================================ */
+
+/* ---- Calendar module wrapper ---- */
+.module .calendarDate,
+.calendarDate {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.6rem !important;
+  color: #0D3347 !important;
+  margin: 0 0 18px !important;
+}
+
+/* ---- Nav buttons (Prev / Current / Next, Year / Month) ---- */
+.btn-group [data-calendar-nav],
+.btn-group [data-calendar-view] {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  border-radius: 100px !important;
+  border: 2px solid #15C4AF !important;
+  background: #FFFFFF !important;
+  color: #0D3347 !important;
+  padding: 6px 16px !important;
+  margin: 0 3px !important;
+  box-shadow: none !important;
+  transition: background-color 0.18s ease, color 0.18s ease !important;
+}
+.btn-group [data-calendar-nav]:hover,
+.btn-group [data-calendar-view]:hover {
+  background: #15C4AF !important;
+  color: #FFFFFF !important;
+}
+.btn-group [data-calendar-view].active {
+  background: #0D3347 !important;
+  border-color: #0D3347 !important;
+  color: #FFFFFF !important;
+}
+
+/* ---- Calendar grid container ---- */
+#calendar.cal-context {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(13,51,71,0.10);
+  box-shadow: 0 6px 22px rgba(13,51,71,0.06);
+}
+
+/* ---- Weekday header row ---- */
+.cal-context .cal-row-head .cal-cell1 {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF !important;
+  background: #0D3347 !important;
+  padding: 14px 0 !important;
+  text-align: center;
+}
+
+/* ---- Day cells ---- */
+.cal-context .cal-month-day {
+  height: 96px !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(13,51,71,0.07) !important;
+  padding: 8px 10px !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.cal-context .cal-cell1 { background: transparent !important; }
+
+/* date number */
+.cal-context .cal-month-day span[data-cal-date] {
+  font-family: 'Figtree', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  color: #0D3347 !important;
+}
+
+/* days outside the current month — muted */
+.cal-context .cal-day-outmonth { background: #f7f9fa !important; }
+.cal-context .cal-day-outmonth span[data-cal-date] { color: #b4c0c7 !important; }
+
+/* weekend tint (subtle warm) */
+.cal-context .cal-day-weekend.cal-day-inmonth { background: #FFFDF7 !important; }
+
+/* holidays — soft gold accent */
+.cal-context .cal-day-holiday span[data-cal-date] { color: #C9971C !important; font-weight: 800 !important; }
+
+/* TODAY — teal highlight (overrides BD's grey rgb(0 0 0 /10%)) */
+.cal-context .cal-day-today {
+  background: rgba(21,196,175,0.14) !important;
+  box-shadow: inset 0 0 0 2px #15C4AF !important;
+}
+.cal-context .cal-day-today span[data-cal-date] {
+  background: #15C4AF !important;
+  color: #FFFFFF !important;
+  border-radius: 50% !important;
+  width: 30px; height: 30px;
+  display: inline-flex !important;
+  align-items: center; justify-content: center;
+  font-weight: 800 !important;
+}
+
+/* hover on any in-month day */
+.cal-context .cal-day-inmonth:hover {
+  background: rgba(39,170,225,0.08) !important;
+  box-shadow: inset 0 0 0 2px rgba(39,170,225,0.45);
+  cursor: pointer;
+}
+
+/* ---- Event indicators (Bootstrap Calendar event pills) ----
+   VERIFY against a live "2 Events" pill — class names below cover the
+   standard Bootstrap Calendar markup (.event / .events-list / badge).
+   If your pill uses a different wrapper, send its outerHTML and I'll
+   retarget. The .events-label span you found is styled here too. */
+.cal-context .events-list,
+.cal-context .event,
+.cal-context a[class*="event"] {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 5px;
+  background: #15C4AF !important;
+  color: #FFFFFF !important;
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.78rem !important;
+  line-height: 1;
+  padding: 4px 9px !important;
+  border-radius: 100px !important;
+  text-decoration: none !important;
+  margin-top: 6px;
+}
+.cal-context .events-list:hover,
+.cal-context .event:hover,
+.cal-context a[class*="event"]:hover {
+  background: #119e8d !important;
+  color: #FFFFFF !important;
+}
+.cal-context .events-label { color: inherit !important; }
+
+/* ---- SIDEBAR version (inside .member_sidebar) — more compact ---- */
+.member_sidebar .calendarDate { font-size: 1.15rem !important; margin-bottom: 12px !important; }
+.member_sidebar .cal-context .cal-row-head .cal-cell1 { font-size: 0.7rem !important; padding: 8px 0 !important; }
+.member_sidebar .cal-context .cal-month-day { height: 44px !important; padding: 4px 5px !important; }
+.member_sidebar .cal-context .cal-month-day span[data-cal-date] { font-size: 0.82rem !important; }
+.member_sidebar .cal-context .cal-day-today span[data-cal-date] { width: 24px; height: 24px; }
+.member_sidebar .btn-group [data-calendar-nav],
+.member_sidebar .btn-group [data-calendar-view] { font-size: 0.72rem !important; padding: 4px 10px !important; }
+.member_sidebar .cal-context .events-list,
+.member_sidebar .cal-context .event,
+.member_sidebar .cal-context a[class*="event"] { font-size: 0.62rem !important; padding: 2px 6px !important; margin-top: 3px; }
+
+/* ---- MOBILE ---- */
+@media (max-width: 600px) {
+  .calendarDate { font-size: 1.3rem !important; text-align: center; }
+  .btn-group { float: none !important; display: flex; justify-content: center; margin-bottom: 8px; }
+  .cal-context .cal-row-head .cal-cell1 { font-size: 0.72rem !important; padding: 10px 0 !important; }
+  .cal-context .cal-month-day { height: 64px !important; padding: 5px 4px !important; }
+  .cal-context .cal-month-day span[data-cal-date] { font-size: 0.85rem !important; }
+  .cal-context .cal-day-today span[data-cal-date] { width: 26px; height: 26px; }
+  .cal-context .events-list,
+  .cal-context .event,
+  .cal-context a[class*="event"] { font-size: 0.6rem !important; padding: 2px 6px !important; gap: 3px; }
+  /* hide the word "Events", keep the number, to save space */
+  .cal-context .events-label.hidden-xs { display: none !important; }
+}
