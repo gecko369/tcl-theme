@@ -2303,6 +2303,6 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 @media (max-width: 600px) {
   .tclm-section { padding: 60px 16px 64px; }
   .tclm-arrow { display: none; }   /* dots + auto-advance only on mobile */
-  .tclm-frame { height: 470px; }   /* trims dead space inside the embed */
-  .tclm-dots { margin-top: 4px; }  /* close the gap under the boxes */
+  .tclm-frame { height: 500px; }   /* enough room for the Buy button */
+  .tclm-dots { margin-top: 16px; } /* breathing room above the dots */
 }
