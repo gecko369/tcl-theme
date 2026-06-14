@@ -2166,3 +2166,142 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   .tclb-widget { padding: 8px; border-radius: 18px; }
   .tclb-widget iframe { height: 1050px; }
 }
+
+/* ============================================================
+   HOMEPAGE MERCH SLIDER — m1
+   Self-contained test section. Namespace: .tclm  (TCL Merch).
+   Every selector is prefixed .tclm — NO bare element selectors,
+   NO global rules — so this block cannot affect any other slider
+   or element anywhere on the site. Carousel behavior lives in
+   animations.js (the .tclm IIFE). Safe to delete as a unit.
+   ============================================================ */
+
+/* Waves bracketing the merch section.
+   Top: orange (#F58220, real-estate section above) -> white (merch).
+   Bottom: white (merch) -> teal (#15C4AF, insider section below).
+   Injected by the .tclm IIFE, which also neutralizes the homepage's
+   existing orange->teal wave so it can't strand against the white. */
+.tcl-wave-orange-white {
+  background-color: #F58220;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%23FFFFFF' d='M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+}
+.tcl-wave-white-teal {
+  background-color: #FFFFFF;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%2315C4AF' d='M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+}
+/* When bracketed by waves, the section's own borders are redundant */
+.tclm-has-waves .tclm-section { border-top: none; border-bottom: none; }
+
+.tclm { overflow-x: hidden; }
+.tclm-section {
+  background: #FFFFFF;
+  padding: 80px 24px 88px;
+  border-top: 1px solid rgba(13,51,71,0.06);
+  border-bottom: 1px solid rgba(13,51,71,0.06);
+}
+.tclm-wrap { max-width: 760px; margin: 0 auto; text-align: center; }
+
+.tclm-h2 {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(34px, 4.2vw, 52px) !important;
+  line-height: 1.1 !important;
+  color: var(--color-text-dark) !important;
+  margin: 0 0 12px !important;
+  letter-spacing: -0.01em;
+}
+.tclm-sub {
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(17px, 1.8vw, 20px);
+  color: var(--color-text-light);
+  margin: 0 auto 40px;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* Slider shell */
+.tclm-slider {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.tclm-viewport {
+  overflow: hidden;
+  border-radius: 18px;
+}
+.tclm-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0.0, 0.2, 1);
+  will-change: transform;
+}
+.tclm-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4px 0;
+}
+.tclm-frame {
+  width: 520px;
+  max-width: 100%;
+  height: 650px;
+  border: 0 !important;
+  background: transparent !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Arrows — teal circles, matching the site's existing slider arrows */
+.tclm-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #15C4AF;
+  color: #FFFFFF;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.tclm-arrow:hover { background: #119e8d; transform: translateY(-50%) scale(1.06); }
+.tclm-prev { left: -8px; }
+.tclm-next { right: -8px; }
+
+/* Dots — teal, matching the site's existing slider dots */
+.tclm-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+.tclm-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: #15C4AF;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.tclm-dot:hover { opacity: 0.7; }
+.tclm-dot.is-active { opacity: 1; transform: scale(1.25); }
+
+@media (max-width: 600px) {
+  .tclm-section { padding: 60px 16px 64px; }
+  .tclm-arrow { display: none; }   /* dots + auto-advance only on mobile */
+  .tclm-frame { height: 640px; }
+}

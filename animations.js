@@ -114,3 +114,113 @@
     slot.appendChild(f);
   }
 })();
+
+/* ── HOMEPAGE MERCH SLIDER (m2) ──────────────────────────────
+   Self-contained carousel for the .tclm section. Runs ONLY when
+   .tclm exists, and only ever touches elements INSIDE .tclm.
+   No jQuery, no slick, no global state, no global listeners —
+   it cannot interfere with any other slider on the page.
+   Injects the Sticker Mule iframes (Froala strips iframes). */
+(function () {
+  var root = document.querySelector('.tclm');
+  if (!root) return;
+
+  var track  = root.querySelector('.tclm-track');
+  var slides = root.querySelectorAll('.tclm-slide');
+  if (!track || !slides.length) return;
+
+  /* ── Waves bracketing the section ──────────────────────────
+     The homepage's existing IIFE injects an orange->teal wave right
+     after .tcl-realestate. Since the white merch section now sits
+     between orange and teal, we (a) remove that stray wave if it
+     landed directly before us, and (b) add an orange->white wave on
+     top and a white->teal wave on the bottom. Removing this whole
+     IIFE restores the original behavior automatically. */
+  (function () {
+    /* a — neutralize the stray orange->teal wave immediately above us */
+    var before = root.previousElementSibling;
+    if (before && before.classList &&
+        before.classList.contains('tcl-wave-orange-teal')) {
+      before.parentNode.removeChild(before);
+    }
+    /* b — add our two waves (guard against doubles on re-run) */
+    if (!(root.previousElementSibling &&
+          root.previousElementSibling.classList.contains('tcl-wave-orange-white'))) {
+      var top = document.createElement('div');
+      top.className = 'tcl-wave tcl-wave-orange-white';
+      root.parentNode.insertBefore(top, root);
+    }
+    if (!(root.nextElementSibling &&
+          root.nextElementSibling.classList.contains('tcl-wave-white-teal'))) {
+      var bot = document.createElement('div');
+      bot.className = 'tcl-wave tcl-wave-white-teal';
+      if (root.nextSibling) root.parentNode.insertBefore(bot, root.nextSibling);
+      else root.parentNode.appendChild(bot);
+    }
+    root.classList.add('tclm-has-waves');
+  })();
+
+  /* Inject the iframes into their slide placeholders */
+  Array.prototype.forEach.call(slides, function (slide) {
+    if (slide.querySelector('iframe')) return;
+    var id = slide.getAttribute('data-embed');
+    if (!id) return;
+    var f = document.createElement('iframe');
+    f.className = 'tclm-frame';
+    f.src = 'https://www.stickermule.com/embed/item/' + id;
+    f.setAttribute('allowtransparency', 'true');
+    f.setAttribute('frameborder', '0');
+    f.setAttribute('loading', 'lazy');
+    f.setAttribute('scrolling', 'no');
+    f.setAttribute('title', 'Celebration Life merch');
+    slide.appendChild(f);
+  });
+
+  var count   = slides.length;
+  var index   = 0;
+  var timer   = null;
+  var dotsBox = root.querySelector('.tclm-dots');
+  var dots    = [];
+
+  /* Build dots */
+  if (dotsBox) {
+    for (var i = 0; i < count; i++) {
+      (function (i) {
+        var d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'tclm-dot' + (i === 0 ? ' is-active' : '');
+        d.setAttribute('aria-label', 'Go to product ' + (i + 1));
+        d.addEventListener('click', function () { go(i); restart(); });
+        dotsBox.appendChild(d);
+        dots.push(d);
+      })(i);
+    }
+  }
+
+  function go(n) {
+    index = (n % count + count) % count;
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('is-active', i === index);
+    }
+  }
+  function next() { go(index + 1); }
+  function prev() { go(index - 1); }
+  function start() { if (count > 1 && !timer) timer = setInterval(next, 5000); }
+  function stop()  { if (timer) { clearInterval(timer); timer = null; } }
+  function restart() { stop(); start(); }
+
+  var nextBtn = root.querySelector('.tclm-next');
+  var prevBtn = root.querySelector('.tclm-prev');
+  if (nextBtn) nextBtn.addEventListener('click', function () { next(); restart(); });
+  if (prevBtn) prevBtn.addEventListener('click', function () { prev(); restart(); });
+
+  var slider = root.querySelector('.tclm-slider');
+  if (slider) {
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+  }
+
+  go(0);
+  start();
+})();
