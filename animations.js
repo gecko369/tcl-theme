@@ -115,19 +115,61 @@
   }
 })();
 
-/* ── HOMEPAGE MERCH SLIDER (m2) ──────────────────────────────
+/* ── HOMEPAGE MERCH SLIDER (m4) ──────────────────────────────
    Self-contained carousel for the .tclm section. Runs ONLY when
-   .tclm exists, and only ever touches elements INSIDE .tclm.
-   No jQuery, no slick, no global state, no global listeners —
-   it cannot interfere with any other slider on the page.
-   Injects the Sticker Mule iframes (Froala strips iframes). */
+   .tclm exists, and only ever touches elements INSIDE .tclm (plus
+   the two waves it adds). No jQuery, no slick, no global state —
+   cannot interfere with any other slider on the page.
+
+   ★ PRODUCTS LIVE HERE ★  To add a product, add its Sticker Mule
+   item ID to this array and push. To remove one, delete its line.
+   Order in the array = order in the slider. That is the only edit
+   you ever need — the BD page snippet never changes again. */
 (function () {
+  var tclmProducts = [
+    '20642513',
+    '20640580',
+    '20642515',
+    '20642517',
+    '20640715',
+    '20642520',
+    '20642512',
+    '20642514',
+    '20640406',
+    '20642516',
+    '20642521',
+    '20642510',
+    '20642519',
+    '20640724',
+    '20642518',
+    '20642522'
+  ];
+
   var root = document.querySelector('.tclm');
   if (!root) return;
 
-  var track  = root.querySelector('.tclm-track');
-  var slides = root.querySelectorAll('.tclm-slide');
-  if (!track || !slides.length) return;
+  var track = root.querySelector('.tclm-track');
+  if (!track) return;
+
+  /* Build the slides from the product array (skips if already built) */
+  if (!track.querySelector('.tclm-slide')) {
+    for (var p = 0; p < tclmProducts.length; p++) {
+      var slide = document.createElement('div');
+      slide.className = 'tclm-slide';
+      var f = document.createElement('iframe');
+      f.className = 'tclm-frame';
+      f.src = 'https://www.stickermule.com/embed/item/' + tclmProducts[p];
+      f.setAttribute('allowtransparency', 'true');
+      f.setAttribute('frameborder', '0');
+      f.setAttribute('loading', 'lazy');
+      f.setAttribute('scrolling', 'no');
+      f.setAttribute('title', 'Celebration Life merch');
+      slide.appendChild(f);
+      track.appendChild(slide);
+    }
+  }
+  var slides = track.querySelectorAll('.tclm-slide');
+  if (!slides.length) return;
 
   /* ── Waves bracketing the section ──────────────────────────
      The homepage's existing IIFE injects an orange->teal wave right
@@ -137,13 +179,11 @@
      top and a white->teal wave on the bottom. Removing this whole
      IIFE restores the original behavior automatically. */
   (function () {
-    /* a — neutralize the stray orange->teal wave immediately above us */
     var before = root.previousElementSibling;
     if (before && before.classList &&
         before.classList.contains('tcl-wave-orange-teal')) {
       before.parentNode.removeChild(before);
     }
-    /* b — add our two waves (guard against doubles on re-run) */
     if (!(root.previousElementSibling &&
           root.previousElementSibling.classList.contains('tcl-wave-orange-white'))) {
       var top = document.createElement('div');
@@ -160,29 +200,12 @@
     root.classList.add('tclm-has-waves');
   })();
 
-  /* Inject the iframes into their slide placeholders */
-  Array.prototype.forEach.call(slides, function (slide) {
-    if (slide.querySelector('iframe')) return;
-    var id = slide.getAttribute('data-embed');
-    if (!id) return;
-    var f = document.createElement('iframe');
-    f.className = 'tclm-frame';
-    f.src = 'https://www.stickermule.com/embed/item/' + id;
-    f.setAttribute('allowtransparency', 'true');
-    f.setAttribute('frameborder', '0');
-    f.setAttribute('loading', 'lazy');
-    f.setAttribute('scrolling', 'no');
-    f.setAttribute('title', 'Celebration Life merch');
-    slide.appendChild(f);
-  });
-
   var count   = slides.length;
   var index   = 0;
   var timer   = null;
   var dotsBox = root.querySelector('.tclm-dots');
   var dots    = [];
 
-  /* Build dots */
   if (dotsBox) {
     for (var i = 0; i < count; i++) {
       (function (i) {

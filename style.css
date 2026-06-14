@@ -2168,7 +2168,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 
 /* ============================================================
-   HOMEPAGE MERCH SLIDER — m3
+   HOMEPAGE MERCH SLIDER — m1
    Self-contained test section. Namespace: .tclm  (TCL Merch).
    Every selector is prefixed .tclm — NO bare element selectors,
    NO global rules — so this block cannot affect any other slider
@@ -2303,6 +2303,6 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 @media (max-width: 600px) {
   .tclm-section { padding: 60px 16px 64px; }
   .tclm-arrow { display: none; }   /* dots + auto-advance only on mobile */
-  .tclm-frame { height: 540px; }
-  .tclm-dots { margin-top: 6px; }  /* close the gap under the boxes */
+  .tclm-frame { height: 470px; }   /* trims dead space inside the embed */
+  .tclm-dots { margin-top: 4px; }  /* close the gap under the boxes */
 }
