@@ -288,3 +288,53 @@
     else band.parentNode.appendChild(bot);
   }
 })();
+
+/* ── THE LOOP newsletter (loop1) ─────────────────────────────
+   1. Loads GHL's form_embed.js once (so individual BD widgets
+      don't each include it).
+   2. Injects the GHL form iframe into any .tcl-loop__form
+      placeholder on the page (Froala strips iframes from BD
+      widget HTML, so the iframe must be added here).
+   Each .tcl-loop__form carries data-ghl-form (the form id) and an
+   optional data-ghl-suffix to keep two embeds on one page distinct.
+   Runs only when a .tcl-loop exists; touches nothing else. */
+(function () {
+  var loops = document.querySelectorAll('.tcl-loop__form');
+  if (!loops.length) return;
+
+  /* 1 — load GHL embed script once */
+  if (!document.querySelector('script[src*="link.geckonaut.com/js/form_embed.js"]')) {
+    var s = document.createElement('script');
+    s.src = 'https://link.geckonaut.com/js/form_embed.js';
+    s.async = true;
+    document.body.appendChild(s);
+  }
+
+  /* 2 — inject an iframe into each placeholder that doesn't have one */
+  Array.prototype.forEach.call(loops, function (slot) {
+    if (slot.querySelector('iframe')) return;
+    var formId = slot.getAttribute('data-ghl-form');
+    if (!formId) return;
+    var suffix = slot.getAttribute('data-ghl-suffix') || '';
+    var frameId = 'inline-' + formId + suffix;
+
+    var f = document.createElement('iframe');
+    f.src = 'https://link.geckonaut.com/widget/form/' + formId;
+    f.style.width = '100%';
+    f.style.border = 'none';
+    f.id = frameId;
+    f.setAttribute('data-layout', "{'id':'INLINE'}");
+    f.setAttribute('data-trigger-type', 'alwaysShow');
+    f.setAttribute('data-trigger-value', '');
+    f.setAttribute('data-activation-type', 'alwaysActivated');
+    f.setAttribute('data-activation-value', '');
+    f.setAttribute('data-deactivation-type', 'neverDeactivate');
+    f.setAttribute('data-deactivation-value', '');
+    f.setAttribute('data-form-name', 'CL SITE NEWSLETTER SIGN UP');
+    f.setAttribute('data-height', '434');
+    f.setAttribute('data-layout-iframe-id', frameId);
+    f.setAttribute('data-form-id', formId);
+    f.setAttribute('title', 'CL SITE NEWSLETTER SIGN UP');
+    slot.appendChild(f);
+  });
+})();
