@@ -2440,11 +2440,16 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 
 /* ============================================================
-   EVENTS CALENDAR RESTYLE — cal3
+   EVENTS CALENDAR RESTYLE — cal4 (structure & look only)
    Bootstrap Calendar v2.1 (#calendar.cal-context). Pure CSS — the
-   widget is never edited (per BD's warning). Targets stable classes,
-   survives JS re-renders. ALL SIZES IN PX (BD's 10px Bootstrap root
-   made the previous rem values render at 62.5% = unreadable).
+   widget is never edited (per BD's warning). Sizes in px (BD's
+   Bootstrap root is 10px, so rem would render at 62.5%).
+
+   cal4 intentionally styles ONLY the calendar shell: heading, nav
+   buttons, grid container, weekday header, day cells, today, and
+   hover. It does NOT touch event pills, the count badges, the
+   "X Events" text, or the expanded event list — those keep BD's
+   default appearance. Nothing here targets event <a> elements.
    ============================================================ */
 
 /* ---- Module heading ---- */
@@ -2456,7 +2461,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   margin: 0 0 18px !important;
 }
 
-/* ---- Nav buttons ---- */
+/* ---- Nav buttons (Prev / Current / Next, Year / Month) ---- */
 .btn-group [data-calendar-nav],
 .btn-group [data-calendar-view] {
   font-family: 'Bricolage Grotesque', sans-serif !important;
@@ -2483,7 +2488,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   box-shadow: 0 6px 22px rgba(13,51,71,0.06);
 }
 
-/* ---- Weekday header ---- */
+/* ---- Weekday header row ---- */
 .cal-context .cal-row-head .cal-cell1 {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 700 !important;
@@ -2502,23 +2507,29 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   background: #FFFFFF !important;
   border: 1px solid rgba(13,51,71,0.07) !important;
   padding: 8px 10px !important;
-  overflow: hidden !important;            /* keep pills inside the cell */
   transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 .cal-context .cal-cell1 { background: transparent !important; }
 
+/* date number */
 .cal-context .cal-month-day span[data-cal-date] {
   font-family: 'Figtree', sans-serif !important;
   font-weight: 600 !important;
   font-size: 16px !important;
   color: #0D3347 !important;
 }
+
+/* days outside the current month — muted */
 .cal-context .cal-day-outmonth { background: #f7f9fa !important; }
 .cal-context .cal-day-outmonth span[data-cal-date] { color: #b4c0c7 !important; }
+
+/* weekend tint (subtle warm) */
 .cal-context .cal-day-weekend.cal-day-inmonth { background: #FFFDF7 !important; }
+
+/* holidays — soft gold accent on the date number */
 .cal-context .cal-day-holiday span[data-cal-date] { color: #C9971C !important; font-weight: 800 !important; }
 
-/* TODAY */
+/* TODAY — teal highlight (overrides BD's grey rgb(0 0 0 /10%)) */
 .cal-context .cal-day-today {
   background: rgba(21,196,175,0.14) !important;
   box-shadow: inset 0 0 0 2px #15C4AF !important;
@@ -2529,113 +2540,20 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   display: inline-flex !important; align-items: center; justify-content: center;
   font-weight: 800 !important;
 }
+
+/* gentle hover on in-month days */
 .cal-context .cal-day-inmonth:hover {
   background: rgba(39,170,225,0.08) !important;
   box-shadow: inset 0 0 0 2px rgba(39,170,225,0.45);
   cursor: pointer;
 }
 
-/* ============================================================
-   EVENT INDICATORS
-   Two states share the same <a> element:
-   (1) collapsed COUNT pill inside .cal-month-day ("2 Events")
-   (2) EXPANDED event titles shown when a day is clicked
-   Date numbers are <span>, never <a>, so styling .cal-context a
-   only hits events — not the day numbers.
-   ============================================================ */
-
-/* Base: every event link = teal pill, WHITE legible text */
-.cal-context a {
-  background: #15C4AF !important;
-  color: #FFFFFF !important;
-  text-decoration: none !important;
-  border-radius: 100px !important;
-  font-family: 'Bricolage Grotesque', sans-serif !important;
-  font-weight: 700 !important;
-}
-.cal-context a:hover { background: #119e8d !important; color: #FFFFFF !important; }
-
-/* Force white text on EVERY descendant (kills dark titles + grey badges) */
-.cal-context a,
-.cal-context a * {
-  color: #FFFFFF !important;
-}
-/* Flatten the inner bootstrap .badge so no grey box shows */
-.cal-context a .badge {
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  min-width: 0 !important;
-  font-size: inherit !important;
-  font-weight: 700 !important;
-}
-
-/* (1) Collapsed COUNT pill — compact, single line, contained */
-.cal-context .cal-month-day a {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 5px !important;
-  max-width: calc(100% - 2px) !important;
-  box-sizing: border-box !important;
-  padding: 4px 12px !important;
-  margin-top: 8px !important;
-  font-size: 14px !important;
-  line-height: 1.2 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  float: none !important;
-}
-.cal-context .cal-month-day a .events-label { margin-left: 3px !important; }
-
-/* (2) EXPANDED event titles (revealed on click) — readable, can wrap */
-.cal-context .cal-month-box > .cal-row-fluid a:not(.cal-month-day a),
-.cal-context [class*="eventlist"] a,
-.cal-context .events-list:not(.cal-month-day .events-list) {
-  display: block !important;
-  font-family: 'Figtree', sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 15px !important;
-  line-height: 1.4 !important;
-  padding: 10px 16px !important;
-  margin: 6px 0 !important;
-  border-radius: 14px !important;
-  white-space: normal !important;
-}
-
-/* ---- SIDEBAR version: count pill becomes a simple teal DOT ----
-   A 7-column month grid in a narrow sidebar can't fit text pills, so
-   we show a dot to mark days-with-events instead. Far more usable. */
-.member_sidebar .calendarDate { font-size: 18px !important; margin-bottom: 12px !important; }
-.member_sidebar .cal-context .cal-row-head .cal-cell1 { font-size: 11px !important; padding: 8px 0 !important; }
-.member_sidebar .cal-context .cal-month-day { height: 46px !important; padding: 4px 4px !important; }
-.member_sidebar .cal-context .cal-month-day span[data-cal-date] { font-size: 13px !important; }
-.member_sidebar .cal-context .cal-day-today span[data-cal-date] { width: 24px; height: 24px; }
-.member_sidebar .btn-group [data-calendar-nav],
-.member_sidebar .btn-group [data-calendar-view] { font-size: 12px !important; padding: 5px 11px !important; }
-.member_sidebar .cal-context .cal-month-day a {
-  width: 9px !important; height: 9px !important; min-width: 0 !important;
-  padding: 0 !important; margin: 3px auto 0 !important; gap: 0 !important;
-  border-radius: 50% !important; font-size: 0 !important; overflow: hidden !important;
-}
-.member_sidebar .cal-context .cal-month-day a * { display: none !important; }
-
-/* ---- MOBILE: pills show count only, stay inside cells ---- */
+/* ---- MOBILE ---- */
 @media (max-width: 600px) {
   .calendarDate { font-size: 22px !important; text-align: center; }
   .btn-group { float: none !important; display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
   .cal-context .cal-row-head .cal-cell1 { font-size: 11px !important; padding: 10px 0 !important; }
-  .cal-context .cal-month-day { height: 70px !important; padding: 5px 4px !important; }
+  .cal-context .cal-month-day { height: 72px !important; padding: 5px 4px !important; }
   .cal-context .cal-month-day span[data-cal-date] { font-size: 14px !important; }
   .cal-context .cal-day-today span[data-cal-date] { width: 26px; height: 26px; }
-  /* "Events" word hides via hidden-xs; show a compact number-only pill */
-  .cal-context .cal-month-day a {
-    font-size: 13px !important;
-    padding: 3px 8px !important;
-    margin-top: 5px !important;
-    min-width: 22px;
-  }
-  .cal-context .cal-month-box > .cal-row-fluid a:not(.cal-month-day a),
-  .cal-context [class*="eventlist"] a { font-size: 14px !important; padding: 9px 13px !important; }
 }
