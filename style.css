@@ -2559,7 +2559,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 
 /* ============================================================
-   THE LOOP — newsletter signup — loop1
+   THE LOOP — newsletter signup — loop2
    Wraps a cross-origin GHL form iframe. We style only AROUND the
    iframe (card, eyebrow, title, copy); the fields/button inside
    are styled in GHL. Namespace: .tcl-loop — cannot leak.
@@ -2638,3 +2638,23 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 @media (prefers-reduced-motion: reduce) {
   .tcl-loop, .tcl-loop * { transition: none !important; animation: none !important; }
 }
+
+/* ---- Homepage teal-band variant ----
+   For the existing full-width teal "Insider" section. No card — the
+   GHL form sits directly on the teal band, centered, matching the
+   current homepage look but running on GHL. Apply .tcl-loop--band to
+   the wrapper. The form iframe is centered with a sensible max-width. */
+.tcl-loop.tcl-loop--band {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  max-width: 760px !important;
+  padding: 0 20px !important;
+  margin: 0 auto !important;
+}
+.tcl-loop--band .tcl-loop__form {
+  max-width: 520px;
+  margin: 0 auto;
+}
+.tcl-loop--band .tcl-loop__form iframe { min-height: 320px; }
