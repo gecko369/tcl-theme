@@ -2660,7 +2660,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcl-loop--band .tcl-loop__form iframe { min-height: 320px; }
 
 /* ============================================================
-   APP HOME LANDER — app7  (clean rewrite)
+   APP HOME LANDER — app8
    Mobile-first quick-link grid for logged-in app users.
    Dedicated BD page (slug: app-home). Namespace: .tcla
    Pure CSS, px sizing (BD's Bootstrap root is 10px → rem would shrink).
@@ -2678,7 +2678,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   background-color: #0D3347;
   background-image: radial-gradient(ellipse 90% 30% at 50% 0%, rgba(21,196,175,0.18) 0%, transparent 65%);
   background-repeat: no-repeat;
-  padding: 24px 16px 140px;
+  padding: 20px 14px 130px;
   box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
@@ -2686,12 +2686,14 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcla * { box-sizing: border-box; }
 
 /* ---- Header ---- */
-.tcla-head { text-align: center; margin: 0 auto 22px; max-width: 640px; }
+.tcla-head { text-align: center; margin: 0 auto 18px; max-width: 600px; }
 .tcla-logo {
-  width: min(80vw, 340px);
-  height: auto;
-  margin: 4px auto 14px;
   display: block;
+  width: 300px;            /* explicit px — iOS won't zero-collapse a viewBox-only SVG */
+  max-width: 86%;          /* shrink only on very narrow phones */
+  height: auto;
+  aspect-ratio: 1047 / 239;/* gives iOS a definite height even before load */
+  margin: 4px auto 14px;
 }
 .tcla-tagline {
   font-family: 'Caveat', cursive !important;
@@ -2712,8 +2714,8 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcla-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  max-width: 640px;
+  gap: 10px;
+  max-width: 600px;
   margin: 0 auto;
 }
 .tcla-tile {
@@ -2722,25 +2724,25 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 10px;
+  gap: 7px;
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 20px;
-  padding: 26px 14px;
-  min-height: 130px;             /* tall, thumb-friendly */
+  border-radius: 16px;
+  padding: 16px 12px;
+  min-height: 96px;              /* compact but still tappable */
   text-decoration: none !important;
   position: relative;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
 }
 .tcla-tile:active { transform: scale(0.97); background: rgba(21,196,175,0.18); border-color: #15C4AF; }
-.tcla-tile-ico { font-size: 40px; line-height: 1; }
+.tcla-tile-ico { font-size: 32px; line-height: 1; }
 .tcla-tile-label {
   font-family: 'Bricolage Grotesque', sans-serif !important;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 18px;
   color: #FFFFFF !important;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 .tcla-tile-badge {
   position: absolute;
@@ -2777,25 +2779,17 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   display: inline-block;
   position: relative;
 }
-/* curved arrow drawn off the text (Froala-safe: text is never empty) */
-.tcla-sunni-text::before {
-  content: '';
-  position: absolute;
-  right: -6px; bottom: -40px;
-  width: 38px; height: 40px;
-  border-right: 3px solid #FFCA08;
-  border-bottom: 3px solid #FFCA08;
-  border-bottom-right-radius: 30px;
-  transform: rotate(12deg);
-}
+/* clean arrow: Unicode glyph (text — Froala-safe), curving down-right
+   toward the bottom-right GHL bubble. Sits just below the text. */
 .tcla-sunni-text::after {
-  content: '';
+  content: '\2935';            /* ⤵ right-down curved arrow */
   position: absolute;
-  right: -14px; bottom: -44px;
-  width: 12px; height: 12px;
-  border-right: 3px solid #FFCA08;
-  border-bottom: 3px solid #FFCA08;
-  transform: rotate(55deg);
+  right: -2px; bottom: -34px;
+  font-size: 34px;
+  line-height: 1;
+  color: #FFCA08;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  transform: scaleX(1.15);
 }
 
 /* ============================================================
@@ -2807,9 +2801,9 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   .tcla-logo { width: min(60vw, 380px); }
   .tcla-tagline { font-size: 38px !important; }
   .tcla-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1040px; }
-  .tcla-tile { min-height: 150px; padding: 30px 16px; }
-  .tcla-tile-ico { font-size: 44px; }
-  .tcla-tile-label { font-size: 19px; }
+  .tcla-tile { min-height: 120px; padding: 22px 16px; }
+  .tcla-tile-ico { font-size: 38px; }
+  .tcla-tile-label { font-size: 18px; }
 }
 
 @media (hover: hover) {
