@@ -2660,164 +2660,161 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcl-loop--band .tcl-loop__form iframe { min-height: 320px; }
 
 /* ============================================================
-   APP HOME LANDER — app6
-   Mobile-first landing page for logged-in app users.
-   Lives on a dedicated BD page (e.g. /app-home). Namespace: .tcla
-   Pure CSS, px sizing (BD 10px root). The "Ask Sunni" label + arrow
-   are ours; the GHL chat bubble is enabled/positioned in GHL.
+   APP HOME LANDER — app7  (clean rewrite)
+   Mobile-first quick-link grid for logged-in app users.
+   Dedicated BD page (slug: app-home). Namespace: .tcla
+   Pure CSS, px sizing (BD's Bootstrap root is 10px → rem would shrink).
+
+   KEY DECISIONS (root-cause fixes, not patches):
+   - NO separate sun watermark. The logo SVG (1047x239) already contains
+     the sun + wordmark, so there is nothing to drift over the tiles.
+   - Mobile-FIRST: base styles are the phone layout (big tiles, ~20px
+     text, icon-on-top centered). Desktop is the enhancement via min-width.
+   - Tiles: icon on top, label below, centered, generous padding/height.
    ============================================================ */
 
 .tcla {
   min-height: 100vh;
   background-color: #0D3347;
-  background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(21,196,175,0.16) 0%, transparent 60%);
+  background-image: radial-gradient(ellipse 90% 30% at 50% 0%, rgba(21,196,175,0.18) 0%, transparent 65%);
   background-repeat: no-repeat;
-  background-position: center top;
-  padding: 26px 18px 120px;
+  padding: 24px 16px 140px;
   box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
 }
+.tcla * { box-sizing: border-box; }
 
 /* ---- Header ---- */
-.tcla-head {
-  text-align: center;
-  margin: 0 auto 24px;
-  max-width: 480px;
-  position: relative;
+.tcla-head { text-align: center; margin: 0 auto 22px; max-width: 640px; }
+.tcla-logo {
+  width: min(80vw, 340px);
+  height: auto;
+  margin: 4px auto 14px;
+  display: block;
 }
-/* sun sits BEHIND the logo, contained in the header — can't reach the tiles */
-.tcla-head::before {
-  content: '';
-  position: absolute;
-  top: -10px; left: 50%;
-  transform: translateX(-50%);
-  width: 220px; height: 220px;
-  background: url('assets/Favicon_72x72.svg') center/contain no-repeat;
-  opacity: 0.20;
-  z-index: 0;
-  pointer-events: none;
-}
-.tcla-head > * { position: relative; z-index: 1; }
-.tcla-logo { width: clamp(230px, 72vw, 360px); height: auto; margin: 4px auto 10px; display: block; }
 .tcla-tagline {
   font-family: 'Caveat', cursive !important;
   font-weight: 700 !important;
-  font-size: clamp(26px, 7vw, 36px) !important;
+  font-size: 32px !important;
   color: #FFCA08 !important;
   margin: 0 0 6px !important;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 .tcla-welcome {
   font-family: 'Figtree', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   color: rgba(255,255,255,0.72);
   margin: 0;
 }
 
-/* ---- Tile grid (2 columns) ---- */
+/* ---- Tile grid: 2 columns, BIG tiles, icon-on-top centered ---- */
 .tcla-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 14px;
-  max-width: 560px;
+  max-width: 640px;
   margin: 0 auto;
 }
 .tcla-tile {
   display: flex;
+  flex-direction: column;        /* icon on top, label below */
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 18px;
-  padding: 18px 16px;
+  border-radius: 20px;
+  padding: 26px 14px;
+  min-height: 130px;             /* tall, thumb-friendly */
   text-decoration: none !important;
   position: relative;
-  min-height: 64px;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease;
 }
 .tcla-tile:active { transform: scale(0.97); background: rgba(21,196,175,0.18); border-color: #15C4AF; }
-@media (hover: hover) {
-  .tcla-tile:hover { background: rgba(21,196,175,0.16); border-color: #15C4AF; transform: translateY(-2px); }
-}
-.tcla-tile-ico { font-size: 26px; line-height: 1; flex: none; }
+.tcla-tile-ico { font-size: 40px; line-height: 1; }
 .tcla-tile-label {
   font-family: 'Bricolage Grotesque', sans-serif !important;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 800;
+  font-size: 20px;
   color: #FFFFFF !important;
-  line-height: 1.15;
+  line-height: 1.2;
 }
-/* optional badge (e.g. "This Week") */
 .tcla-tile-badge {
   position: absolute;
-  top: -8px; right: 10px;
+  top: -10px; left: 50%; transform: translateX(-50%);
   background: #F58220;
   color: #FFFFFF;
   font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 3px 9px;
+  padding: 4px 12px;
   border-radius: 100px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-/* ---- "Ask Sunni" floating label + arrow (points to GHL bubble) ----
-   GHL's chat bubble is enabled & positioned in GHL (bottom-right).
-   This label sits just above/left of it pointing down at it. */
+/* ---- "Ask Sunni!" label + arrow (points at the GHL bubble) ---- */
 .tcla-sunni {
   position: fixed;
-  right: 90px;          /* sits to the LEFT of a bottom-right GHL bubble */
-  bottom: 64px;
+  right: 92px;
+  bottom: 70px;
   z-index: 9998;
-  pointer-events: none; /* never blocks taps on the real bubble */
+  pointer-events: none;
   text-align: right;
-  max-width: 200px;
 }
 .tcla-sunni-text {
   font-family: 'Caveat', cursive !important;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 32px;
   color: #FFCA08;
   line-height: 1;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
-  display: block;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  display: inline-block;
+  position: relative;
 }
-.tcla-sunni-text { position: relative; }
-/* curved arrow drawn off the TEXT element (always present, Froala-safe) */
+/* curved arrow drawn off the text (Froala-safe: text is never empty) */
 .tcla-sunni-text::before {
   content: '';
   position: absolute;
-  right: 6px; bottom: -34px;
-  width: 30px; height: 30px;
+  right: -6px; bottom: -40px;
+  width: 38px; height: 40px;
   border-right: 3px solid #FFCA08;
   border-bottom: 3px solid #FFCA08;
-  border-bottom-right-radius: 24px;
-  transform: rotate(8deg);
+  border-bottom-right-radius: 30px;
+  transform: rotate(12deg);
 }
 .tcla-sunni-text::after {
   content: '';
   position: absolute;
-  right: 0; bottom: -38px;
-  width: 11px; height: 11px;
+  right: -14px; bottom: -44px;
+  width: 12px; height: 12px;
   border-right: 3px solid #FFCA08;
   border-bottom: 3px solid #FFCA08;
-  transform: rotate(50deg);
-}
-.tcla-sunni-arrow { display: none; }  /* legacy span no longer used */
-
-@media (max-width: 480px) {
-  .tcla-head::before { width: 170px; height: 170px; opacity: 0.2; }
-  .tcla-grid { gap: 11px; }
-  .tcla-tile { padding: 15px 13px; min-height: 58px; }
-  .tcla-tile-label { font-size: 15px; }
-  .tcla-sunni { right: 84px; bottom: 60px; }
-  .tcla-sunni-text { font-size: 26px; }
+  transform: rotate(55deg);
 }
 
+/* ============================================================
+   DESKTOP enhancement (wider screens only). Phone is the default
+   above; here we relax to a roomier layout and 4 columns.
+   ============================================================ */
+@media (min-width: 700px) {
+  .tcla { padding: 36px 24px 120px; }
+  .tcla-logo { width: min(60vw, 380px); }
+  .tcla-tagline { font-size: 38px !important; }
+  .tcla-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1040px; }
+  .tcla-tile { min-height: 150px; padding: 30px 16px; }
+  .tcla-tile-ico { font-size: 44px; }
+  .tcla-tile-label { font-size: 19px; }
+}
+
+@media (hover: hover) {
+  .tcla-tile:hover { background: rgba(21,196,175,0.16); border-color: #15C4AF; transform: translateY(-3px); }
+}
 @media (prefers-reduced-motion: reduce) {
   .tcla-tile { transition: none !important; }
 }
