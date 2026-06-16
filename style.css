@@ -2660,7 +2660,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcl-loop--band .tcl-loop__form iframe { min-height: 320px; }
 
 /* ============================================================
-   APP HOME LANDER — app8
+   APP HOME LANDER — app9
    Mobile-first quick-link grid for logged-in app users.
    Dedicated BD page (slug: app-home). Namespace: .tcla
    Pure CSS, px sizing (BD's Bootstrap root is 10px → rem would shrink).
@@ -2683,17 +2683,27 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   position: relative;
   overflow-x: hidden;
 }
+/* Fixed navy backdrop covering the whole viewport (and beyond), so iOS
+   rubber-band overscroll shows navy, never BD's white body. */
+.tcla::after {
+  content: '';
+  position: fixed;
+  top: -50vh; left: 0; right: 0; bottom: -50vh;  /* bleed past edges */
+  background: #0D3347;
+  z-index: -1;
+  pointer-events: none;
+}
 .tcla * { box-sizing: border-box; }
 
 /* ---- Header ---- */
 .tcla-head { text-align: center; margin: 0 auto 18px; max-width: 600px; }
 .tcla-logo {
   display: block;
-  width: 300px;            /* explicit px — iOS won't zero-collapse a viewBox-only SVG */
-  max-width: 86%;          /* shrink only on very narrow phones */
-  height: auto;
-  aspect-ratio: 1047 / 239;/* gives iOS a definite height even before load */
+  width: 300px;            /* explicit px W *and* H — a replaced element with both
+  height: 68px;               set NEVER collapses, even in old iOS in-app webviews */
+  max-width: 86vw;
   margin: 4px auto 14px;
+  object-fit: contain;
 }
 .tcla-tagline {
   font-family: 'Caveat', cursive !important;
@@ -2779,17 +2789,27 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   display: inline-block;
   position: relative;
 }
-/* clean arrow: Unicode glyph (text — Froala-safe), curving down-right
-   toward the bottom-right GHL bubble. Sits just below the text. */
-.tcla-sunni-text::after {
-  content: '\2935';            /* ⤵ right-down curved arrow */
+/* Pure-CSS arrow (no font/emoji — identical on every platform, Froala-safe).
+   A curved tail (border arc) + a clip-path triangle head, pointing down-right
+   toward the bottom-right GHL bubble. Drawn off the always-present text node. */
+.tcla-sunni-text::before {
+  content: '';
   position: absolute;
-  right: -2px; bottom: -34px;
-  font-size: 34px;
-  line-height: 1;
-  color: #FFCA08;
-  text-shadow: 0 2px 5px rgba(0,0,0,0.4);
-  transform: scaleX(1.15);
+  right: 4px; bottom: -32px;
+  width: 30px; height: 28px;
+  border-right: 3px solid #FFCA08;
+  border-bottom: 3px solid #FFCA08;
+  border-bottom-right-radius: 22px;
+  transform: rotate(10deg);
+}
+.tcla-sunni-text::after {
+  content: '';
+  position: absolute;
+  right: -1px; bottom: -38px;
+  width: 14px; height: 14px;
+  background: #FFCA08;
+  clip-path: polygon(100% 0, 0 35%, 55% 55%, 35% 100%);
+  transform: rotate(-8deg);
 }
 
 /* ============================================================
@@ -2798,7 +2818,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
    ============================================================ */
 @media (min-width: 700px) {
   .tcla { padding: 36px 24px 120px; }
-  .tcla-logo { width: min(60vw, 380px); }
+  .tcla-logo { width: 360px; height: 82px; max-width: 60vw; }
   .tcla-tagline { font-size: 38px !important; }
   .tcla-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1040px; }
   .tcla-tile { min-height: 120px; padding: 22px 16px; }
