@@ -2660,7 +2660,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcl-loop--band .tcl-loop__form iframe { min-height: 320px; }
 
 /* ============================================================
-   APP HOME LANDER — app1
+   APP HOME LANDER — app4
    Mobile-first landing page for logged-in app users.
    Lives on a dedicated BD page (e.g. /app-home). Namespace: .tcla
    Pure CSS, px sizing (BD 10px root). The "Ask Sunni" label + arrow
@@ -2674,8 +2674,8 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
     radial-gradient(ellipse 80% 50% at 50% 0%, rgba(21,196,175,0.16) 0%, transparent 60%),
     url('assets/Favicon_72x72.svg');
   background-repeat: no-repeat, no-repeat;
-  background-position: center top, center 220px;
-  background-size: auto, min(78vw, 420px);
+  background-position: center top, center 70px;
+  background-size: auto, min(60vw, 320px);
   padding: 28px 18px 120px;
   box-sizing: border-box;
   position: relative;
@@ -2684,7 +2684,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 
 /* ---- Header ---- */
 .tcla-head { text-align: center; margin: 0 auto 26px; max-width: 480px; }
-.tcla-logo { width: clamp(150px, 52vw, 220px); height: auto; margin: 6px auto 14px; display: block; }
+.tcla-logo { width: clamp(180px, 56vw, 260px); height: auto; margin: 6px auto 12px; display: block; }
 .tcla-tagline {
   font-family: 'Caveat', cursive !important;
   font-weight: 700 !important;
@@ -2773,10 +2773,31 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 .tcla-sunni-arrow {
   display: block;
-  margin: 2px 6px 0 auto;
-  width: 54px; height: auto;
+  width: 46px; height: 40px;
+  margin: 4px 14px 0 auto;
+  position: relative;
 }
-.tcla-sunni-arrow path { stroke: #FFCA08; }
+/* curved tail */
+.tcla-sunni-arrow::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 8px;
+  width: 34px; height: 34px;
+  border-right: 3px solid #FFCA08;
+  border-bottom: 3px solid #FFCA08;
+  border-bottom-right-radius: 26px;
+  transform: rotate(8deg);
+}
+/* arrowhead */
+.tcla-sunni-arrow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; right: 2px;
+  width: 12px; height: 12px;
+  border-right: 3px solid #FFCA08;
+  border-bottom: 3px solid #FFCA08;
+  transform: rotate(50deg);
+}
 
 @media (max-width: 380px) {
   .tcla-grid { gap: 11px; }
