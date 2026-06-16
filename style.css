@@ -2660,7 +2660,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcl-loop--band .tcl-loop__form iframe { min-height: 320px; }
 
 /* ============================================================
-   APP HOME LANDER — app4
+   APP HOME LANDER — app6
    Mobile-first landing page for logged-in app users.
    Lives on a dedicated BD page (e.g. /app-home). Namespace: .tcla
    Pure CSS, px sizing (BD 10px root). The "Ask Sunni" label + arrow
@@ -2670,21 +2670,36 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcla {
   min-height: 100vh;
   background-color: #0D3347;
-  background-image:
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(21,196,175,0.16) 0%, transparent 60%),
-    url('assets/Favicon_72x72.svg');
-  background-repeat: no-repeat, no-repeat;
-  background-position: center top, center 70px;
-  background-size: auto, min(60vw, 320px);
-  padding: 28px 18px 120px;
+  background-image: radial-gradient(ellipse 80% 40% at 50% 0%, rgba(21,196,175,0.16) 0%, transparent 60%);
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding: 26px 18px 120px;
   box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
 }
 
 /* ---- Header ---- */
-.tcla-head { text-align: center; margin: 0 auto 26px; max-width: 480px; }
-.tcla-logo { width: clamp(180px, 56vw, 260px); height: auto; margin: 6px auto 12px; display: block; }
+.tcla-head {
+  text-align: center;
+  margin: 0 auto 24px;
+  max-width: 480px;
+  position: relative;
+}
+/* sun sits BEHIND the logo, contained in the header — can't reach the tiles */
+.tcla-head::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%);
+  width: 220px; height: 220px;
+  background: url('assets/Favicon_72x72.svg') center/contain no-repeat;
+  opacity: 0.20;
+  z-index: 0;
+  pointer-events: none;
+}
+.tcla-head > * { position: relative; z-index: 1; }
+.tcla-logo { width: clamp(230px, 72vw, 360px); height: auto; margin: 4px auto 10px; display: block; }
 .tcla-tagline {
   font-family: 'Caveat', cursive !important;
   font-weight: 700 !important;
@@ -2755,8 +2770,8 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
    This label sits just above/left of it pointing down at it. */
 .tcla-sunni {
   position: fixed;
-  right: 88px;          /* sits to the LEFT of a bottom-right GHL bubble */
-  bottom: 30px;
+  right: 90px;          /* sits to the LEFT of a bottom-right GHL bubble */
+  bottom: 64px;
   z-index: 9998;
   pointer-events: none; /* never blocks taps on the real bubble */
   text-align: right;
@@ -2771,39 +2786,35 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   text-shadow: 0 2px 6px rgba(0,0,0,0.35);
   display: block;
 }
-.tcla-sunni-arrow {
-  display: block;
-  width: 46px; height: 40px;
-  margin: 4px 14px 0 auto;
-  position: relative;
-}
-/* curved tail */
-.tcla-sunni-arrow::before {
+.tcla-sunni-text { position: relative; }
+/* curved arrow drawn off the TEXT element (always present, Froala-safe) */
+.tcla-sunni-text::before {
   content: '';
   position: absolute;
-  top: 0; right: 8px;
-  width: 34px; height: 34px;
+  right: 6px; bottom: -34px;
+  width: 30px; height: 30px;
   border-right: 3px solid #FFCA08;
   border-bottom: 3px solid #FFCA08;
-  border-bottom-right-radius: 26px;
+  border-bottom-right-radius: 24px;
   transform: rotate(8deg);
 }
-/* arrowhead */
-.tcla-sunni-arrow::after {
+.tcla-sunni-text::after {
   content: '';
   position: absolute;
-  bottom: -2px; right: 2px;
-  width: 12px; height: 12px;
+  right: 0; bottom: -38px;
+  width: 11px; height: 11px;
   border-right: 3px solid #FFCA08;
   border-bottom: 3px solid #FFCA08;
   transform: rotate(50deg);
 }
+.tcla-sunni-arrow { display: none; }  /* legacy span no longer used */
 
-@media (max-width: 380px) {
+@media (max-width: 480px) {
+  .tcla-head::before { width: 170px; height: 170px; opacity: 0.2; }
   .tcla-grid { gap: 11px; }
   .tcla-tile { padding: 15px 13px; min-height: 58px; }
   .tcla-tile-label { font-size: 15px; }
-  .tcla-sunni { right: 80px; bottom: 26px; }
+  .tcla-sunni { right: 84px; bottom: 60px; }
   .tcla-sunni-text { font-size: 26px; }
 }
 
