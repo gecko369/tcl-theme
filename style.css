@@ -509,14 +509,110 @@ a[class*="h1"], a[class*="h2"], a[class*="h3"], a[class*="h4"],
   color: #FFFFFF !important;
 }
 
-/* ── Fix .pic card image rendering — photo sliders only, not info-graphics ── */
+/* ── Unified slider cards — events, blog & deals get IDENTICAL treatment ──
+   Full graphic, never cropped (contain). A soft blurred zoom of the same
+   image fills any letterbox space instead of black bars; a correctly-sized
+   750×400 image fills edge-to-edge with no visible blur. Title-only band. */
 .slickEvents .pic,
 .slickBlogArticles .pic,
+.slickCoupons .pic {
+  position: relative !important;
+  aspect-ratio: 750 / 400 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  background-color: #0D3347 !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+}
+/* Blurred backdrop fill (only seen when an image isn't a perfect 750×400) */
+.slickEvents .pic::before,
+.slickBlogArticles .pic::before,
+.slickCoupons .pic::before {
+  content: '' !important;
+  display: block !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: inherit !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  filter: blur(18px) saturate(1.06) !important;
+  transform: scale(1.12) !important;
+  z-index: 0 !important;
+}
+/* Full, uncropped graphic on top of the blur */
+.slickEvents .pic::after,
+.slickBlogArticles .pic::after,
+.slickCoupons .pic::after {
+  content: '' !important;
+  display: block !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: inherit !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  filter: none !important;
+  z-index: 1 !important;
+}
+.slickEvents .pic > .homepage-link-element,
+.slickBlogArticles .pic > .homepage-link-element,
+.slickCoupons .pic > .homepage-link-element { z-index: 4 !important; }
+/* Static bottom title band — identical on all three sliders */
+.slickEvents .pic > .pic-caption,
+.slickBlogArticles .pic > .pic-caption,
+.slickCoupons .pic > .pic-caption {
+  top: auto !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 64px !important;
+  transform: none !important;
+  opacity: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 14px !important;
+  background: linear-gradient(0deg, rgba(13,51,71,0.94) 0%, rgba(13,51,71,0.80) 55%, rgba(13,51,71,0) 100%) !important;
+  z-index: 2 !important;
+}
+/* Show the title only — hide date/excerpt/button/divider regardless of markup */
+.slickEvents .pic .pic-caption > *:not(.pic-title),
+.slickBlogArticles .pic .pic-caption > *:not(.pic-title),
+.slickCoupons .pic .pic-caption > *:not(.pic-title) { display: none !important; }
+/* Unified, legible 2-line title — clamps cleanly, never cut mid-line */
+.slickEvents .pic .pic-title,
+.slickBlogArticles .pic .pic-title,
+.slickCoupons .pic .pic-title,
+.slickEvents .pic:hover .pic-title,
+.slickBlogArticles .pic:hover .pic-title,
+.slickCoupons .pic:hover .pic-title {
+  margin: 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  height: auto !important;
+  max-height: none !important;
+  font-size: 1.8rem !important;
+  line-height: 1.22 !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6) !important;
+}
+/* Featured-members slider keeps photo crop-to-fill (different component) */
 .slickFeatured .pic {
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
 }
+/* Keep pseudo backdrops off for any other .pic usage elsewhere on the site */
 .pic::before,
 .pic::after {
   display: none !important;
@@ -1228,58 +1324,31 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 .tcl-section-white, .tcl-section-navy { overflow-x: hidden !important; }
 
-/* ── Coupon/deals pic — full graphic at every width ── */
-.slickCoupons .pic,
-.web-page-content .slickCoupons .pic {
-  background-size: contain !important;
-  background-position: center center !important;
-  background-color: #0b1020 !important;
-  background-repeat: no-repeat !important;
-  aspect-ratio: 750 / 400 !important;
-  height: auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
-  width: 100% !important;
-}
-@media (min-width: 768px) {
-  .web-page-content .slickCoupons {
-    display: flex !important;
-    justify-content: center !important;
-  }
-  .web-page-content .slickCoupons [class*="col-"] {
-    max-width: 760px !important;
-    width: 100% !important;
-    float: none !important;
-  }
-}
+/* ── Coupon/deals slider now uses the unified slider rules above (events/blog/deals
+   are styled identically). Old contain/#0b1020 + flex-centering removed. ── */
 
-/* ── Mobile pic cards — events/blog constrained ── */
+/* ── Mobile: identical aspect-ratio + larger legible titles for all three ── */
 @media (max-width: 767px) {
-  /* Events + blog: crop-to-fill is fine for photos */
   .web-page-content .slickEvents .slick-slide .pic,
-  .web-page-content .slickBlogArticles .slick-slide .pic {
-    height: 230px !important;
-    min-height: 230px !important;
-    max-height: 230px !important;
-  }
-  .web-page-content .slickEvents .slick-slide .pic .pic-title,
-  .web-page-content .slickBlogArticles .slick-slide .pic .pic-title {
-    display: -webkit-box !important;
-    -webkit-line-clamp: 2 !important;
-    -webkit-box-orient: vertical !important;
-    overflow: hidden !important;
-    font-size: 1.05rem !important;
-  }
-  /* Deals/coupons: show full designed graphic, never crop */
-  .web-page-content .slickCoupons .pic,
-  .tcl-section-white .col-md-3 .pic,
-  .tcl-section-white [style*="#F7F7F7"] .col-md-3 .pic {
-    background-size: contain !important;
-    background-color: #1a1a2e !important;
+  .web-page-content .slickBlogArticles .slick-slide .pic,
+  .web-page-content .slickCoupons .slick-slide .pic {
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
     aspect-ratio: 750 / 400 !important;
+    background-size: contain !important;
+  }
+  .web-page-content .slickEvents .slick-slide .pic .pic-title,
+  .web-page-content .slickBlogArticles .slick-slide .pic .pic-title,
+  .web-page-content .slickCoupons .slick-slide .pic .pic-title {
+    font-size: 1.9rem !important;
+    line-height: 1.2 !important;
+    -webkit-line-clamp: 2 !important;
+  }
+  .web-page-content .slickEvents .pic > .pic-caption,
+  .web-page-content .slickBlogArticles .pic > .pic-caption,
+  .web-page-content .slickCoupons .pic > .pic-caption {
+    min-height: 54px !important;
   }
 }
 /* ============================================================
