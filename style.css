@@ -2054,6 +2054,33 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   margin: 0 !important;
 }
 
+/* ── Match homepage (/welcome) type scale ────────────────────
+   The /join page (.tclj) ran larger than the homepage and felt
+   inconsistent. These overrides bring every text size in line
+   with the /welcome scale (values validated against measured
+   homepage sizes: hero H1 66, section heading 42, hero sub 20,
+   eyebrow ~12, body ~14-15). Edit here to retune the join scale. */
+.tclj-h1          { font-size: clamp(38px, 5.2vw, 66px) !important; }
+.tclj-h2          { font-size: clamp(28px, 3.4vw, 42px) !important; }
+.tclj-sub         { font-size: clamp(16px, 1.6vw, 20px) !important; }
+.tclj-lead        { font-size: clamp(15px, 1.4vw, 18px) !important; }
+.tclj-eyebrow     { font-size: 13px !important; }
+.tclj-card-title  { font-size: 24px !important; }
+.tclj-card-for    { font-size: 15px !important; }
+.tclj-ribbon-note { font-size: 15px !important; }
+.tclj-price       { font-size: clamp(36px, 3.2vw, 46px) !important; }
+.tclj-per         { font-size: 17px !important; }
+.tclj-price-sub   { font-size: 14px !important; }
+.tclj-price-was   { font-size: 21px !important; }
+.tclj-founding-chip { font-size: 14px !important; }
+.tclj-feat-lead   { font-size: 16px !important; }
+.tclj-feat li,
+.tclj-partner .tclj-feat li { font-size: 15px !important; }
+.tclj-faq-q       { font-size: 18px !important; }
+.tclj-faq-a p     { font-size: 15px !important; }
+.tclj-final-title { font-size: clamp(28px, 3.4vw, 44px) !important; }
+.tclj-final-sub   { font-size: 17px !important; }
+
 /* ── MAGICAL BUTTON HOVERS (scoped to .tclj / .tclb) ─────────
    Replaces the darker-orange hover with a sunset gradient shift,
    a soft gold glow, and a shine sweep across the pill. Scoped so
