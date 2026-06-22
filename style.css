@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v30
+   v31
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -2952,7 +2952,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 
 /* ── GIVEAWAY (orange) ─────────────────────────────────────── */
 .tcl-give {
-  background: linear-gradient(135deg, #F58220 0%, #d96e14 100%);
+  background: #F58220;
   padding: 88px 40px; text-align: center; margin-top: -1px;
 }
 .tcl-give .tcl-ns-eyebrow { color: #FFCA08; }
