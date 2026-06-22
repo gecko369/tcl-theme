@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v29
+   v30
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -2904,4 +2904,159 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tcla-tile { transition: none !important; }
+}
+
+/* ============================================================
+   HOMEPAGE NEW SECTIONS — ns1
+   Giveaway, App teaser, Sunni intro, Guides, Social.
+   Namespaces: .tcl-give .tcl-app .tcl-sunni .tcl-guides .tcl-social
+   All px sizing (BD Bootstrap root is 10px → rem would shrink).
+   Waves: 2 new defs below + reuse of existing wave classes.
+   Sunni image is a CSS background (Froala-proof — no <img> to strip).
+   ============================================================ */
+
+/* ── 2 NEW WAVE DEFINITIONS ─────────────────────────────────
+   grey→orange  : above the Giveaway (Find grid grey → orange)
+   teal→navy    : below the App (teal App → navy Sunni)
+   All other transitions reuse existing wave classes. */
+.tcl-wave-grey-orange {
+  background-color: #F7F7F7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%23F58220' d='M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+}
+.tcl-wave-teal-navy {
+  background-color: #15C4AF;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 70' preserveAspectRatio='none'%3E%3Cpath fill='%230D3347' d='M0,20 C360,70 720,10 1080,45 C1260,62 1380,30 1440,45 L1440,70 L0,70 Z'/%3E%3C/svg%3E");
+}
+
+/* ── Shared bits ───────────────────────────────────────────── */
+.tcl-give, .tcl-app, .tcl-sunni, .tcl-guides, .tcl-social { overflow-x: hidden; }
+.tcl-ns-wrap { max-width: 840px; margin: 0 auto; }
+.tcl-ns-eyebrow {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 700; font-size: 15px; letter-spacing: 0.22em;
+  text-transform: uppercase; margin: 0 0 16px;
+}
+.tcl-ns-title {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 800 !important; font-size: clamp(34px, 4.6vw, 54px) !important;
+  line-height: 1.06 !important; letter-spacing: -0.01em; margin: 0 0 14px !important;
+}
+.tcl-ns-cav {
+  font-family: 'Caveat', cursive !important; font-weight: 600 !important;
+  font-size: 34px !important; line-height: 1 !important; margin: 0 0 20px !important;
+}
+.tcl-ns-sub {
+  font-family: 'Figtree', sans-serif; font-size: 20px; line-height: 1.6;
+  max-width: 620px; margin: 0 auto 30px;
+}
+
+/* ── GIVEAWAY (orange) ─────────────────────────────────────── */
+.tcl-give {
+  background: linear-gradient(135deg, #F58220 0%, #d96e14 100%);
+  padding: 88px 40px; text-align: center; margin-top: -1px;
+}
+.tcl-give .tcl-ns-eyebrow { color: #FFCA08; }
+.tcl-give .tcl-ns-title { color: #FFFFFF !important; }
+.tcl-give .tcl-ns-sub { color: rgba(255,255,255,0.92); }
+.tcl-give-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: 'Bricolage Grotesque', sans-serif !important; font-weight: 800;
+  font-size: 22px; padding: 20px 46px; border-radius: 100px;
+  background: #FFCA08; color: #0D3347 !important; border: none;
+  text-decoration: none !important; box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.tcl-give-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.26); text-decoration: none !important; }
+
+/* ── APP teaser (teal) ─────────────────────────────────────── */
+.tcl-app {
+  background: #15C4AF; padding: 88px 40px; text-align: center; margin-top: -1px;
+}
+.tcl-app .tcl-ns-eyebrow { color: #0D3347; opacity: 0.7; }
+.tcl-app .tcl-ns-title { color: #0D3347 !important; }
+.tcl-app .tcl-ns-cav { color: #0D3347 !important; }
+.tcl-app .tcl-ns-sub { color: #0D3347; opacity: 0.85; }
+.tcl-app-badge {
+  display: inline-block; font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 800; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 10px 24px; border-radius: 100px; background: #0D3347; color: #FFCA08;
+}
+
+/* ── SUNNI intro (navy) — image is a CSS background (Froala-proof) ── */
+.tcl-sunni {
+  background: #0D3347; padding: 64px 40px; margin-top: -1px;
+  position: relative; overflow: hidden; text-align: center;
+}
+/* Mobile-first: Sunni sits on top, centered, in normal flow via ::before */
+.tcl-sunni::before {
+  content: ''; display: block; width: 230px; height: 320px;
+  margin: 0 auto 22px;
+  background: url('assets/TP_Sunni_%20Wave.png') center bottom / contain no-repeat;
+  filter: drop-shadow(0 10px 26px rgba(0,0,0,0.35));
+}
+.tcl-sunni-inner { max-width: 1100px; margin: 0 auto; }
+.tcl-sunni .tcl-ns-eyebrow { color: #15C4AF; }
+.tcl-sunni .tcl-ns-title { color: #FFFFFF !important; font-size: clamp(36px, 4.6vw, 56px) !important; }
+.tcl-sunni .tcl-ns-cav { color: #FFCA08 !important; }
+.tcl-sunni .tcl-ns-sub { color: rgba(255,255,255,0.82); }
+@media (min-width: 768px) {
+  .tcl-sunni { text-align: left; min-height: 540px; display: flex; align-items: center; }
+  /* Promote Sunni to an absolutely-positioned figure on the left */
+  .tcl-sunni::before {
+    position: absolute; left: 4%; bottom: 0; margin: 0;
+    width: 36%; height: 92%;
+  }
+  .tcl-sunni-inner { padding-left: 44%; }
+  .tcl-sunni .tcl-ns-sub { margin-left: 0; }
+}
+
+/* ── GUIDES (white) ────────────────────────────────────────── */
+.tcl-guides { background: #FFFFFF; padding: 88px 40px; text-align: center; }
+.tcl-guides .tcl-ns-eyebrow { color: #15C4AF; }
+.tcl-guides .tcl-ns-title { color: #0D3347 !important; }
+.tcl-guides .tcl-ns-sub { color: #5A7A8A; }
+.tcl-guides-ico { font-size: 46px; color: #15C4AF; margin-bottom: 18px; display: block; }
+.tcl-guides-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Bricolage Grotesque', sans-serif !important; font-weight: 800;
+  font-size: 18px; padding: 16px 36px; border-radius: 100px;
+  background: #15C4AF; color: #FFFFFF !important; border: 2px solid #15C4AF;
+  text-decoration: none !important; transition: all 0.2s ease;
+}
+.tcl-guides-btn:hover { background: #0FA292; border-color: #0FA292; transform: translateY(-2px); text-decoration: none !important; color: #fff !important; }
+
+/* ── SOCIAL (navy) ─────────────────────────────────────────── */
+.tcl-social { background: #0D3347; padding: 88px 40px; text-align: center; margin-top: -1px; }
+.tcl-social .tcl-ns-eyebrow { color: #15C4AF; }
+.tcl-social .tcl-ns-title { color: #FFFFFF !important; }
+.tcl-social .tcl-ns-sub { color: rgba(255,255,255,0.82); }
+.tcl-social-ico { font-size: 46px; color: #15C4AF; margin-bottom: 18px; display: block; }
+.tcl-social-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+.tcl-social-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Bricolage Grotesque', sans-serif !important; font-weight: 800;
+  font-size: 16px; padding: 14px 26px; border-radius: 100px;
+  text-decoration: none !important; border: 2px solid rgba(255,255,255,0.5);
+  color: #FFFFFF !important; transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.tcl-social-btn:hover { transform: translateY(-2px); text-decoration: none !important; }
+.tcl-social-btn.is-fb { background: #1877F2; border-color: #1877F2; }
+.tcl-social-btn.is-fb:hover { background: #166fe0; }
+.tcl-social-btn.is-ig { background: linear-gradient(45deg,#F58529,#DD2A7B,#8134AF); border-color: transparent; }
+.tcl-social-btn.is-grp:hover { background: rgba(255,255,255,0.12); }
+
+/* ── NEWSLETTER eyebrow (Sunny Side Up) — only addition to newsletter ── */
+.tcl-newsletter-eyebrow {
+  font-family: 'Bricolage Grotesque', sans-serif !important;
+  font-weight: 800; font-size: 14px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: #0D3347; opacity: 0.75; margin: 0 0 10px;
+}
+
+/* ── Mobile ────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .tcl-give, .tcl-app, .tcl-guides, .tcl-social { padding: 60px 18px; }
+  .tcl-sunni { padding: 50px 18px; }
+  .tcl-give-btn { font-size: 19px; padding: 17px 36px; }
+  .tcl-social-btns { flex-direction: column; align-items: center; }
+  .tcl-social-btn { width: 100%; max-width: 320px; justify-content: center; }
 }
