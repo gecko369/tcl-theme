@@ -1,4 +1,4 @@
-// v6
+// v7
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -338,4 +338,52 @@
     f.setAttribute('title', 'CL SITE NEWSLETTER SIGN UP');
     slot.appendChild(f);
   });
+})();
+/* ── VIDEO LANDERS (vl1) ─────────────────────────────────────
+   1. Injects a video iframe into any .tclv-screen that has a
+      non-empty data-tclv-video attribute (and hides its placeholder
+      overlay). Empty/absent attribute = glowing placeholder stays.
+   2. On the offer page (.tclvp-offer), injects the GHL booking
+      calendar iframe into .tclvp-cal and loads GHL's embed script.
+   Froala strips iframes, so both must be added by JS. Runs only when
+   the relevant elements exist; touches nothing else. */
+(function () {
+  /* 1 — video holders */
+  var screens = document.querySelectorAll('.tclv-screen[data-tclv-video]');
+  Array.prototype.forEach.call(screens, function (sc) {
+    var url = (sc.getAttribute('data-tclv-video') || '').trim();
+    if (!url || sc.querySelector('iframe')) return;
+    var f = document.createElement('iframe');
+    f.src = url;
+    f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('loading', 'lazy');
+    f.setAttribute('title', 'Video');
+    var ov = sc.querySelector('.tclv-overlay');
+    if (ov) ov.style.display = 'none';
+    var lbl = sc.parentNode.querySelector('.tclv-label');
+    if (lbl) lbl.style.display = 'none';
+    sc.appendChild(f);
+  });
+
+  /* 2 — offer page booking calendar */
+  var slot = document.querySelector('.tclvp-offer .tclvp-cal');
+  if (slot && !slot.querySelector('iframe')) {
+    if (!document.querySelector('script[src*="link.geckonaut.com/js/form_embed.js"]')) {
+      var s = document.createElement('script');
+      s.src = 'https://link.geckonaut.com/js/form_embed.js';
+      s.async = true;
+      document.body.appendChild(s);
+    }
+    var cf = document.createElement('iframe');
+    cf.src = 'https://link.geckonaut.com/widget/booking/NnwajOjtUTvbw4OkMqhm';
+    cf.style.width = '100%';
+    cf.style.border = 'none';
+    cf.style.overflow = 'hidden';
+    cf.setAttribute('scrolling', 'no');
+    cf.id = 'tclvp-booking';
+    var loading = slot.querySelector('.tclvp-cal-loading');
+    if (loading) loading.style.display = 'none';
+    slot.appendChild(cf);
+  }
 })();
