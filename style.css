@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v34
+   v35
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3197,4 +3197,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   .tclvp { padding: 50px 16px 64px; }
   .tclvp-next { margin-top: 48px; }
   .tclvp-points li { font-size: 16px; }
+  .tclv-play { width: 70px; height: 70px; }
+  .tclv-play::after { border-width: 12px 0 12px 20px; }
+  .tclv-label { font-size: 12px; padding: 7px 14px; bottom: 12px; letter-spacing: 0.04em; }
 }
