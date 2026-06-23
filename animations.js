@@ -1,4 +1,4 @@
-// v7
+// v8
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -386,4 +386,39 @@
     if (loading) loading.style.display = 'none';
     slot.appendChild(cf);
   }
+})();
+/* ── GUIDE LANDERS (gl1) ─────────────────────────────────────
+   Injects the GHL "CL Guide Sign Up" form into any .tclgd-form
+   placeholder, pre-filling the hidden guide_requested field from
+   the lander's data-guide attribute. Froala strips iframes, so the
+   form must be injected here. Runs only when a .tclgd-form exists. */
+(function () {
+  var slots = document.querySelectorAll('.tclgd-form[data-guide]');
+  if (!slots.length) return;
+  var FORM_ID = 'RaXLw3gMkshHMYBlYi2n';
+  if (!document.querySelector('script[src*="link.geckonaut.com/js/form_embed.js"]')) {
+    var s = document.createElement('script');
+    s.src = 'https://link.geckonaut.com/js/form_embed.js';
+    s.async = true;
+    document.body.appendChild(s);
+  }
+  Array.prototype.forEach.call(slots, function (slot) {
+    if (slot.querySelector('iframe')) return;
+    var guide = (slot.getAttribute('data-guide') || '').trim();
+    var src = 'https://link.geckonaut.com/widget/form/' + FORM_ID;
+    if (guide) src += '?guide_requested=' + encodeURIComponent(guide);
+    var f = document.createElement('iframe');
+    f.src = src;
+    f.style.width = '100%';
+    f.style.border = 'none';
+    f.style.borderRadius = '10px';
+    f.id = 'inline-' + FORM_ID + (guide ? '-' + guide : '');
+    f.setAttribute('data-layout', "{'id':'INLINE'}");
+    f.setAttribute('data-form-id', FORM_ID);
+    f.setAttribute('data-form-name', 'CL Guide Sign Up');
+    f.setAttribute('title', 'CL Guide Sign Up');
+    var loading = slot.querySelector('.tclgd-form-loading');
+    if (loading) loading.style.display = 'none';
+    slot.appendChild(f);
+  });
 })();
