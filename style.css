@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v33
+   v34
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3122,11 +3122,17 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
   background: linear-gradient(135deg, #F58220, #FFCA08);
   display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 30px rgba(245,130,32,0.5);
 }
-.tclv-play::before, .tclv-play::after {
+.tclv-play::before {
   content: ''; position: absolute; inset: 0; border-radius: 50%;
   border: 3px solid rgba(255,202,8,0.55); animation: tclvRing 2.4s ease-out infinite;
 }
-.tclv-play::after { animation-delay: 1.2s; }
+.tclv-play::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%); margin-left: 4px;
+  width: 0; height: 0; border-style: solid;
+  border-width: 16px 0 16px 27px;
+  border-color: transparent transparent transparent #0D3347;
+}
 @keyframes tclvRing { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(2.1); opacity: 0; } }
 .tclv-tri { width: 0; height: 0; border-style: solid; border-width: 18px 0 18px 30px; border-color: transparent transparent transparent #0D3347; margin-left: 7px; position: relative; z-index: 2; }
 .tclv-label {
