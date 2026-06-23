@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v37
+   v38
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3219,11 +3219,9 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tclgd-inner { max-width: 1080px; margin: 0 auto; position: relative; z-index: 2; display: flex; align-items: center; gap: 60px; }
 .tclgd-left { flex: 0 0 42%; display: flex; justify-content: center; perspective: 1600px; }
 .tclgd-mock {
-  position: relative; transform: rotateY(-16deg) rotateX(3deg); border-radius: 6px; overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06); max-width: 320px;
+  position: relative; max-width: 440px; width: 100%;
 }
-.tclgd-mock img { display: block; width: 100%; height: auto; }
-.tclgd-mock::after { content: ''; position: absolute; top: 0; left: 0; width: 14px; height: 100%; background: linear-gradient(90deg, rgba(0,0,0,0.28), rgba(0,0,0,0)); }
+.tclgd-mock img { display: block; width: 100%; height: auto; filter: drop-shadow(0 24px 44px rgba(0,0,0,0.5)); }
 .tclgd-glow { position: absolute; inset: -30px; z-index: -1; background: radial-gradient(ellipse at center, rgba(21,196,175,0.4), transparent 70%); filter: blur(20px); }
 .tclgd-right { flex: 1; }
 .tclgd-eyebrow { font-family: 'Bricolage Grotesque', sans-serif !important; font-weight: 700; font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; color: #15C4AF; margin: 0 0 14px; }
@@ -3240,7 +3238,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 @media (max-width: 880px) {
   .tclgd-inner { flex-direction: column; gap: 36px; text-align: center; }
   .tclgd-left { flex: none; }
-  .tclgd-mock { transform: none; max-width: 240px; }
+  .tclgd-mock { transform: none; max-width: 360px; }
   .tclgd-sum, .tclgd-form { margin-left: auto; margin-right: auto; }
   .tclgd-list { display: inline-block; text-align: left; }
 }
