@@ -3265,3 +3265,7 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcllib-card-btn:hover { background: #d96e14; border-color: #d96e14; color: #fff !important; text-decoration: none !important; }
 @media (max-width: 900px) { .tcllib-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
 @media (max-width: 560px) { .tcllib-grid { grid-template-columns: 1fr; max-width: 360px; } }
+
+.web-page-content p:empty,
+.tcl-wave + p:empty,
+p:empty + .tcl-wave { display: none !important; }
