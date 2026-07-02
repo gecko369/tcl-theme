@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v39
+   v40
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3295,4 +3295,26 @@ p:empty + .tcl-wave { display: none !important; }
   display: block !important;
   z-index: 6 !important;
   pointer-events: auto !important;
+}
+
+/* ── FEATURED BUSINESSES: whole card clickable ─────────────────
+   The featured-members cards (.tcl-section-navy .well) were only
+   clickable on the business-name link. A stretched pseudo-element
+   on that title link now covers the entire card, so a tap anywhere
+   opens the profile. The card's own button keeps its higher stacking
+   so it stays independently clickable. */
+.tcl-section-navy .well {
+  position: relative !important;
+}
+.tcl-section-navy .well a.h4::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 2;
+}
+.tcl-section-navy .well .btn-primary,
+.tcl-section-navy .well .btn,
+.tcl-section-navy .well a:not(.h4) {
+  position: relative;
+  z-index: 3;
 }
