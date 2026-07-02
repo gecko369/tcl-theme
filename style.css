@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v38
+   v39
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3269,3 +3269,30 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .web-page-content p:empty,
 .tcl-wave + p:empty,
 p:empty + .tcl-wave { display: none !important; }
+
+/* ── MOBILE TAP FIX — slider cards (events/blog/deals) ─────────
+   Cards were unclickable on mobile: the ::before/::after image
+   layers and caption were intercepting taps before they reached
+   the card's link. Decorative layers now ignore pointer events,
+   and the link element is forced to cover the whole card on top. */
+.slickEvents .pic::before, .slickEvents .pic::after,
+.slickBlogArticles .pic::before, .slickBlogArticles .pic::after,
+.slickCoupons .pic::before, .slickCoupons .pic::after {
+  pointer-events: none !important;
+}
+.slickEvents .pic > .pic-caption,
+.slickBlogArticles .pic > .pic-caption,
+.slickCoupons .pic > .pic-caption {
+  pointer-events: none !important;
+}
+.slickEvents .pic > .homepage-link-element,
+.slickBlogArticles .pic > .homepage-link-element,
+.slickCoupons .pic > .homepage-link-element {
+  position: absolute !important;
+  top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  z-index: 6 !important;
+  pointer-events: auto !important;
+}
