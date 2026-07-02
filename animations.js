@@ -361,7 +361,7 @@ Array.prototype.forEach.call(screens, function (sc) {
   if (isFile) {
     /* Direct file → native HTML5 video, keep click-to-play overlay */
     var v = document.createElement('video');
-    v.src = url;
+    v.src = url + '#t=0.001';
     v.controls = true;
     v.playsInline = true;
     v.preload = 'metadata';
@@ -372,7 +372,6 @@ Array.prototype.forEach.call(screens, function (sc) {
 
     var start = function () {
       if (ov)  ov.style.display  = 'none';
-      if (lbl) lbl.style.display = 'none';
       v.play();
     };
 
@@ -384,12 +383,7 @@ Array.prototype.forEach.call(screens, function (sc) {
       ov.style.cursor = 'pointer';
       ov.addEventListener('click', start);
     }
-    if (lbl) {
-      lbl.style.position = 'relative';
-      lbl.style.zIndex = '4';
-      lbl.style.cursor = 'pointer';
-      lbl.addEventListener('click', start);
-    }
+    if (lbl) lbl.style.display = 'none';
   } else {
     /* Embed URL (YouTube/Vimeo/etc.) → iframe, original behavior */
     var f = document.createElement('iframe');
