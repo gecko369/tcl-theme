@@ -365,6 +365,8 @@ Array.prototype.forEach.call(screens, function (sc) {
     v.controls = true;
     v.playsInline = true;
     v.preload = 'metadata';
+    var poster = (sc.getAttribute('data-tclv-poster') || '').trim();
+    if (poster) v.poster = poster;
     v.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;' +
                       'object-fit:contain;background:#000;border-radius:inherit;display:block;z-index:1;';
     if (getComputedStyle(sc).position === 'static') sc.style.position = 'relative';
