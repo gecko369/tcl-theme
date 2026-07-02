@@ -349,22 +349,60 @@
    the relevant elements exist; touches nothing else. */
 (function () {
   /* 1 — video holders */
-  var screens = document.querySelectorAll('.tclv-screen[data-tclv-video]');
-  Array.prototype.forEach.call(screens, function (sc) {
-    var url = (sc.getAttribute('data-tclv-video') || '').trim();
-    if (!url || sc.querySelector('iframe')) return;
+var screens = document.querySelectorAll('.tclv-screen[data-tclv-video]');
+Array.prototype.forEach.call(screens, function (sc) {
+  var url = (sc.getAttribute('data-tclv-video') || '').trim();
+  if (!url || sc.querySelector('iframe') || sc.querySelector('video')) return;
+
+  var ov  = sc.querySelector('.tclv-overlay');
+  var lbl = sc.querySelector('.tclv-label') || sc.parentNode.querySelector('.tclv-label');
+  var isFile = /\.(mp4|mov|webm|m4v)(\?.*)?$/i.test(url);
+
+  if (isFile) {
+    /* Direct file → native HTML5 video, keep click-to-play overlay */
+    var v = document.createElement('video');
+    v.src = url;
+    v.controls = true;
+    v.playsInline = true;
+    v.preload = 'metadata';
+    v.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;' +
+                      'object-fit:contain;background:#000;border-radius:inherit;display:block;z-index:1;';
+    if (getComputedStyle(sc).position === 'static') sc.style.position = 'relative';
+    sc.appendChild(v);
+
+    var start = function () {
+      if (ov)  ov.style.display  = 'none';
+      if (lbl) lbl.style.display = 'none';
+      v.play();
+    };
+
+    if (ov) {
+      ov.style.position = 'absolute';
+      ov.style.top = '0'; ov.style.left = '0';
+      ov.style.width = '100%'; ov.style.height = '100%';
+      ov.style.zIndex = '3';
+      ov.style.cursor = 'pointer';
+      ov.addEventListener('click', start);
+    }
+    if (lbl) {
+      lbl.style.position = 'relative';
+      lbl.style.zIndex = '4';
+      lbl.style.cursor = 'pointer';
+      lbl.addEventListener('click', start);
+    }
+  } else {
+    /* Embed URL (YouTube/Vimeo/etc.) → iframe, original behavior */
     var f = document.createElement('iframe');
     f.src = url;
     f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
     f.setAttribute('allowfullscreen', '');
     f.setAttribute('loading', 'lazy');
     f.setAttribute('title', 'Video');
-    var ov = sc.querySelector('.tclv-overlay');
-    if (ov) ov.style.display = 'none';
-    var lbl = sc.parentNode.querySelector('.tclv-label');
+    if (ov)  ov.style.display  = 'none';
     if (lbl) lbl.style.display = 'none';
     sc.appendChild(f);
-  });
+  }
+});
 
   /* 2 — offer page booking calendar */
   var slot = document.querySelector('.tclvp-offer .tclvp-cal');
