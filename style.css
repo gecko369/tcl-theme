@@ -3254,8 +3254,8 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcllib-eyebrow { font-family: 'Bricolage Grotesque', sans-serif !important; font-weight: 700; font-size: 15px; letter-spacing: 0.24em; text-transform: uppercase; color: #15C4AF; margin: 0 0 16px; }
 .tcllib-h1 { font-family: 'Bricolage Grotesque', sans-serif !important; font-weight: 900 !important; font-size: clamp(34px, 4.5vw, 54px) !important; line-height: 1.05 !important; color: #fff !important; margin: 0 0 16px !important; }
 .tcllib-sub { font-family: 'Figtree', sans-serif; font-size: clamp(17px, 2vw, 20px); color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0; }
-.tcllib-grid { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-.tcllib-card { background: #1B4A63; border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.tcllib-grid { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; }
+.tcllib-card { background: #1B4A63; border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; width: 340px; max-width: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .tcllib-card:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(0,0,0,0.4); }
 .tcllib-cover { display: block; width: 100%; aspect-ratio: 17/22; object-fit: cover; background: #0a2738; }
 .tcllib-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
@@ -3263,8 +3263,8 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcllib-card-desc { font-family: 'Figtree', sans-serif; font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.5; margin: 0 0 18px; flex: 1; }
 .tcllib-card-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Bricolage Grotesque', sans-serif !important; font-weight: 800; font-size: 15px; padding: 12px 20px; border-radius: 100px; background: #F58220; color: #fff !important; border: 2px solid #F58220; text-decoration: none !important; transition: all 0.2s ease; }
 .tcllib-card-btn:hover { background: #d96e14; border-color: #d96e14; color: #fff !important; text-decoration: none !important; }
-@media (max-width: 900px) { .tcllib-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
-@media (max-width: 560px) { .tcllib-grid { grid-template-columns: 1fr; max-width: 360px; } }
+@media (max-width: 900px) { .tcllib-grid { gap: 20px; } }
+@media (max-width: 560px) { .tcllib-card { width: 100%; } }
 
 .web-page-content p:empty,
 .tcl-wave + p:empty,
