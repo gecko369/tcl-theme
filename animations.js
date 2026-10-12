@@ -456,3 +456,52 @@ Array.prototype.forEach.call(screens, function (sc) {
     slot.appendChild(f);
   });
 })();
+
+
+/* ── TCL APP GATE (app-only newsletter wall) ─────────────────────────
+   Acts ONLY inside the Median app (UA token "TCLApp" + median/gonative
+   fallbacks). No-op on the public website, so SEO/web UX are untouched.
+   1. Unregistered app users are bounced to /app-welcome.
+   2. /app-welcome shows the "Sunny Side Up" GHL form; on submit GHL
+      redirects to /app-home?joined=1 (and we catch a submit message as
+      backup), setting a permanent flag so the wall never shows again.
+   3. "Maybe later" = session-only skip; the wall returns next launch. */
+(function () {
+  var UA = navigator.userAgent || '';
+  var isApp = /TCLApp|median|gonative/i.test(UA) ||
+              window.median || window.gonative || window._median_info;
+  if (!isApp) return;
+
+  var JOIN_KEY = 'tcl_app_joined';
+  var SKIP_KEY = 'tcl_app_skip';
+  function lsGet(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+  function ssGet(k){ try { return sessionStorage.getItem(k); } catch(e){ return null; } }
+  function ssSet(k,v){ try { sessionStorage.setItem(k,v); } catch(e){} }
+
+  if (/[?&]joined=1/.test(location.search)) lsSet(JOIN_KEY, '1');
+
+  var path    = location.pathname.replace(/\/+$/, '') || '/';
+  var onWall  = path === '/app-welcome';
+  var joined  = lsGet(JOIN_KEY) === '1';
+  var skipped = ssGet(SKIP_KEY) === '1';
+
+  if (!joined && !skipped && !onWall) { location.replace('/app-welcome'); return; }
+
+  document.addEventListener('click', function (e) {
+    var s = e.target.closest && e.target.closest('[data-app-skip]');
+    if (!s) return;
+    e.preventDefault();
+    ssSet(SKIP_KEY, '1');
+    location.replace('/app-home');
+  });
+
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    var hit = d === 'form-submitted' ||
+              (d && typeof d === 'object' &&
+               (d.type === 'form-submitted' || d.event === 'form_submitted' ||
+                d.action === 'form_submitted'));
+    if (hit) { lsSet(JOIN_KEY, '1'); location.replace('/app-home?joined=1'); }
+  });
+})();

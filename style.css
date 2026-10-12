@@ -3318,3 +3318,39 @@ p:empty + .tcl-wave { display: none !important; }
   position: relative;
   z-index: 3;
 }
+
+
+/* ── TCL APP WELCOME / GATE (appgate1) ───────────────────────────────
+   Full-screen navy welcome shown only inside the app at /app-welcome.
+   PX units (BD root font is 10px). Harmless elsewhere — markup only
+   exists on /app-welcome. ─────────────────────────────────────────── */
+.tcl-welcome{
+  min-height:100vh;background:#0D3347;color:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:40px 24px 32px;box-sizing:border-box;
+}
+.tcl-welcome__logo{width:260px;max-width:78%;height:auto;margin:0 auto 24px;display:block;}
+.tcl-welcome__eyebrow{
+  font-family:Figtree,system-ui,sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;
+  text-transform:uppercase;color:#FFCA08;margin:0 0 10px;
+}
+.tcl-welcome__title{
+  font-family:'Bricolage Grotesque',Figtree,system-ui,sans-serif;font-weight:700;font-size:30px;
+  line-height:1.15;margin:0 0 12px;color:#fff;
+}
+.tcl-welcome__sub{
+  font-family:Figtree,system-ui,sans-serif;font-size:16px;line-height:1.5;max-width:420px;
+  margin:0 auto 26px;color:#CFE4EA;
+}
+.tcl-welcome__card{
+  width:100%;max-width:420px;background:#fff;border-radius:16px;padding:14px 14px 6px;
+  box-shadow:0 12px 34px rgba(0,0,0,.28);box-sizing:border-box;
+}
+.tcl-welcome__card .tcl-loop__form iframe{width:100%;border:none;min-height:360px;display:block;}
+.tcl-welcome__reassure{
+  margin-top:14px;font-family:Figtree,system-ui,sans-serif;font-size:12.5px;color:#9FC3CE;
+}
+.tcl-welcome__skip{
+  display:inline-block;margin-top:20px;color:#8CD1ED;font-family:Figtree,system-ui,sans-serif;
+  font-size:14px;text-decoration:underline;opacity:.85;
+}
+.tcl-welcome__skip:hover,.tcl-welcome__skip:focus{color:#fff;}
