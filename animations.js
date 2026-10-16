@@ -1,4 +1,4 @@
-// v12
+// v13
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -513,29 +513,21 @@ Array.prototype.forEach.call(screens, function (sc) {
 (function () {
   var root = document.documentElement;
   var noAds = !!document.querySelector('#ad-management-config-settings[data-blocklist-all], #mediavine-settings[data-blocklist-all]');
-  function fixedAncestor(el) {
-    while (el && el !== document.body && el !== document.documentElement) {
-      if (el.tagName === 'CHAT-WIDGET' || (el.classList && el.classList.contains('scrollup'))) return null;
-      if (getComputedStyle(el).position === 'fixed') return el;
-      el = el.parentElement;
-    }
-    return null;
-  }
-  // Probe upward from the bottom edge at three x positions; the first fixed element hit is the ad bar.
-  // Works for any DOM structure (nested wrappers, iframes, shadow hosts) without knowing Mediavine's markup.
+  // Mediavine/Journey renders the bottom ad inside #fixed_container_bottom (a 400px, pointer-events:none
+  // fixed container). The visible ad is the displayed .adhesion_wrapper inside it; its height is what we need.
   function measure() {
     if (noAds) return 0;
-    var vh = window.innerHeight, vw = window.innerWidth, h = 0;
-    var xs = [vw * 0.5, vw * 0.3, vw * 0.7];
-    for (var i = 0; i < xs.length; i++) {
-      for (var y = vh - 2; y >= vh - 60; y -= 6) {
-        var el = document.elementFromPoint(xs[i], y);
-        var f = el && fixedAncestor(el);
-        if (!f) continue;
-        var r = f.getBoundingClientRect();
-        var bar = vh - r.top;
-        if (r.width >= 200 && bar >= 30 && bar <= 200 && bar > h) h = bar;
-        break;
+    var vh = window.innerHeight, h = 0;
+    var c = document.getElementById('fixed_container_bottom');
+    if (c) {
+      var wraps = c.querySelectorAll('.adhesion_wrapper');
+      for (var i = 0; i < wraps.length; i++) {
+        var cs = getComputedStyle(wraps[i]);
+        if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+        var r = wraps[i].getBoundingClientRect();
+        if (r.height < 10 || r.width < 100) continue;
+        var b = vh - r.top;
+        if (b > h) h = b;
       }
     }
     return Math.round(h);
@@ -549,6 +541,17 @@ Array.prototype.forEach.call(screens, function (sc) {
   window.addEventListener('resize', apply);
   var n = 0, t = setInterval(function () { apply(); if (++n > 90) clearInterval(t); }, 1000); // first 90s: ads load late
   new MutationObserver(function () { apply(); }).observe(document.body, { childList: true });
+  var watched = false;
+  function watchContainer() {
+    if (watched) return;
+    var c = document.getElementById('fixed_container_bottom');
+    if (!c) return;
+    watched = true;
+    new MutationObserver(function () { apply(); }).observe(c, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+    if (window.ResizeObserver) { var ro = new ResizeObserver(function () { apply(); }); ro.observe(c); c.querySelectorAll('.adhesion_wrapper').forEach(function (w) { ro.observe(w); }); }
+  }
+  watchContainer();
+  var wn = 0, wt = setInterval(function () { watchContainer(); if (watched || ++wn > 120) clearInterval(wt); }, 500);
 
   // GHL sets bottom:20px inline inside its shadow DOM; a stylesheet appended inside the shadow root overrides it.
   var CSS = '.lc_text-widget, .lc_text-widget--bubble { bottom: calc(var(--tcl-ad-bottom, 0px) + 20px) !important; right: 20px !important; left: auto !important; }';
