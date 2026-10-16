@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v42
+   v43
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3356,21 +3356,24 @@ p:empty + .tcl-wave { display: none !important; }
 .tcl-welcome__skip:hover,.tcl-welcome__skip:focus{color:#fff;}
 
 
-/* ── Scroll-to-top button (BD .scrollup) — solid navy disc, stacked above the chat bubble ── */
+/* ── Scroll-to-top button (BD .scrollup): navy disc, CSS chevron, stacked above the chat bubble.
+   --tcl-ad-bottom is set by animations.js to the height of the bottom ad bar (0 when none). ── */
 .scrollup {
-  width: 46px !important; height: 46px !important;
-  right: 26px !important; bottom: 92px !important;
+  width: 46px !important; height: 46px !important; padding: 0 !important;
+  right: 26px !important;
+  bottom: calc(var(--tcl-ad-bottom, 0px) + 92px) !important; /* 20px bubble offset + 58px bubble + 14px gap */
   border-radius: 50% !important;
-  background: #0D3347 !important;
-  border: 0 !important;
+  background: #0D3347 !important; border: 0 !important;
   box-shadow: 0 6px 16px rgba(13, 51, 71, 0.28) !important;
-  opacity: 1 !important;
-  text-align: center !important; text-decoration: none !important;
-  transition: background .2s ease, transform .2s ease !important;
+  opacity: 1 !important; overflow: hidden !important;
+  transition: background .2s ease !important;
 }
-.scrollup i { font-size: 24px !important; line-height: 46px !important; color: #FFFFFF !important; }
-.scrollup:hover { background: #15C4AF !important; transform: translateY(-2px); }
-.scrollup:hover i { color: #0D3347 !important; }
-/* On pages with ads the chat bubble is lifted to 110px (72px on phones); keep the arrow 14px above it */
-html.tcl-ads .scrollup { bottom: 182px !important; }
-@media (max-width: 767px) { html.tcl-ads .scrollup { bottom: 144px !important; } }
+.scrollup i { display: none !important; }
+.scrollup::before {
+  content: ""; position: absolute; left: 50%; top: 56%;
+  width: 13px; height: 13px;
+  border-left: 3px solid #FFFFFF; border-top: 3px solid #FFFFFF;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.scrollup:hover { background: #15C4AF !important; }
+.scrollup:hover::before { border-color: #0D3347; }

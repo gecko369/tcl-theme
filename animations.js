@@ -1,4 +1,4 @@
-// v10
+// v11
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -506,30 +506,53 @@ Array.prototype.forEach.call(screens, function (sc) {
   });
 })();
 
-// ── Lift the GHL chat bubble above Mediavine's sticky ads ──
-// GHL sets bottom:20px inline inside its shadow DOM, so site CSS can't reach it.
-// We append a stylesheet inside the shadow root instead. Pages with ads disabled
-// (#mediavine-settings[data-blocklist-all]) keep the default position.
+// ── Keep the GHL chat bubble and the scroll-to-top arrow above Journey/Mediavine's bottom ad ──
+// The ad bar's height varies by unit (50px, 90px, 100px...). We measure the tallest fixed element
+// pinned to the bottom of the viewport and publish it as --tcl-ad-bottom on <html>. CSS custom
+// properties inherit into the GHL shadow DOM, so one variable moves both the bubble and the arrow.
 (function () {
-  if (document.querySelector('#ad-management-config-settings[data-blocklist-all], #mediavine-settings[data-blocklist-all]')) return;
-  document.documentElement.classList.add('tcl-ads');
-  var CSS =
-    '.lc_text-widget, .lc_text-widget--bubble { bottom: 110px !important; right: 20px !important; left: auto !important; }' +
-    '@media (max-width: 767px) { .lc_text-widget, .lc_text-widget--bubble { bottom: 72px !important; } }';
-  var done = false;
+  var root = document.documentElement;
+  var noAds = !!document.querySelector('#ad-management-config-settings[data-blocklist-all], #mediavine-settings[data-blocklist-all]');
+  function measure() {
+    if (noAds) return 0;
+    var h = 0, vh = window.innerHeight;
+    var els = document.querySelectorAll('body > div, body > aside, body > section, body > iframe');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.tagName === 'CHAT-WIDGET' || el.classList.contains('scrollup')) continue;
+      var cs = getComputedStyle(el);
+      if (cs.position !== 'fixed' || cs.display === 'none' || cs.visibility === 'hidden') continue;
+      var r = el.getBoundingClientRect();
+      if (r.width < vh * 0.4 && r.width < 300) continue;      // not a bar
+      if (r.height < 30 || r.height > 160) continue;            // not an adhesion-sized unit
+      if (Math.abs(r.bottom - vh) > 2) continue;                // not pinned to the bottom
+      if (r.height > h) h = r.height;
+    }
+    return Math.round(h);
+  }
+  var last = -1;
   function apply() {
+    var h = measure();
+    if (h !== last) { last = h; root.style.setProperty('--tcl-ad-bottom', h + 'px'); root.classList.toggle('tcl-ads', h > 0); }
+  }
+  apply();
+  window.addEventListener('resize', apply);
+  var n = 0, t = setInterval(function () { apply(); if (++n > 90) clearInterval(t); }, 1000); // first 90s: ads load late
+  new MutationObserver(function () { apply(); }).observe(document.body, { childList: true });
+
+  // GHL sets bottom:20px inline inside its shadow DOM; a stylesheet appended inside the shadow root overrides it.
+  var CSS = '.lc_text-widget, .lc_text-widget--bubble { bottom: calc(var(--tcl-ad-bottom, 0px) + 20px) !important; right: 20px !important; left: auto !important; }';
+  var done = false;
+  function lift() {
     if (done) return true;
     var cw = document.querySelector('chat-widget');
     if (!cw || !cw.shadowRoot) return false;
-    var st = document.createElement('style');
-    st.setAttribute('data-tcl', 'chat-lift');
-    st.textContent = CSS;
-    cw.shadowRoot.appendChild(st);
-    done = true;
-    return true;
+    var st = document.createElement('style'); st.setAttribute('data-tcl', 'chat-lift'); st.textContent = CSS;
+    cw.shadowRoot.appendChild(st); done = true; return true;
   }
-  if (apply()) return;
-  var mo = new MutationObserver(function () { if (apply()) mo.disconnect(); });
-  mo.observe(document.documentElement, { childList: true, subtree: true });
-  var tries = 0, t = setInterval(function () { if (apply() || ++tries > 60) clearInterval(t); }, 500);
+  if (!lift()) {
+    var mo = new MutationObserver(function () { if (lift()) mo.disconnect(); });
+    mo.observe(root, { childList: true, subtree: true });
+    var tries = 0, tt = setInterval(function () { if (lift() || ++tries > 60) clearInterval(tt); }, 500);
+  }
 })();
