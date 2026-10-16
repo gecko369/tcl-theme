@@ -1,4 +1,4 @@
-// v8
+// v9
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -504,4 +504,31 @@ Array.prototype.forEach.call(screens, function (sc) {
                 d.action === 'form_submitted'));
     if (hit) { lsSet(JOIN_KEY, '1'); location.replace('/app-home?joined=1'); }
   });
+})();
+
+// ── Lift the GHL chat bubble above Mediavine's sticky ads ──
+// GHL sets bottom:20px inline inside its shadow DOM, so site CSS can't reach it.
+// We append a stylesheet inside the shadow root instead. Pages with ads disabled
+// (#mediavine-settings[data-blocklist-all]) keep the default position.
+(function () {
+  if (document.querySelector('#mediavine-settings[data-blocklist-all]')) return;
+  var CSS =
+    '.lc_text-widget, .lc_text-widget--bubble { bottom: 110px !important; right: 20px !important; left: auto !important; }' +
+    '@media (max-width: 767px) { .lc_text-widget, .lc_text-widget--bubble { bottom: 72px !important; } }';
+  var done = false;
+  function apply() {
+    if (done) return true;
+    var cw = document.querySelector('chat-widget');
+    if (!cw || !cw.shadowRoot) return false;
+    var st = document.createElement('style');
+    st.setAttribute('data-tcl', 'chat-lift');
+    st.textContent = CSS;
+    cw.shadowRoot.appendChild(st);
+    done = true;
+    return true;
+  }
+  if (apply()) return;
+  var mo = new MutationObserver(function () { if (apply()) mo.disconnect(); });
+  mo.observe(document.documentElement, { childList: true, subtree: true });
+  var tries = 0, t = setInterval(function () { if (apply() || ++tries > 60) clearInterval(t); }, 500);
 })();
