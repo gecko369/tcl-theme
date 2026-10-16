@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v40
+   v41
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3354,3 +3354,22 @@ p:empty + .tcl-wave { display: none !important; }
   font-size:14px;text-decoration:underline;opacity:.85;
 }
 .tcl-welcome__skip:hover,.tcl-welcome__skip:focus{color:#fff;}
+
+
+/* ── Scroll-to-top button (BD .scrollup) — restyled, stacked above the chat bubble ── */
+.scrollup {
+  width: 44px !important; height: 44px !important;
+  right: 28px !important; bottom: 92px !important;
+  border-radius: 50% !important;
+  background: #FFF7EB !important;
+  border: 2px solid #FBB02D !important;
+  box-shadow: 0 4px 14px rgba(32, 48, 79, 0.18) !important;
+  color: #20304F !important; opacity: 0.95 !important;
+  text-align: center !important; text-decoration: none !important;
+  transition: transform .2s ease, background .2s ease, opacity .2s ease !important;
+}
+.scrollup i { font-size: 20px !important; line-height: 40px !important; color: #20304F !important; }
+.scrollup:hover { background: #FBB02D !important; transform: translateY(-2px); opacity: 1 !important; }
+/* On pages with ads the chat bubble is lifted to 110px (72px on phones); stack the arrow above it */
+html.tcl-ads .scrollup { bottom: 182px !important; }
+@media (max-width: 767px) { html.tcl-ads .scrollup { bottom: 144px !important; } }

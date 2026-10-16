@@ -1,4 +1,4 @@
-// v9
+// v10
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -511,7 +511,8 @@ Array.prototype.forEach.call(screens, function (sc) {
 // We append a stylesheet inside the shadow root instead. Pages with ads disabled
 // (#mediavine-settings[data-blocklist-all]) keep the default position.
 (function () {
-  if (document.querySelector('#mediavine-settings[data-blocklist-all]')) return;
+  if (document.querySelector('#ad-management-config-settings[data-blocklist-all], #mediavine-settings[data-blocklist-all]')) return;
+  document.documentElement.classList.add('tcl-ads');
   var CSS =
     '.lc_text-widget, .lc_text-widget--bubble { bottom: 110px !important; right: 20px !important; left: auto !important; }' +
     '@media (max-width: 767px) { .lc_text-widget, .lc_text-widget--bubble { bottom: 72px !important; } }';
