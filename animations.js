@@ -1,4 +1,4 @@
-// v11
+// v12
 /* ============================================================
    The Celebration Life — animations.js
    Served via: https://gecko369.github.io/tcl-theme/animations.js
@@ -513,20 +513,30 @@ Array.prototype.forEach.call(screens, function (sc) {
 (function () {
   var root = document.documentElement;
   var noAds = !!document.querySelector('#ad-management-config-settings[data-blocklist-all], #mediavine-settings[data-blocklist-all]');
+  function fixedAncestor(el) {
+    while (el && el !== document.body && el !== document.documentElement) {
+      if (el.tagName === 'CHAT-WIDGET' || (el.classList && el.classList.contains('scrollup'))) return null;
+      if (getComputedStyle(el).position === 'fixed') return el;
+      el = el.parentElement;
+    }
+    return null;
+  }
+  // Probe upward from the bottom edge at three x positions; the first fixed element hit is the ad bar.
+  // Works for any DOM structure (nested wrappers, iframes, shadow hosts) without knowing Mediavine's markup.
   function measure() {
     if (noAds) return 0;
-    var h = 0, vh = window.innerHeight;
-    var els = document.querySelectorAll('body > div, body > aside, body > section, body > iframe');
-    for (var i = 0; i < els.length; i++) {
-      var el = els[i];
-      if (el.tagName === 'CHAT-WIDGET' || el.classList.contains('scrollup')) continue;
-      var cs = getComputedStyle(el);
-      if (cs.position !== 'fixed' || cs.display === 'none' || cs.visibility === 'hidden') continue;
-      var r = el.getBoundingClientRect();
-      if (r.width < vh * 0.4 && r.width < 300) continue;      // not a bar
-      if (r.height < 30 || r.height > 160) continue;            // not an adhesion-sized unit
-      if (Math.abs(r.bottom - vh) > 2) continue;                // not pinned to the bottom
-      if (r.height > h) h = r.height;
+    var vh = window.innerHeight, vw = window.innerWidth, h = 0;
+    var xs = [vw * 0.5, vw * 0.3, vw * 0.7];
+    for (var i = 0; i < xs.length; i++) {
+      for (var y = vh - 2; y >= vh - 60; y -= 6) {
+        var el = document.elementFromPoint(xs[i], y);
+        var f = el && fixedAncestor(el);
+        if (!f) continue;
+        var r = f.getBoundingClientRect();
+        var bar = vh - r.top;
+        if (r.width >= 200 && bar >= 30 && bar <= 200 && bar > h) h = bar;
+        break;
+      }
     }
     return Math.round(h);
   }
