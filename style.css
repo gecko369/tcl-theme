@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v44
+   v45
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3389,3 +3389,17 @@ p:empty + .tcl-wave { display: none !important; }
 }
 .tcl-event-now .tcl-event-badge { background: #15C4AF; color: #0D3347; }
 .tcl-event-recurring .tcl-event-badge { background: #8CD1ED; color: #0D3347; }
+
+/* ── Results pages: search bar above the list (v45) ──────────────────────── */
+.tcl-results-search .module { background: #F9E0BB; border-radius: 18px; padding: 1rem 1.25rem; margin: 0 0 1.25rem; }
+.tcl-results-search .module h2, .tcl-results-search .module h3 { display: none; }
+.tcl-results-search .module form { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; }
+.tcl-results-search .module form .input-group,
+.tcl-results-search .module form .form-group { flex: 1 1 200px; margin: 0 !important; float: none; width: auto; padding: 0; display: flex; }
+.tcl-results-search .module form .input-group .form-control { width: 100%; }
+.tcl-results-search .module form .form-group.nobmargin { flex: 0 0 auto; }
+.tcl-results-search .module form .styled-select2, .tcl-results-search .module form .bootstrap-select { width: 100% !important; }
+.tcl-results-search .module .btn-block { width: auto; padding: 0.55rem 1.5rem; border-radius: 999px; font-weight: 700; }
+.tcl-results-search .module .input-group-addon { border-radius: 10px 0 0 10px; background: #FFFFFF; color: #15C4AF; }
+.tcl-results-search .module .form-control { border-radius: 0 10px 10px 0; box-shadow: none; }
+@media (max-width: 767px) { .tcl-results-search .module form > * { flex: 1 1 100% !important; } }
