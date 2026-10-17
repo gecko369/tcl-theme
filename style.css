@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v43
+   v44
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3377,3 +3377,15 @@ p:empty + .tcl-wave { display: none !important; }
 }
 .scrollup:hover { background: #15C4AF !important; }
 .scrollup:hover::before { border-color: #0D3347; }
+
+/* ── Events results: smart "when" labels (v44) ───────────────────────────── */
+.tcl-event-when { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+.tcl-event-when b { color: #1A2E3B; }
+.tcl-event-badge {
+  display: inline-block; padding: 0.2rem 0.65rem; border-radius: 999px;
+  font-family: 'Figtree', sans-serif; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.4;
+  background: #F9E0BB; color: #1A2E3B;
+}
+.tcl-event-now .tcl-event-badge { background: #15C4AF; color: #0D3347; }
+.tcl-event-recurring .tcl-event-badge { background: #8CD1ED; color: #0D3347; }
