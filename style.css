@@ -3398,7 +3398,9 @@ p:empty + .tcl-wave { display: none !important; }
 .tcl-results-search .module form .input-group,
 .tcl-results-search .module form .form-group { flex: 1 1 200px; margin: 0 !important; float: none; width: auto; padding: 0; display: flex; }
 .tcl-results-search .module form .input-group .form-control { width: 100%; }
-.tcl-results-search .module form .form-group.nobmargin { flex: 0 0 auto; }
+.tcl-results-search .module form .form-group.nobmargin,
+.tcl-results-search .module form > .col-md-12.nopad { flex: 0 0 auto; width: auto; margin: 0; }
+.tcl-results-search .module form > .clearfix { display: none; }
 .tcl-results-search .module form .styled-select2, .tcl-results-search .module form .bootstrap-select { width: 100% !important; }
 .tcl-results-search .module .btn-block { width: auto; padding: 0.55rem 1.5rem; border-radius: 999px; font-weight: 700; }
 .tcl-results-search .module .input-group-addon { border-radius: 10px 0 0 10px; background: #FFFFFF; color: #15C4AF; }
