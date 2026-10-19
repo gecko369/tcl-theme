@@ -2725,6 +2725,10 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 .tcl-loop--sidebar .tcl-loop__sub { font-size: 15px; margin: 0 0 16px; max-width: none; }
 .tcl-loop--sidebar .tcl-loop__form iframe { min-height: 260px; }
 
+/* Event pages: BD repeats the body newsletter widget in an unclassed wrapper
+   right after the description. Show the in-body copy once, hide the repeat. */
+.post-detail-body .well > div:not(.the-post-description):has(> .tcl-loop__form) { display: none; }
+
 /* ---- Mobile ---- */
 @media (max-width: 600px) {
   .tcl-loop { padding: 28px 20px 24px; margin: 24px auto; }
