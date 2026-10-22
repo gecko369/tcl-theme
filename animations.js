@@ -103,7 +103,7 @@
   var slot = book.querySelector('.tclb-widget');
   if (slot && !slot.querySelector('iframe')) {
     var f = document.createElement('iframe');
-    f.src = 'https://link.geckonaut.com/widget/bookings/livethecelebrationlife';
+    f.src = slot.getAttribute('data-cal') || 'https://link.geckonaut.com/widget/bookings/livethecelebrationlife';
     f.title = 'Book a Call — The Celebration Life';
     f.setAttribute('loading', 'lazy');
     f.setAttribute('scrolling', 'yes');
@@ -343,8 +343,9 @@
    1. Injects a video iframe into any .tclv-screen that has a
       non-empty data-tclv-video attribute (and hides its placeholder
       overlay). Empty/absent attribute = glowing placeholder stays.
-   2. On the offer page (.tclvp-offer), injects the GHL booking
-      calendar iframe into .tclvp-cal and loads GHL's embed script.
+   2. On any video lander (.tclvp) with a .tclvp-cal slot, injects the
+      GHL booking calendar (the slot's data-cal URL, else the Spotlight
+      Interview calendar) and loads GHL's embed script.
    Froala strips iframes, so both must be added by JS. Runs only when
    the relevant elements exist; touches nothing else. */
 (function () {
@@ -401,7 +402,7 @@ Array.prototype.forEach.call(screens, function (sc) {
 });
 
   /* 2 — offer page booking calendar */
-  var slot = document.querySelector('.tclvp-offer .tclvp-cal');
+  var slot = document.querySelector('.tclvp .tclvp-cal');
   if (slot && !slot.querySelector('iframe')) {
     if (!document.querySelector('script[src*="link.geckonaut.com/js/form_embed.js"]')) {
       var s = document.createElement('script');
@@ -410,7 +411,7 @@ Array.prototype.forEach.call(screens, function (sc) {
       document.body.appendChild(s);
     }
     var cf = document.createElement('iframe');
-    cf.src = 'https://link.geckonaut.com/widget/booking/NnwajOjtUTvbw4OkMqhm';
+    cf.src = slot.getAttribute('data-cal') || 'https://link.geckonaut.com/widget/bookings/tcl-spotlight-interview';
     cf.style.width = '100%';
     cf.style.border = 'none';
     cf.style.overflow = 'hidden';
