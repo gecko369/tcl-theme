@@ -570,3 +570,44 @@ Array.prototype.forEach.call(screens, function (sc) {
     var tries = 0, tt = setInterval(function () { if (lift() || ++tries > 60) clearInterval(tt); }, 500);
   }
 })();
+
+/* ── VIDEO LANDER FORMS (vf1) ────────────────────────────────
+   Injects a GHL form into any .tclvp-form[data-ghl-form] slot on a
+   video lander (e.g. /spotlight-apply hosts the Business Spotlight
+   Application). Froala strips iframes, so the form is added here.
+   The iframe id follows GHL's inline-<formId> pattern so form_embed.js
+   auto-sizes it. Runs only when such a slot exists. */
+(function () {
+  var slots = document.querySelectorAll('.tclvp-form[data-ghl-form]');
+  if (!slots.length) return;
+  if (!document.querySelector('script[src*="link.geckonaut.com/js/form_embed.js"]')) {
+    var s = document.createElement('script');
+    s.src = 'https://link.geckonaut.com/js/form_embed.js';
+    s.async = true;
+    document.body.appendChild(s);
+  }
+  Array.prototype.forEach.call(slots, function (slot) {
+    if (slot.querySelector('iframe')) return;
+    var formId = (slot.getAttribute('data-ghl-form') || '').trim();
+    if (!formId) return;
+    var name = slot.getAttribute('data-ghl-name') || 'Form';
+    var frameId = 'inline-' + formId;
+    var f = document.createElement('iframe');
+    f.src = 'https://link.geckonaut.com/widget/form/' + formId;
+    f.id = frameId;
+    f.setAttribute('data-layout', "{'id':'INLINE'}");
+    f.setAttribute('data-trigger-type', 'alwaysShow');
+    f.setAttribute('data-trigger-value', '');
+    f.setAttribute('data-activation-type', 'alwaysActivated');
+    f.setAttribute('data-activation-value', '');
+    f.setAttribute('data-deactivation-type', 'neverDeactivate');
+    f.setAttribute('data-deactivation-value', '');
+    f.setAttribute('data-form-name', name);
+    f.setAttribute('data-layout-iframe-id', frameId);
+    f.setAttribute('data-form-id', formId);
+    f.setAttribute('title', name);
+    var loading = slot.querySelector('.tclvp-cal-loading');
+    if (loading) loading.style.display = 'none';
+    slot.appendChild(f);
+  });
+})();

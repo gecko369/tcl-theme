@@ -3163,6 +3163,13 @@ main#main-content { margin-bottom: 0 !important; padding-bottom: 0 !important; }
 }
 .tclvp-cal iframe { width: 100%; border: none; min-height: 700px; border-radius: 12px; display: block; }
 
+/* ── VIDEO LANDER: embedded GHL form block (e.g. /spotlight-apply) ── */
+.tclvp-form {
+  max-width: 760px; margin: 0 auto; min-height: 300px; border-radius: 18px;
+  background: #FFFFFF; padding: 10px; position: relative; text-align: left;
+}
+.tclvp-form iframe { width: 100%; border: none; min-height: 900px; border-radius: 12px; display: block; }
+
 /* ── CONFIRMATION PAGE bits ────────────────────────────────── */
 .tclvp-check {
   width: 92px; height: 92px; border-radius: 50%; margin: 0 auto 26px;
