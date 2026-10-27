@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v48
+   v49
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3439,4 +3439,8 @@ p:empty + .tcl-wave { display: none !important; }
     border-color: #FFCA08 !important;
     transform: translateY(-3px);
   }
+}
+.tcla .tcla-tile-featured .tcla-tile-badge {
+  background: #0D3347 !important;
+  color: #FFCA08 !important;
 }
