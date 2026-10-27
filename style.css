@@ -2,7 +2,7 @@
    The Celebration Life — Master Stylesheet
    Served via: https://gecko369.github.io/tcl-theme/style.css
    Phase 1: Foundation — vars, typography, buttons, keyframes
-   v47
+   v48
    ============================================================ */
 
 /* ── Google Fonts ─────────────────────────────────────────── */
@@ -3418,3 +3418,25 @@ p:empty + .tcl-wave { display: none !important; }
 .tcl-results-search .module .input-group-addon { border-radius: 10px 0 0 10px; background: #FFFFFF; color: #15C4AF; }
 .tcl-results-search .module .form-control { border-radius: 0 10px 10px 0; box-shadow: none; }
 @media (max-width: 767px) { .tcl-results-search .module form > * { flex: 1 1 100% !important; } .tcl-results-search .module .btn-block { width: 100%; } }
+
+/* ── APP HOME: featured (stand-out) tile + solid tile variant ──
+   .tcla-tile-featured = solid orange tile for the highest-value
+   action (Feature Your Business), so it pops against the glassy
+   navy tiles. Scoped to .tcla — affects nothing else. */
+.tcla .tcla-tile-featured {
+  background: #F58220 !important;
+  border-color: #F58220 !important;
+  box-shadow: 0 6px 18px rgba(245,130,32,0.35);
+}
+.tcla .tcla-tile-featured .tcla-tile-label { color: #FFFFFF !important; }
+.tcla .tcla-tile-featured:active {
+  background: #d96e14 !important;
+  border-color: #d96e14 !important;
+}
+@media (hover: hover) {
+  .tcla .tcla-tile-featured:hover {
+    background: #d96e14 !important;
+    border-color: #FFCA08 !important;
+    transform: translateY(-3px);
+  }
+}
